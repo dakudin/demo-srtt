@@ -1,0 +1,47 @@
+{
+  "message": "Success",
+  "success": true,
+  "data": {
+    "lineItems": [
+      {
+        "name": "Our Legal Fee",
+        "charge": 525.00,
+        "tax": 105.00,
+        "dataMarker": "fees.our.legal.fee"
+      },
+      {
+        "name": "Tenure Fee (if Leasehold or Shared Ownership)",
+        "charge": 199.00,
+        "tax": 39.80,
+        "dataMarker": "fees.tenure.fee.if.leasehold.or.shared.ownership"
+      },
+      {
+        "name": "Bank Transfer Fee",
+        "charge": 40.00,
+        "tax": 8.00,
+        "dataMarker": "fees.bank"
+      },
+      {
+        "name": "ID Check (per person)",
+        "charge": 2.22,
+        "tax": 0.00,
+        "dataMarker": "fees.id"
+      },
+      {
+        "name": "Bankruptcy Search (per person)",
+        "charge": 2.00,
+        "tax": 0.00,
+        "dataMarker": "fees.bankruptcy"
+      },
+      {
+        "name": "Land Registry Office Copies",
+        "charge": 18.00,
+        "tax": 0.00,
+        "dataMarker": "fees.office-copies"
+      }
+    ],
+    "totalCharge": 786.22,
+    "totalTax": 152.80,
+    "grandTotal": 939.02
+  }
+}
