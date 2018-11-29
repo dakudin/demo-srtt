@@ -44,7 +44,7 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $this->fillQuoteInfo();
 
-        $this->createRemoteQuote();
+//!!!!!        $this->createRemoteQuote();
 
         Yii::$app->mailer->compose()
             ->setFrom('enquiry@demosortit.com')
@@ -132,9 +132,8 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $arr = $this->quote->getQuoteInfoByFields([
             TravelQuote::USER_ADDRESS_FIELD,
-            TravelQuote::REGION_TEXT_FIELD,
             TravelQuote::COUNTRY_TEXT_FIELD,
-            TravelQuote::RESORT_TEXT_FIELD,
+            TravelQuote::CITY_TEXT_FIELD,
             TravelQuote::AIRPORT_TEXT_FIELD,
             TravelQuote::FLIGHT_CATEGORY_TEXT_FIELD,
             TravelQuote::DEPARTURE_DATE_TEXT_FILED,

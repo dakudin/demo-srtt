@@ -2,8 +2,6 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
-
 $this->title = 'New enquiry';
 $this->params['breadcrumbs'][] = $this->title;
 ?>

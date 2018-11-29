@@ -45,4 +45,13 @@ class GeoRegion extends \yii\db\ActiveRecord
             'name' => 'Name',
         ];
     }
+
+    public static function getRegionsByName($name = null, $limit = 10)
+    {
+        return Yii::$app->db->createCommand(
+            'SELECT DISTINCT `name` FROM geo_region WHERE `name` LIKE :name ORDER BY `name` LIMIT :limit')
+            ->bindValue(':name', $name.'%')
+            ->bindValue(':limit', $limit)
+            ->queryAll();
+    }
 }

@@ -301,12 +301,12 @@ class TravelController extends Controller
         $instantQuote->fillDictionaryIDs($companyCountries);
 
         if($instantQuote->load(Yii::$app->request->post()) && $instantQuote->validate()){
-
+/*
             return $this->render('sendResults',[
                 'quoteInfo' => '<p>All is good</p>'
             ]);
-
-/*            if($instantQuote->save()){
+*/
+            if($instantQuote->save()){
 
                 FHelper::setRequestQuoteAgreementCookies();
 
@@ -318,7 +318,7 @@ class TravelController extends Controller
                         'quoteInfo' => $quote->getQuoteTextInfo()
                         ]);
                 }
-            }*/
+            }
         }
 
         if(!empty($instantQuote->date)) {
@@ -330,10 +330,10 @@ class TravelController extends Controller
         return $this->render($viewNameCreate, [
             'model' => $instantQuote,
             'companyIDs' => implode(',', $companyCountries),
-            'listRegions' => $this->getListRegions($instantQuote, $companyCountries),
-            'listCountries' => $this->getListCountries($instantQuote, $companyCountries),
-            'listResorts' => $this->getListResorts($instantQuote, $companyCountries),
-            'listAirports' => $this->getListAirports($instantQuote, $companyCountries),
+//            'listRegions' => $this->getListRegions($instantQuote, $companyCountries),
+//            'listCountries' => $this->getListCountries($instantQuote, $companyCountries),
+//            'listResorts' => $this->getListResorts($instantQuote, $companyCountries),
+//            'listAirports' => $this->getListAirports($instantQuote, $companyCountries),
         ]);
     }
 

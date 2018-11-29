@@ -5,6 +5,7 @@ use common\models\DictAirport;
 use common\models\DictCountry;
 use common\models\DictResort;
 use common\models\GeoCity;
+use common\models\GeoRegion;
 use common\models\GeoCountry;
 use \yii\web\Controller;
 use yii;
@@ -92,11 +93,24 @@ class DataController extends Controller
     /**
      * fetch the country list
      */
-    public function actionCityRegionList($q = null) {
-        $data = GeoCity::getCitiesByName($q);
+    public function actionCityList($q = null) {
         $out = [];
+        $data = GeoCity::getCitiesByName($q, 5);
         foreach ($data as $d) {
             $out[] = ['value' => $d['accent_city']];
+        }
+
+        return $out;
+    }
+
+    /**
+     * fetch the region list
+     */
+    public function actionRegionList($q = null) {
+        $out = [];
+        $data = GeoRegion::getRegionsByName($q, 5);
+        foreach ($data as $d) {
+            $out[] = ['value' => $d['name']];
         }
 
         return $out;

@@ -69,9 +69,10 @@ class TravelQuote extends \yii\db\ActiveRecord
     const FLIGHT_BUSINESS = 'business';
 
     const USER_ADDRESS_FIELD = 'user_address';
-    const REGION_TEXT_FIELD = 'region';
+//    const REGION_TEXT_FIELD = 'region';
     const COUNTRY_TEXT_FIELD = 'country';
-    const RESORT_TEXT_FIELD = 'resort';
+    const CITY_TEXT_FIELD = 'city';
+//    const RESORT_TEXT_FIELD = 'resort';
     const AIRPORT_TEXT_FIELD = 'airport';
     const FLIGHT_CATEGORY_TEXT_FIELD = 'flight_category';
     const DEPARTURE_DATE_TEXT_FILED = 'departure_date';
@@ -91,10 +92,10 @@ class TravelQuote extends \yii\db\ActiveRecord
     const MIN_ADULTS_COUNT = 1;
     const MAX_ADULTS_COUNT = 12;
 
-    public $regionIDs;
-    public $countryIDs;
-    public $resortIDs;
-    public $airportIDs;
+//    public $regionIDs;
+//    public $countryIDs;
+//    public $resortIDs;
+//    public $airportIDs;
     public $boardBasisIDs;
     public $hotelGradeIDs;
     public $room;
@@ -178,7 +179,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             'regionIDs' => 'Region',
             'countryIDs' => 'Country',
             'country' => 'Country',
-            'city' => 'City',
+            'city' => 'Region / City',
             'airport' => 'Airport',
             'resortIDs' => 'Resort',
             'airportIDs' => 'Airport',
@@ -206,7 +207,7 @@ class TravelQuote extends \yii\db\ActiveRecord
         if (!parent::beforeSave($insert)) {
             return false;
         }
-
+/*
         if(empty($this->country)) {
             $this->country = self::DEFAULT_COUNTRY;
         }
@@ -218,7 +219,7 @@ class TravelQuote extends \yii\db\ActiveRecord
         if(empty($this->airport)) {
             $this->airport = self::DEFAULT_AIRPORT;
         }
-
+*/
         if(!empty($this->date)) {
             $date = \DateTime::createFromFormat('d M Y', $this->date);
             if($date !==  false) {
@@ -262,19 +263,19 @@ class TravelQuote extends \yii\db\ActiveRecord
 
         //delete old regions, countries, resorts, airports if update
         if(!$insert){
-            TravelQuoteAirport::deleteAllByTravelQuote($this->id);
-            TravelQuoteCountry::deleteAllByTravelQuote($this->id);
-            TravelQuoteRegion::deleteAllByTravelQuote($this->id);
-            TravelQuoteResort::deleteAllByTravelQuote($this->id);
+//            TravelQuoteAirport::deleteAllByTravelQuote($this->id);
+//            TravelQuoteCountry::deleteAllByTravelQuote($this->id);
+//            TravelQuoteRegion::deleteAllByTravelQuote($this->id);
+//            TravelQuoteResort::deleteAllByTravelQuote($this->id);
             TravelQuoteBoardBasis::deleteAllByTravelQuote($this->id);
             TravelQuoteHotelGrade::deleteAllByTravelQuote($this->id);
         }
 
         //add new regions, countries, resorts, airports
-        TravelQuoteAirport::addAirports($this->id, $this->airportIDs);
-        TravelQuoteRegion::addRegions($this->id, $this->regionIDs);
-        TravelQuoteCountry::addCountries($this->id, $this->countryIDs);
-        TravelQuoteResort::addResorts($this->id, $this->resortIDs);
+//        TravelQuoteAirport::addAirports($this->id, $this->airportIDs);
+//        TravelQuoteRegion::addRegions($this->id, $this->regionIDs);
+//        TravelQuoteCountry::addCountries($this->id, $this->countryIDs);
+//        TravelQuoteResort::addResorts($this->id, $this->resortIDs);
         TravelQuoteBoardBasis::addBoardBasis($this->id, $this->boardBasisIDs);
         TravelQuoteHotelGrade::addHotelGrades($this->id, $this->hotelGradeIDs);
     }
@@ -401,7 +402,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     {
         return [1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8];
     }
-
+/*
     protected function fillDictionaryIDsAsInt($companyIDs){
         $this->airportIDs = 0;
         $this->regionIDs = 0;
@@ -424,17 +425,17 @@ class TravelQuote extends \yii\db\ActiveRecord
             $this->airportIDs = $this->travelQuoteAirports[0]->dict_airport_id;
         }
     }
-
+*/
     public function fillDictionaryIDs($companyIDs){
         $this->boardBasisIDs = 0;
         $this->hotelGradeIDs = 0;
-
+/*
         if($this->category_id == Category::SKI){
             $this->fillDictionaryIDsAsInt($companyIDs);
         }else {
             $this->fillDictionaryIDsAsArray($companyIDs);
         }
-
+*/
         $this->fillBoardBasisIDs($companyIDs);
         $this->fillHotelGradeIDs($companyIDs);
     }
@@ -450,16 +451,18 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @param $companyIDs array
      */
+/*
     protected function fillDictionaryIDsAsArray($companyIDs){
         $this->fillRegionIDs($companyIDs);
         $this->fillCountriesIDs($companyIDs);
         $this->fillResortsIDs($companyIDs);
         $this->fillAirportsIDs($companyIDs);
     }
-
+*/
     /**
      * @param $companyIDs array
      */
+/*
     protected function fillRegionIDs($companyIDs){
         $this->regionIDs = [];
 
@@ -478,10 +481,11 @@ class TravelQuote extends \yii\db\ActiveRecord
             }
         }
     }
-
+*/
     /**
      * @param $companyIDs array
      */
+/*
     protected function fillCountriesIDs($companyIDs){
         $this->countryIDs = [];
 
@@ -500,10 +504,11 @@ class TravelQuote extends \yii\db\ActiveRecord
             }
         }
     }
-
+*/
     /**
      * @param $companyIDs array
      */
+/*
     protected function fillResortsIDs($companyIDs){
         $this->resortIDs = [];
 
@@ -522,10 +527,11 @@ class TravelQuote extends \yii\db\ActiveRecord
             }
         }
     }
-
+*/
     /**
      * @param $companyIDs array
      */
+/*
     protected function fillAirportsIDs($companyIDs){
         $this->airportIDs = [];
 
@@ -544,7 +550,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             }
         }
     }
-
+*/
     /**
      * @param $companyIDs array
      */
@@ -650,16 +656,11 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @return string
      */
-    protected function getQuoteRegionText()
+    protected function getQuoteRegionCityText()
     {
-        //regions list
-        $message = 'Regions: ';
-        $regions = $this->dictRegions;
-        if(count($regions)>0) {
-            foreach($regions as $region){
-                $message .= $region->name . ', ';
-            }
-            $message = trim($message, ' ,');
+        $message = 'Region / City: ';
+        if(!empty($this->city)) {
+            $message .= $this->city;
         }else{
             $message .= 'Any';
         }
@@ -674,12 +675,8 @@ class TravelQuote extends \yii\db\ActiveRecord
     {
         //countries list
         $message = 'Countries: ';
-        $countries = $this->dictCountries;
-        if(count($countries)>0) {
-            foreach ($countries as $country) {
-                $message .= $country->name . ', ';
-            }
-            $message = trim($message, ' ,');
+        if(!empty($this->country)) {
+            $message .= $this->country;
         }else{
             $message .= 'Any';
         }
@@ -690,6 +687,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @return string
      */
+/*
     protected function getQuoteResortText()
     {
         //resorts list
@@ -706,7 +704,7 @@ class TravelQuote extends \yii\db\ActiveRecord
 
         return $message;
     }
-
+*/
     /*
      *
      */
@@ -714,12 +712,8 @@ class TravelQuote extends \yii\db\ActiveRecord
     {
         //airports list
         $message = 'Flying from: ';
-        $airports = $this->dictAirports;
-        if(count($airports)>0) {
-            foreach($airports as $airport){
-                $message .= $airport->name . ', ';
-            }
-            $message = trim($message, ' ,');
+        if(!empty($this->airport)) {
+            $message .= $this->airport;
         }else{
             $message .= 'Any';
         }
@@ -836,14 +830,11 @@ class TravelQuote extends \yii\db\ActiveRecord
 
         foreach($fields as $field){
             switch ($field){
-                case self::REGION_TEXT_FIELD :
-                    $quoteInfo[] = $this->getQuoteRegionText();
-                    break;
                 case self::COUNTRY_TEXT_FIELD :
                     $quoteInfo[] = $this->getQuoteCountryText();
                     break;
-                case self::RESORT_TEXT_FIELD :
-                    $quoteInfo[] = $this->getQuoteResortText();
+                case self::CITY_TEXT_FIELD :
+                    $quoteInfo[] = $this->getQuoteRegionCityText();
                     break;
                 case self::AIRPORT_TEXT_FIELD :
                     $quoteInfo[] = $this->getQuoteFlyingFromText();

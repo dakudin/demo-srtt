@@ -57,8 +57,10 @@ class GeoCity extends \yii\db\ActiveRecord
 
     public static function getCitiesByName($name = null, $limit = 10)
     {
-        return Yii::$app->db->createCommand('SELECT accent_city FROM geo_city WHERE accent_city LIKE :accent_city ORDER BY accent_city LIMIT :limit')
-            ->bindValue(':accent_city', $name.'%')
+        return Yii::$app->db->createCommand(
+                'SELECT DISTINCT accent_city FROM geo_city WHERE accent_city LIKE :name
+                ORDER BY accent_city LIMIT :limit')
+            ->bindValue(':name', $name.'%')
             ->bindValue(':limit', $limit)
             ->queryAll();
     }

@@ -448,6 +448,11 @@ body {
     margin-left: 15px;
 }
 
+.typehead-header {
+    border-bottom: 1px solid #CCCCCC;
+    margin: 0 20px 5px;
+    padding: 10px;
+}
 
 @media (min-width: 768px) {
     .navbar-right {
