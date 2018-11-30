@@ -35,7 +35,8 @@ use yii\helpers\Url;
                 'remote' => [
                     'url' => Url::to(['data/country-list']) . '?q=%QUERY',
                     'wildcard' => '%QUERY'
-                ]
+                ],
+                'limit' => 10
             ]
         ]
     ]);

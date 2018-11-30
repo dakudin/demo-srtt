@@ -53,7 +53,11 @@ class GeoCountry extends \yii\db\ActiveRecord
 
     public static function getCountriesByName($name = null, $limit = 10)
     {
-        return Yii::$app->db->createCommand('SELECT country_name FROM geo_country WHERE country_name LIKE :name ORDER BY country_name LIMIT :limit')
+        return Yii::$app->db->createCommand(
+            'SELECT country_name FROM geo_country WHERE country_name LIKE :b_name'
+            .' UNION SELECT country_name FROM geo_country WHERE country_name LIKE :name LIMIT :limit'
+        )
+            ->bindValue(':b_name', $name.'%')
             ->bindValue(':name', '%'.$name.'%')
             ->bindValue(':limit', $limit)
             ->queryAll();

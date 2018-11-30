@@ -81,7 +81,7 @@ class DataController extends Controller
      * fetch the country list
      */
     public function actionCountryList($q = null) {
-        $data = GeoCountry::getCountriesByName($q);
+        $data = GeoCountry::getCountriesByName($q, 10);
         $out = [];
         foreach ($data as $d) {
             $out[] = ['value' => $d['country_name']];

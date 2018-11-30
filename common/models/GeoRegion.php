@@ -50,7 +50,7 @@ class GeoRegion extends \yii\db\ActiveRecord
     {
         return Yii::$app->db->createCommand(
             'SELECT DISTINCT `name` FROM geo_region WHERE `name` LIKE :name ORDER BY `name` LIMIT :limit')
-            ->bindValue(':name', $name.'%')
+            ->bindValue(':name', '%'.$name.'%')
             ->bindValue(':limit', $limit)
             ->queryAll();
     }
