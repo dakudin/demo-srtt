@@ -74,7 +74,6 @@ class SiteController extends Controller
 
     public function onAuthSuccess($client)
     {
-        Yii::$app->user->setReturnUrl(Yii::$app->request->url);
         (new AuthHandler($client))->handle();
     }
 
