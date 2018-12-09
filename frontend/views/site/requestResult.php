@@ -8,5 +8,5 @@ $this->title = 'New enquiry';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
-    <h2>Your enquiry was sent successfully!</h2>
+    <h3>Your enquiry was sent successfully!</h3>
 </div>
