@@ -155,7 +155,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <div class="col-xs-12 col-sm-12 col-md-12 quote-form__my-details">
                 <label>
-                    <input type="checkbox" name="SkiEnquiryForm[my_details]" />
+                    <input type="checkbox" id="acceptConfirm" name="SkiEnquiryForm[accept-confirm]" />
                     <span style="padding-left: 5px"><?php echo \common\components\Helper::QUOTE_CONFIRMATION_TEXT ?></span>
                 </label>
             </div>

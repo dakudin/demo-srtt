@@ -7,41 +7,158 @@ var maxGroup = 4,
     roomCount = 1,
     childAgeCount = 0;
 
-function storeSkiingFields()
+function storeTravelFields()
 {
-    if(typeOf(Storage) === "undefined")
+    if(typeof Storage === "undefined")
         return;
 
-    localStorage.setItem("name", $('#quote-country').val());
-    localStorage.setItem("name", $('#quote-city').val());
-    localStorage.setItem("name", $('#quote-airport').val());
-    localStorage.setItem("name", $('#quote-flight-category').val());
-    localStorage.setItem("name", $('#quote-date').val());
-    localStorage.setItem("name", $('#quote-duration').val());
-    localStorage.setItem("name", $('#quote-budget').val());
-    localStorage.setItem("name", $('#quote-details').val());
+//    $window.localStorage.setItem(name, JSON.stringify(value));
+//    JSON.parse($window.localStorage.getItem(name), true);
 
-    localStorage.setItem("name", $('#user-title').val());
-    localStorage.setItem("name", $('#user-first-name').val());
-    localStorage.setItem("name", $('#user-last-name').val());
-    localStorage.setItem("name", $('#user-email').val());
-    localStorage.setItem("name", $('#user-phone').val());
+    localStorage.clear();
 
-    localStorage.setItem("name", $('#user-address-street').val());
-    localStorage.setItem("name", $('#user-address-town').val());
-    localStorage.setItem("name", $('#user-address-county').val());
-    localStorage.setItem("name", $('#user-address-postcode').val());
+    if($('#quote-country').val())
+        localStorage.setItem("quoteCountry", $('#quote-country').val());
+    else
+        localStorage.setItem("quoteCountry", '');
+    if($('#quote-city').val())
+        localStorage.setItem("quoteCity", $('#quote-city').val());
+    else
+        localStorage.setItem("quoteCity", '');
+    if($('#quote-airport').val())
+        localStorage.setItem("quoteAirport", $('#quote-airport').val());
+    else
+        localStorage.setItem("quoteAirport", '');
+
+    localStorage.setItem("quoteFlightCategory", $('#quote-flight-category').val());
+    localStorage.setItem("quoteDate", $('#quote-date').val());
+    localStorage.setItem("quoteDuration", $('#quote-duration').val());
+    localStorage.setItem("quoteBudget", $('#quote-budget').val());
+    localStorage.setItem("quoteDetails", $('#quote-details').val());
+
+    localStorage.setItem("userTitle", $('#user-title').val());
+    localStorage.setItem("userFirstName", $('#user-first-name').val());
+    localStorage.setItem("userLastName", $('#user-last-name').val());
+    localStorage.setItem("userEmail", $('#user-email').val());
+    localStorage.setItem("userPhone", $('#user-phone').val());
+
+    localStorage.setItem("userAddressStreet", $('#user-address-street').val());
+    localStorage.setItem("userAddressTown", $('#user-address-town').val());
+    localStorage.setItem("userAddressCounty", $('#user-address-county').val());
+    localStorage.setItem("userAddressPostcode", $('#user-address-postcode').val());
+
+    localStorage.setItem("roomCount", roomCount);
+    localStorage.setItem("childAgeCount", childAgeCount);
+
+    for(var i=1; i<=roomCount; i++) {
+        localStorage.setItem("TravelQuote[room]["+i+"][adult]", $("#TravelQuote\\[room\\]\\["+i+"\\]\\[adult\\]").val());
+        localStorage.setItem("TravelQuote[room]["+i+"][child]", $("#TravelQuote\\[room\\]\\["+i+"\\]\\[child\\]").val());
+        for(var j=1; j<=childAgeCount; j++){
+            var childAgeVal = $("#TravelQuote\\[room\\]\\["+i+"\\]\\[childage\\]\\["+j+"\\]").val();
+            if(childAgeVal) {
+                localStorage.setItem("TravelQuote[room][" + i + "][childage][" + j + "]", childAgeVal);
+            }
+        }
+    }
 }
 
+function restoreTravelFields()
+{
+    if(typeof Storage === "undefined")
+        return;
+
+    if(!localStorage.getItem("userTitle"))
+        return;
+
+    $('#quote-country').val(localStorage.getItem("quoteCountry"));
+    $('#quote-city').val(localStorage.getItem("quoteCity"));
+    $('#quote-airport').val(localStorage.getItem("quoteAirport"));
+    $('#quote-flight-category').val(localStorage.getItem("quoteFlightCategory"));
+    $('#quote-date').val(localStorage.getItem("quoteDate"));
+    $('#quote-duration').val(localStorage.getItem("quoteDuration"));
+    $('#quote-budget').val(localStorage.getItem("quoteBudget"));
+    $('#quote-details').val(localStorage.getItem("quoteDetails"));
+
+    $('#user-title').val(localStorage.getItem("userTitle"));
+    $('#user-first-name').val(localStorage.getItem("userFirstName"));
+    $('#user-last-name').val(localStorage.getItem("userLastName"));
+    $('#user-email').val(localStorage.getItem("userEmail"));
+    $('#user-phone').val(localStorage.getItem("userPhone"));
+
+    $('#user-address-street').val(localStorage.getItem("userAddressStreet"));
+    $('#user-address-town').val(localStorage.getItem("userAddressTown"));
+    $('#user-address-county').val(localStorage.getItem("userAddressCounty"));
+    $('#user-address-postcode').val(localStorage.getItem("userAddressPostcode"));
+
+    var prevRoomCount = localStorage.getItem("roomCount");
+    var prevChildAgeCount = localStorage.getItem("childAgeCount");
+
+    for(var i=1; i<=prevRoomCount; i++){
+        if(i != 1){
+            $(".addMoreRoom").click();
+        }
+
+        var adult = localStorage.getItem("TravelQuote[room]["+i+"][adult]");
+        if(adult) $("#TravelQuote\\[room\\]\\["+i+"\\]\\[adult\\]").val(adult);
+
+        var child = localStorage.getItem("TravelQuote[room]["+i+"][child]");
+//        if(child) $("#TravelQuote\\[room\\]\\["+i+"\\]\\[child\\]").val(child);
+
+        for(var j=1; j<=child; j++){
+            //add child age control
+            $(".btn-number[data-type='plus'][data-field='TravelQuote\\[room\\]\\["+i+"\\]\\[child\\]']").click();
+
+            var childFound=0;
+            for(var k=1; k<=prevChildAgeCount; k++) {
+                var childAge = localStorage.getItem("TravelQuote[room][" + i + "][childage][" + k + "]");
+
+                if (childAge) {
+                    childFound++;
+                    if (childFound == j) {
+                        $("#TravelQuote\\[room\\]\\[" + i + "\\]\\[childage\\]\\[" + childAgeCount + "\\]").val(childAge);
+                    }
+                }
+            }
+        }
+
+    }
+
+    $("#acceptConfirm").prop('checked',true);
+
+//    clearTravelInfoInStorage();
+}
+/*
+function clearTravelInfoInStorage()
+{
+    if(typeof Storage === "undefined")
+        return;
+
+    localStorage.removeItem("quoteCountry");
+    localStorage.removeItem("quoteCity");
+    localStorage.removeItem("quoteAirport");
+    localStorage.removeItem("quoteFlightCategory");
+    localStorage.removeItem("quoteDate");
+    localStorage.removeItem("quoteDuration");
+    localStorage.removeItem("quoteBudget");
+    localStorage.removeItem("quoteDetails");
+
+    localStorage.removeItem("userTitle");
+    localStorage.removeItem("userFirstName");
+    localStorage.removeItem("userLastName");
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userPhone");
+
+    localStorage.removeItem("userAddressStreet");
+    localStorage.removeItem("userAddressTown");
+    localStorage.removeItem("userAddressCounty");
+    localStorage.removeItem("userAddressPostcode");
+}
+*/
 function addListeners()
 {
     //group add limit
     var form = $('.quote-form'),
-        myDetails = form.find('.quote-form__my-details input'),
-//        regionDrop = $("[data-trigger=region-drop]"),
-        countrySkiDrop = $("[data-trigger=dep-drop]");
-        regionDrop = $("[data-trigger=region-drop]"),
-        countryDrop = $("[data-trigger=country-drop]");
+        myDetails = form.find('.quote-form__my-details input');
 
 
     $("#quote-form").on("click", "button.btn-number", function(e){
@@ -154,13 +271,11 @@ function addListeners()
         });
     });
 
-    form.on('afterValidate', formAfterValidateHandler);
+    form.on('beforeSubmit', formBeforeSubmitHandler);
 
     myDetails.change(myDetailChangeHandler);
 
-//    countrySkiDrop.change(countryChangeHandler);
-//    countryDrop.change(dropdownChangeHandler);
-//    regionDrop.change(dropdownChangeHandler);
+    restoreTravelFields();
 }
 
 //add more fields child age control
@@ -168,7 +283,7 @@ function addChildAgeField(inputField){
     inputField.parents(".fieldGroup").find('.fieldGroup:last');
 
     childAgeCount++;
-    roomNumber = inputField.attr("data-room");
+    var roomNumber = inputField.attr("data-room");
     var fieldHTML = '<div class="fieldChildAge">'+$(".fieldChildAgeCopy").html()+'</div>';
     fieldHTML = fieldHTML.split('TravelQuote[room][][childage]').join('TravelQuote[room]['+roomNumber+'][childage]['+childAgeCount+']');
 
@@ -178,38 +293,7 @@ function addChildAgeField(inputField){
 function removeChildAgeField(inputField){
     inputField.parents(".fieldGroup").find('.fieldChildAge:last').remove();
 }
-/*
-function dropdownChangeHandler(){
-    var data = {};
-    data[$(this).attr("data-name")] = $(this).val();
-    data['company-ids'] = $('#company-ids').val();
-    data['show-any-value'] = $('#show-any-value').val();
 
-    if($(this).attr("data-parent")){
-        var parent = $($(this).attr("data-parent"));
-        data[parent.attr("data-name")] = parent.val();
-    }
-
-    var target = $(this).attr("data-target");
-
-    $.post(
-        $(this).attr("data-url"),
-        data,
-        function( response ) {
-            var slct = $(target);
-            slct.empty();
-
-            var items = "";
-            $.each( response, function( key, val ) {
-                items += "<option value='" + val['id'] + "'>" + val['name'] + "</option>";
-            });
-            $(items).appendTo( slct );
-            slct.change();
-            slct.multiselect('rebuild');
-        }
-    );
-}
-*/
 function myDetailChangeHandler()
 {
     var checkbox = $('.quote-form__my-details input'),
@@ -229,40 +313,25 @@ function compare(a,b) {
         return 1;
     return 0;
 }
-/*
-function countryChangeHandler(){
-    var data = {};
-    data[$(this).attr("data-name")] = $(this).val();
-    data['company-ids'] = $('#company-ids').val();
-    data['show-any-value'] = $('#show-any-value').val();
 
-    var target = $(this).attr("data-target");
-
-    $.post(
-        $(this).attr("data-url"),
-        data,
-        function( response ) {
-            var slct = $(target);
-            slct.empty();
-
-            var items = "";
-            $.each( response, function( key, val ) {
-                items += "<option value='" + val['id'] + "'>" + val['name'] + "</option>";
-            });
-            $(items).appendTo( slct );
-        }
-    );
-}
-*/
-function formAfterValidateHandler()
+function formBeforeSubmitHandler()
 {
     var submit = $('.quote-form :submit'),
         container = $('.global-container');
 
     if (!$(this).find('.has-error').length)
     {
-        submit.addClass('button_state_processing');
-        container.addClass('global-container_state_overlay');
+        if($("#login-modal").length){
+            storeTravelFields();
+            $("#login-modal").modal("show");
+            return false;
+        }else {
+            submit.addClass('button_state_processing');
+            container.addClass('global-container_state_overlay');
+            localStorage.clear();
+        }
+
+        return true;
     }
 }
 

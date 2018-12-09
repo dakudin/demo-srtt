@@ -98,7 +98,8 @@ class SiteController extends Controller
             $model = new LoginForm();
             if ($model->load(Yii::$app->request->post())) {
                 if ($model->login()) {
-                    return $this->goBack();
+                    return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+//                    return $this->goBack();
                 } else {
                     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
                     return \yii\widgets\ActiveForm::validate($model);
@@ -120,7 +121,8 @@ class SiteController extends Controller
             if ($model->load(Yii::$app->request->post())) {
                 if ($user = $model->signup()) {
                     if (Yii::$app->getUser()->login($user)) {
-                        return $this->goHome();
+                        return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
+//                        return $this->goHome();
                     }
                 } else {
                     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;

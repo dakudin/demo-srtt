@@ -93,9 +93,9 @@ class DataController extends Controller
     /**
      * fetch the country list
      */
-    public function actionCityList($q = null) {
+    public function actionCityList($q = null, $c = null) {
         $out = [];
-        $data = GeoCity::getCitiesByName($q, 5);
+        $data = GeoCity::getCitiesByName($q, $c, 5);
         foreach ($data as $d) {
             $out[] = ['value' => $d['accent_city']];
         }
@@ -106,9 +106,9 @@ class DataController extends Controller
     /**
      * fetch the region list
      */
-    public function actionRegionList($q = null) {
+    public function actionRegionList($q = null, $c = null) {
         $out = [];
-        $data = GeoRegion::getRegionsByName($q, 5);
+        $data = GeoRegion::getRegionsByName($q, $c, 5);
         foreach ($data as $d) {
             $out[] = ['value' => $d['name']];
         }

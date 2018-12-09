@@ -24,7 +24,7 @@
                     <span class="glyphicon glyphicon-minus"></span>
                 </button>
             </span>
-            <input type="text" name="TravelQuote[room][][adult]" class="form-control input-number" value="2" min="<?= $model::MIN_ADULTS_COUNT ?>" max="<?= $model::MAX_ADULTS_COUNT ?>">
+            <input type="text" id="TravelQuote[room][][adult]" name="TravelQuote[room][][adult]" class="form-control input-number" value="2" min="<?= $model::MIN_ADULTS_COUNT ?>" max="<?= $model::MAX_ADULTS_COUNT ?>">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="TravelQuote[room][][adult]">
                     <span class="glyphicon glyphicon-plus"></span>
@@ -39,7 +39,7 @@
                     <span class="glyphicon glyphicon-minus"></span>
                 </button>
             </span>
-            <input type="text" name="TravelQuote[room][][child]" class="form-control input-number" data-room="" data-field="childCount" value="0" min="<?= $model::MIN_CHILD_COUNT ?>" max="<?= $model::MAX_CHILD_COUNT ?>">
+            <input type="text" id="TravelQuote[room][][child]" name="TravelQuote[room][][child]" class="form-control input-number" data-room="" data-field="childCount" value="0" min="<?= $model::MIN_CHILD_COUNT ?>" max="<?= $model::MAX_CHILD_COUNT ?>">
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="TravelQuote[room][][child]">
                     <span class="glyphicon glyphicon-plus"></span>
@@ -60,7 +60,7 @@
                 <span class="glyphicon glyphicon-minus"></span>
             </button>
         </span>
-        <input type="text" name="TravelQuote[room][][childage]" class="form-control input-number" value="1" min="<?= $model::CHILDREN_MIN_AGE?>" max="<?= $model::CHILDREN_MAX_AGE?>">
+        <input type="text" id="TravelQuote[room][][childage]" name="TravelQuote[room][][childage]" class="form-control input-number" value="1" min="<?= $model::CHILDREN_MIN_AGE?>" max="<?= $model::CHILDREN_MAX_AGE?>">
         <span class="input-group-btn">
             <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="TravelQuote[room][][childage]">
                 <span class="glyphicon glyphicon-plus"></span>

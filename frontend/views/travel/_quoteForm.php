@@ -25,8 +25,10 @@ use yii\helpers\Url;
     echo $form->field($model, 'country', [
         'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12	']
     ])->widget(Typeahead::classname(), [
-        'id' => 'quote-country',
-        'options' => ['placeholder' => 'Any country'],
+        'options' => [
+            'id' => 'quote-country',
+            'placeholder' => 'Any country'
+        ],
         'pluginOptions' => ['highlight'=>true],
         'dataset' => [
             [
@@ -34,7 +36,8 @@ use yii\helpers\Url;
                 'display' => 'value',
                 'remote' => [
                     'url' => Url::to(['data/country-list']) . '?q=%QUERY',
-                    'wildcard' => '%QUERY'
+//                    'prepare' => "function(query, settings) { settings.url += '?q=' + query; return settings; }",
+                     'wildcard' => '%QUERY'
                 ],
                 'limit' => 10
             ]
@@ -44,8 +47,10 @@ use yii\helpers\Url;
     echo $form->field($model, 'city', [
         'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12	']
     ])->widget(Typeahead::classname(), [
-        'id' => 'quote-city',
-        'options' => ['placeholder' => 'Any region / city'],
+        'options' => [
+            'id' => 'quote-city',
+            'placeholder' => 'Any region / city'
+        ],
         'pluginOptions' => ['highlight'=>true],
         'dataset' => [
             [
@@ -53,17 +58,7 @@ use yii\helpers\Url;
                 'display' => 'value',
                 'remote' => [
                     'url' => Url::to(['data/region-list']) . '?q=%QUERY',
-//                                'replace' => "replace(url, uriEncodedQuery) { val = $('#First_Name').val(); if (!val) return url;  return url + '&first_name=' + encodeURIComponent(val) }",
-//                                'prepare' => "function(query, settings) { settings.url += '?q=' + query; return settings; }",
-//                                'prepare' => " settings.url += '?q=' + query; return settings; ",
-                    /*
-                                                        "function(url, uriEncodedQuery) {
-                                                                    cntry = $('#quote-country').val();
-                                                                    return url + '?q=' + uriEncodedQuery + '&c=' + cntry
-                                                                }",
-                    */
-//                                'wildcard' => "cntry = $('#quote-country').val(); return url + '?q=' + uriEncodedQuery + '&c=' + cntry"
-                    'wildcard' => '%QUERY'
+                    'prepare' => new yii\web\JsExpression("function(query, settings) { var selectedCountry = $('#quote-country').val(); if(typeof selectedCountry == 'undefined') selectedCountry = ''; settings.url = settings.url.replace('%QUERY', query) + '&c=' + selectedCountry; return settings; }"),
                 ],
                 'templates' => [
                     'header' => '<h4 class="typehead-header">Region</h4>'
@@ -74,7 +69,7 @@ use yii\helpers\Url;
                 'display' => 'value',
                 'remote' => [
                     'url' => Url::to(['data/city-list']) . '?q=%QUERY',
-                    'wildcard' => '%QUERY'
+                    'prepare' => new yii\web\JsExpression("function(query, settings) { var selectedCountry = $('#quote-country').val(); if(typeof selectedCountry == 'undefined') selectedCountry = ''; settings.url = settings.url.replace('%QUERY', query) + '&c=' + selectedCountry; return settings; }"),
                 ],
                 'templates' => [
                     'header' => '<h4 class="typehead-header">City</h4>'
@@ -86,15 +81,16 @@ use yii\helpers\Url;
 
     ?>
 
-
     <?php
     $airports = \common\models\DictAirport::getAirportList();
     // Usage with ActiveForm and model (with search term highlighting)
     echo $form->field($model, 'airport', [
         'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12	']
     ])->widget(Typeahead::classname(), [
-        'id' => 'quote-airport',
-        'options' => ['placeholder' => 'Any airport'],
+        'options' => [
+            'id' => 'quote-airport',
+            'placeholder' => 'Any airport'
+        ],
         'pluginOptions' => ['highlight'=>true],
         'dataset' => [
             [
