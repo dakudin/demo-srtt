@@ -74,6 +74,7 @@ class SiteController extends Controller
 
     public function onAuthSuccess($client)
     {
+        Yii::$app->user->setReturnUrl(Yii::$app->request->url);
         (new AuthHandler($client))->handle();
     }
 
@@ -122,7 +123,7 @@ class SiteController extends Controller
                 if ($user = $model->signup()) {
                     if (Yii::$app->getUser()->login($user)) {
                         return $this->redirect(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
-//                        return $this->goHome();
+//                        return $this->goBack();
                     }
                 } else {
                     Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
