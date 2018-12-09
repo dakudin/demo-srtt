@@ -15,6 +15,7 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\ProfileForm;
 use common\components\AuthHandler;
+use yii\helpers;
 
 /**
  * Site controller
