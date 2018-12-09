@@ -26,6 +26,7 @@ class AuthHandler
     public function __construct(ClientInterface $client)
     {
         $this->client = $client;
+        Yii::$app->getUser()->setReturnUrl(Yii::$app->request->referrer ?: Yii::$app->homeUrl);
     }
 
     public function handle()
