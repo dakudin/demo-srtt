@@ -68,8 +68,4 @@ return [
         ],
     ],
     'params' => $params,
-//    'on afterAction' => function (yii\base\ActionEvent $e) {
-//        if(strpos($e->action->id, 'ajax' === FALSE)) // && $e->action->controller->id !== 'site')
-//            Yii::$app->user->setReturnUrl(Yii::$app->request->url);
-//    },
 ];
