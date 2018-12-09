@@ -14,7 +14,7 @@ use yii\helpers\Url;
     ?>
 
     <div class="col-xs-12">
-        <h2 class="pull-left quote-form__title">Find Your Perfect <?= $quoteName ?></h2>
+        <h3 class="pull-left quote-form__title">Find Your Perfect <?= $quoteName ?></h3>
         <input type="hidden" name="company-ids" id="company-ids" value="<?= $companyIDs ?>" />
         <input type="hidden" name="show-any-value" id="show-any-value" value="0" />
     </div>
