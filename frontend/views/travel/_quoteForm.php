@@ -155,7 +155,7 @@ use yii\helpers\Url;
     <?= $form->field($model, 'details', [
         'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12	'],
     ])->textarea([
-        'placeholder' => 'Type the additional info',
+        'placeholder' => 'Any specific requirements e.g. sea/mountain view, 5* hotel, quiet location etc.',
         'id' => 'quote-details',
     ])
     ?>

@@ -125,35 +125,12 @@ function restoreTravelFields()
 
     $("#acceptConfirm").prop('checked',true);
 
-//    clearTravelInfoInStorage();
+    //submit form after authorization
+    if(!$("#login-modal").length) {
+        $('.quote-form :submit').submit();
+    }
 }
-/*
-function clearTravelInfoInStorage()
-{
-    if(typeof Storage === "undefined")
-        return;
 
-    localStorage.removeItem("quoteCountry");
-    localStorage.removeItem("quoteCity");
-    localStorage.removeItem("quoteAirport");
-    localStorage.removeItem("quoteFlightCategory");
-    localStorage.removeItem("quoteDate");
-    localStorage.removeItem("quoteDuration");
-    localStorage.removeItem("quoteBudget");
-    localStorage.removeItem("quoteDetails");
-
-    localStorage.removeItem("userTitle");
-    localStorage.removeItem("userFirstName");
-    localStorage.removeItem("userLastName");
-    localStorage.removeItem("userEmail");
-    localStorage.removeItem("userPhone");
-
-    localStorage.removeItem("userAddressStreet");
-    localStorage.removeItem("userAddressTown");
-    localStorage.removeItem("userAddressCounty");
-    localStorage.removeItem("userAddressPostcode");
-}
-*/
 function addListeners()
 {
     //group add limit
