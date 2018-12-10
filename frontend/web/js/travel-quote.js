@@ -127,7 +127,7 @@ function restoreTravelFields()
 
     //submit form after authorization
     if(!$("#login-modal").length) {
-        $('.quote-form :submit').submit();
+        $('.quote-form').submit();
     }
 }
 
