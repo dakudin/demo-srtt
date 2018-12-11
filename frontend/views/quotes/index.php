@@ -195,7 +195,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			]);
 			?>
 
-			<div class="col-xs-12 col-sm-12 col-md-12 quote-form__my-details">
+			<div class="col-xs-12 col-sm-12 col-md-12 quote-form__confirmation">
 				<label>
 					<input type="checkbox" id="acceptConfirm" name="InstantQuote[accept-confirm]" />
 					<span style="padding-left: 5px"><?php echo \common\components\Helper::QUOTE_CONFIRMATION_TEXT ?></span>
@@ -214,11 +214,12 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <script>
+/*
 	function addListeners()
 	{
 		var form = $('.quote-form'),
 			lastActive = findClassNameByString(form, '_state_'),
-			myDetails = form.find('.quote-form__my-details input');
+			quoteConfirmation = form.find('.quote-form__my-details input');
 
 		form.find('.quote-form__looking-types input').change(
 			function () {
@@ -233,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 		form.on('afterValidate', formAfterValidateHandler);
 
-		myDetails.change(myDetailChangeHandler);
+		quoteConfirmation.change(myDetailChangeHandler);
 	}
 
 
@@ -281,4 +282,5 @@ $this->params['breadcrumbs'][] = $this->title;
 	}
 
 	document.addEventListener("DOMContentLoaded", contentLoaded);
+	*/
 </script>

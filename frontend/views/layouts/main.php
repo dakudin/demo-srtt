@@ -8,10 +8,12 @@
 //use yii\bootstrap\Nav;
 //use yii\bootstrap\NavBar;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use frontend\widgets\LoginFormWidget;
 use frontend\widgets\SignupFormWidget;
 use frontend\widgets\restorepasswordform\RestorePasswordFormWidget;
 use frontend\widgets\profileform\ProfileFormWidget;
+use frontend\widgets\cookieconsent\CookieConsentWidget;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
@@ -51,6 +53,19 @@ $this->beginPage(); ?>
         }else {
             echo ProfileFormWidget::widget([]);
         }
+
+        echo CookieConsentWidget::widget([
+                'message' => 'We use cookies to improve your experience on this website. By continuing to browse our website, you are agreeing to use our site cookies. See our cookie policy for more information on cookies and how to manage them.',
+                'dismiss' => 'Got It',
+                'link' => 'More info',
+                'href' => Url::to('cookie-policy'),
+                'position' => 'top',
+                'theme' => 'classic',
+                'expiryDays' => 365,
+                'target' => '_blank',
+                'static' => true,
+                'domain' => Yii::$app->params['domain']
+            ]);
     ?>
 
     <div class="wrap">

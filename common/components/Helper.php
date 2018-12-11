@@ -11,6 +11,8 @@ namespace common\components;
 use common\models\InstantQuote;
 use common\models\QuoteCompany;
 use common\models\TravelQuote;
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 class Helper {
 	const REGEXP_POSTCODE = "/[A-Za-z]{1,2}[0-9][0-9A-Za-z]?\s?([0-9][A-Za-z]{2})?/"; //"/^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i";
@@ -20,6 +22,12 @@ class Helper {
 
 	static function getQuotePriceForView($amount){
 		return $amount==0 ? 'Included' : '&pound;' . number_format($amount,2);
+	}
+
+	static function getQuoteMarketingConsent(){
+		return 'I consent to sortit.com using my details to send marketing information by email. For more information on how your personal details will be used, please refer to our '
+			. Html::a('Privacy Policy', Url::to(['privacy-policy'], ['target' => 'privacyAndCookies']))
+			. ' and Cookie Policy.';
 	}
 
 	static function getInstantConveyancingInfoById($id){

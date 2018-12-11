@@ -12,9 +12,6 @@ function storeTravelFields()
     if(typeof Storage === "undefined")
         return;
 
-//    $window.localStorage.setItem(name, JSON.stringify(value));
-//    JSON.parse($window.localStorage.getItem(name), true);
-
     localStorage.clear();
 
     if($('#quote-country').val())
@@ -123,7 +120,8 @@ function restoreTravelFields()
 
     }
 
-    $("#acceptConfirm").prop('checked',true);
+    $("#acceptConfirm1").prop('checked',true);
+    $("#acceptConfirm2").prop('checked',true);
 
     //submit form after authorization
     if(!$("#login-modal").length) {
@@ -135,7 +133,7 @@ function addListeners()
 {
     //group add limit
     var form = $('.quote-form'),
-        myDetails = form.find('.quote-form__my-details input');
+        quoteConfirmation = form.find('.quote-form__confirmation input');
 
 
     $("#quote-form").on("click", "button.btn-number", function(e){
@@ -250,7 +248,7 @@ function addListeners()
 
     form.on('beforeSubmit', formBeforeSubmitHandler);
 
-    myDetails.change(myDetailChangeHandler);
+    quoteConfirmation.change(quoteChangeHandler);
 
     restoreTravelFields();
 }
@@ -271,13 +269,18 @@ function removeChildAgeField(inputField){
     inputField.parents(".fieldGroup").find('.fieldChildAge:last').remove();
 }
 
-function myDetailChangeHandler()
+function quoteChangeHandler()
 {
-    var checkbox = $('.quote-form__my-details input'),
-        value = checkbox.prop('checked'),
+//    var checkbox = $('.quote-form__confirmation input'),
+//        value = checkbox.prop('checked'),
+    var confirm = true,
         submit = $('.quote-form :submit');
 
-    if (value)
+    $('.quote-form__confirmation input').each(function(i,elem){
+        confirm = confirm && $(elem).prop('checked');
+    });
+
+    if (confirm)
         submit.removeAttr('disabled');
     else
         submit.attr('disabled', 'disabled');
@@ -315,7 +318,7 @@ function formBeforeSubmitHandler()
 function contentLoaded()
 {
     addListeners();
-    myDetailChangeHandler()
+    quoteChangeHandler()
 }
 
 document.addEventListener("DOMContentLoaded", contentLoaded);
