@@ -61,7 +61,7 @@ $this->beginPage(); ?>
                 'dismiss' => 'Accept and continue', //'Got It',
                 'allow' => 'Accept and continue',
                 'link' => 'More info',
-                'href' => Url::to('cookie-policy'),
+                'href' => Url::to(['site/cookie-policy']),
                 'position' => 'top',
                 'theme' => 'classic',
                 'expiryDays' => 365,
