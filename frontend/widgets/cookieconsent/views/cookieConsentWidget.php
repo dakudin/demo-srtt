@@ -4,8 +4,10 @@
  * Date: 11.12.2018
  * Time: 15:29
  *
+ * @var string $cookieConsentStatus
  * @var string $container
  * @var string $dismiss
+ * @var string $allow
  * @var string $domain
  * @var string $expiryDays
  * @var string $learnMore
@@ -26,24 +28,34 @@ use frontend\widgets\cookieconsent\AppAsset;
 AppAsset::register($this);
 
 $options = [
+/*
+    "compliance" => [
+        'info' => '<div class="cc-compliance">{{dismiss}}</div>',
+        'opt-in' => '<div class="cc-compliance cc-highlight">{{{allow}}</div>',
+        'opt-out' => '<div class="cc-compliance cc-highlight">{{deny}}{{dismiss}}</div>'
+    ],
+    "type" => "opt-in",
+*/
     "palette" => [
         "popup" => [
             "background" => "#edeff5",
             "text" => "#838391"
         ],
         "button" => [
-            "background" => "#337ab7"
+            "background" => "#13294b"
         ]
     ],
     "theme" => $theme,
     "position" => $position,
     "static" => $static,
+    "cookieconsent.status" => $cookieConsentStatus,
     "cookie.domain" => $domain,
     "cookie.expiryDays" => $expiryDays,
     "content" => [
         "message" => $message,
         "href" => $href,
         "dismiss" => $dismiss,
+        "allow" => $allow,
         "link" => $link,
         'target' => $target,
     ]

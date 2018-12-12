@@ -6,8 +6,10 @@ use yii\base\Widget;
 
 class CookieConsentWidget extends Widget
 {
+    public $cookieConsentStatus;
     public $message;
     public $dismiss;
+    public $allow;
     public $href;
     public $link;
     public $theme;
@@ -22,6 +24,19 @@ class CookieConsentWidget extends Widget
     public function init()
     {
         parent::init();
+
+        /*
+         * These are the possible values that the cookie can be set to.
+         *
+         * Possible statuses:
+         * deny
+         * allow
+         * dismiss
+*/
+        if (!$this->cookieConsentStatus) {
+            $this->cookieConsentStatus = 'dismiss';
+        }
+
         /*
          * The message shown by the plugin.
          */
@@ -34,6 +49,13 @@ class CookieConsentWidget extends Widget
          */
         if (!$this->dismiss) {
             $this->dismiss = 'Got It!';
+        }
+
+        /*
+         * The text used on the allow button.
+         */
+        if (!$this->allow) {
+            $this->allow = 'Allow cookies';
         }
 
         /*
@@ -134,8 +156,10 @@ class CookieConsentWidget extends Widget
     public function run()
     {
         return $this->render('cookieConsentWidget', [
+            'cookieConsentStatus' => ['allow'=> 'allow'], //$this->cookieConsentStatus,
             'message' => $this->message,
             'dismiss' => $this->dismiss,
+            'allow' => $this->allow,
             'link' => $this->link,
             'href' => $this->href,
             'position' => $this->position,

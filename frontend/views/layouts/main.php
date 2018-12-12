@@ -55,8 +55,11 @@ $this->beginPage(); ?>
         }
 
         echo CookieConsentWidget::widget([
-                'message' => 'We use cookies to improve your experience on this website. By continuing to browse our website, you are agreeing to use our site cookies. See our cookie policy for more information on cookies and how to manage them.',
-                'dismiss' => 'Got It',
+                //'cookieConsentStatus' => 'allow',
+                'message' => '<b>Cookies:</b> We use cookies to improve your experience on this website. By continuing to browse our website, you are agreeing to use our site cookies. See our '
+                    . Html::a('cookie policy', Url::to('cookie-policy')) . ' for more information on cookies and how to manage them.',
+                'dismiss' => 'Accept and continue', //'Got It',
+                'allow' => 'Accept and continue',
                 'link' => 'More info',
                 'href' => Url::to('cookie-policy'),
                 'position' => 'top',
