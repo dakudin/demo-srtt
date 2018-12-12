@@ -25,8 +25,8 @@ class Helper {
 	}
 
 	static function getQuoteMarketingConsent(){
-		return 'I consent to sortit.com using my details to send marketing information by email. For more information on how your personal details will be used, please refer to our '
-			. Html::a('Privacy Policy', Url::to(['privacy-policy'], ['target' => 'privacyAndCookies']))
+		return 'I consent to sortit.com using my details to send marketing information by email. For more information on how your personal details will be used, please refer to our Privacy Policy'
+//			. Html::a('Privacy Policy', Url::to(['privacy-policy'], ['target' => 'privacyAndCookies']))
 			. ' and Cookie Policy.';
 	}
 
