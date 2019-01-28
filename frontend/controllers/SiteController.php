@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\EnquiryCategory;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -86,9 +87,20 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-		return $this->render('index');
+        return self::actionCategories(EnquiryCategory::find()->roots()->all());
+//		return $this->render('index');
     }
 
+
+    public function actionCategories(array $categories, $category = null, $is_top_level = false)
+    {
+        return $this->render('categories',
+            [
+                'showBreadcrumbs' => !$is_top_level,
+                'category' => $category,
+                'categories' => $categories
+            ]);
+    }
 
     /**
      * Logs in a user.

@@ -10,12 +10,12 @@ namespace frontend\controllers;
 use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
 use common\components\quotes\travel\TravelQuoteCreator;
 use common\components\Helper;
-use common\models\DictAirport;
+//use common\models\DictAirport;
 use common\models\DictBoardBasis;
-use common\models\DictCountry;
+//use common\models\DictCountry;
 use common\models\DictHotelGrade;
-use common\models\DictRegion;
-use common\models\DictResort;
+//use common\models\DictRegion;
+//use common\models\DictResort;
 use Yii;
 use yii\web\Controller;
 use common\models\TravelQuote;
@@ -24,8 +24,9 @@ use frontend\models\SkiEnquiryForm;
 use yii\helpers\ArrayHelper;
 use yii\web\BadRequestHttpException;
 use frontend\helpers\FHelper;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+//use yii\filters\VerbFilter;
+//use yii\filters\AccessControl;
+use common\models\EnquiryCategory;
 
 
 class TravelController extends Controller
@@ -187,6 +188,7 @@ class TravelController extends Controller
      * @param $instantQuote TravelQuote
      * @return string|boolean
      */
+/*
     protected function updateQuoteByFilter($instantQuote)
     {
         $quoteServices = [];
@@ -216,7 +218,7 @@ class TravelController extends Controller
 
         return false;
     }
-
+*/
     /**
      * Displays travel categories.
      *
@@ -228,31 +230,33 @@ class TravelController extends Controller
     }
 
     /**
-     * Displays `quote form`.
+     * Displays `Beach quote form`.
      *
+     * @param EnquiryCategory $category
      * @return mixed
      */
-    public function actionSkiing()
+    public function actionSkiing(EnquiryCategory $category)
     {
         $instantQuote = new TravelQuote();
         $instantQuote->category_id = Category::SKI;
         $instantQuote = $this->setDefaultValues($instantQuote);
 
-        return $this->showQuote($instantQuote);
+        return $this->showQuote($instantQuote, $category);
     }
 
     /**
      * Displays `Beach quote form`.
      *
+     * @param EnquiryCategory $category
      * @return mixed
      */
-    public function actionBeach()
+    public function actionBeach(EnquiryCategory $category)
     {
         $instantQuote = new TravelQuote();
         $instantQuote->category_id = Category::LUXURY;
         $instantQuote = $this->setDefaultValues($instantQuote);
 
-        return $this->showQuote($instantQuote);
+        return $this->showQuote($instantQuote, $category);
     }
 
     /**
@@ -270,6 +274,7 @@ class TravelController extends Controller
      * @param $id
      * @return mixed
      */
+/*
     public function actionUpdate($id)
     {
         $instantQuote = TravelQuote::findOne(['id' => $id]);
@@ -281,12 +286,13 @@ class TravelController extends Controller
 
         return $this->showQuote($instantQuote);
     }
-
+*/
     /**
-     * @param $instantQuote TravelQuote
-     * @return mixed
+     * @param TravelQuote $instantQuote
+     * @param EnquiryCategory $category
+     * @return string
      */
-    protected function showQuote(TravelQuote $instantQuote)
+    protected function showQuote(TravelQuote $instantQuote, EnquiryCategory $category)
     {
         if($instantQuote->category_id == Category::SKI){
             $viewNameCreate = 'createSki';
@@ -330,6 +336,7 @@ class TravelController extends Controller
         return $this->render($viewNameCreate, [
             'model' => $instantQuote,
             'companyIDs' => implode(',', $companyCountries),
+            'category' => $category,
 //            'listRegions' => $this->getListRegions($instantQuote, $companyCountries),
 //            'listCountries' => $this->getListCountries($instantQuote, $companyCountries),
 //            'listResorts' => $this->getListResorts($instantQuote, $companyCountries),
@@ -342,6 +349,7 @@ class TravelController extends Controller
      * @param $companyCountries array
      * @return array
      */
+/*
     protected function getListRegions(TravelQuote $instantQuote, $companyCountries)
     {
         $listRegions = [];
@@ -352,12 +360,13 @@ class TravelController extends Controller
 
         return $listRegions;
     }
-
+*/
     /**
      * @param TravelQuote $instantQuote
      * @param $companyCountries array
      * @return array
      */
+/*
     protected function getListCountries(TravelQuote $instantQuote, $companyCountries)
     {
         $listCountries = [];
@@ -370,12 +379,13 @@ class TravelController extends Controller
 
         return $listCountries;
     }
-
+*/
     /**
      * @param TravelQuote $instantQuote
      * @param $companyCountries array
      * @return array
      */
+/*
     protected function getListResorts(TravelQuote $instantQuote, $companyCountries)
     {
         $listResorts = [];
@@ -388,13 +398,13 @@ class TravelController extends Controller
 
         return $listResorts;
     }
-
+*/
     /**
      * @param TravelQuote $instantQuote
      * @param $companyCountries array
      * @return array
      */
-    protected function getListAirports(TravelQuote $instantQuote, $companyCountries)
+/*    protected function getListAirports(TravelQuote $instantQuote, $companyCountries)
     {
         $listAirports = [];
         if($instantQuote->category_id == Category::SKI) {
@@ -405,7 +415,7 @@ class TravelController extends Controller
         $listAirports += ArrayHelper::map($airports, 'id','name');
 
         return $listAirports;
-    }
+    }*/
 
     /**
      * @param $companyCountries array

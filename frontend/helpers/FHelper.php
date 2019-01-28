@@ -9,10 +9,13 @@
 namespace frontend\helpers;
 
 use Yii;
+use common\models\EnquiryCategory;
 
 class FHelper
 {
-
+    /**
+     * Set quote agreement in cookies
+     */
     public static function setRequestQuoteAgreementCookies()
     {
         if (!isset(Yii::$app->request->cookies['quote_agreement'])) {
@@ -23,5 +26,33 @@ class FHelper
                 'path' => '/'
             ]));
         }
+    }
+
+    /**
+     * Prepare the breadcrumbs for categories
+     * @param EnquiryCategory $category
+     * @param bool|true $showSuffix
+     * @return array
+     */
+    public static function getEnquiryCategoryBreadcrumbs(EnquiryCategory $category, $showSuffix = true)
+    {
+        $result = [];
+
+        $parentCategories = $category->parents()->all();
+        foreach($parentCategories as $item){
+            $result[] =
+                [
+                    'label' => $item->name,
+                    'url' => ['enquiry/index', 'category' => $item->alias]
+                ];
+        }
+
+        if($showSuffix) {
+            $result[] = $category->name . ' Quote';
+        }else{
+            $result[] = $category->name;
+        }
+
+        return $result;
     }
 }

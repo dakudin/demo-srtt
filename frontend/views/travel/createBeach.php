@@ -2,9 +2,9 @@
 
 /* @var $this yii\web\View */
 /* @var $model common\models\TravelQuote */
+/* @var $category common\models\EnquiryCategory */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $companyIDs string */
-
 
 $this->registerJsFile(
     '@web/js/travel-quote.js',
@@ -13,7 +13,7 @@ $this->registerJsFile(
 
 $this->title = 'Beach Quote';
 
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
 ?>
 <div class="site-index">
 

@@ -51,16 +51,15 @@ return [
             'rules' => [
 				'/' => 'site/index',
 
-//                '<_c:[\w-]+>' => '<_c>/index',
-//                '<_c:[\w-]+>/<id:\d+>' => '<_c>/view',
-//                '<_c:[\w-]+>/<id:\d+>/<_a:[\w-]+>' => '<_c>/<_a>',
-
 //                'auth' => 'site/auth',
 //				'request-filledin' => 'site/quoteprefilled',
-				'<action:\w+ >' => '<action>',
-                'travel/skiing/view/<id:\d+>' => 'travel/viewski',
-                'travel/skiing/enquiry/<id:\d+>/company/<company_id:\d+>/resort/<resort_id:\d+>' => 'travel/skiingenquiry',
-                'travel/beach/view/<id:\d+>' => 'travel/viewbeach',
+//				'<action:\w+ >' => '<action>',
+                [
+                    'class' => 'common\components\EnquiryCategoryUrlRule',
+                ],
+//                'travel/skiing/view/<id:\d+>' => 'travel/viewski',
+//                'travel/skiing/enquiry/<id:\d+>/company/<company_id:\d+>/resort/<resort_id:\d+>' => 'travel/skiingenquiry',
+//                'travel/beach/view/<id:\d+>' => 'travel/viewbeach',
 //				'quotes/view/<id:\d+>'=>'quotes/view',
 //				'quotes/show/<id:\d+>'=>'quotes/show',
                 '<action:[\w\-]+>' => 'site/<action>',
