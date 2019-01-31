@@ -26,35 +26,41 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $holiday = new EnquiryCategory(['name' => 'Holiday', 'alias' => 'holiday', 'image' => 'holiday.png', 'is_active' => 0, 'is_visible' => 1]);
+        $holiday = new EnquiryCategory(['name' => 'Holiday', 'alias' => 'holiday', 'image' => 'holidays.png', 'is_active' => 1, 'is_visible' => 1]);
         $holiday->makeRoot();
 
-        $travel = new EnquiryCategory(['name' => 'Travel', 'alias' => 'travel', 'image' => 'travel.png', 'is_active' => 1, 'is_visible' => 1]);
-        $travel->makeRoot();
-
         $node = new EnquiryCategory(['name' => 'Beach', 'alias' => 'beach', 'image' => 'beach.png', 'is_active' => 1, 'is_visible' => 1 ]);
-        $node->appendTo($travel);
-        $node = new EnquiryCategory(['name' => 'Skiing', 'alias' => 'skiing', 'image' => 'skiing.png', 'is_active' => 1, 'is_visible' => 1 ]);
-        $node->appendTo($travel);
-        $node = new EnquiryCategory(['name' => 'Luxury', 'alias' => 'luxury', 'image' => 'luxury.png', 'is_active' => 0, 'is_visible' => 1 ]);
-        $node->appendTo($travel);
+        $node->appendTo($holiday);
+        $node = new EnquiryCategory(['name' => 'Ski', 'alias' => 'ski', 'image' => 'ski.png', 'is_active' => 1, 'is_visible' => 1 ]);
+        $node->appendTo($holiday);
         $node = new EnquiryCategory(['name' => 'City Breaks', 'alias' => 'city_breaks', 'image' => 'city_breaks.png', 'is_active' => 0, 'is_visible' => 1 ]);
-        $node->appendTo($travel);
+        $node->appendTo($holiday);
+        $node = new EnquiryCategory(['name' => 'Luxury', 'alias' => 'luxury', 'image' => 'luxury.png', 'is_active' => 0, 'is_visible' => 1 ]);
+        $node->appendTo($holiday);
+        $node = new EnquiryCategory(['name' => 'Flights', 'alias' => 'flights', 'image' => 'flights.png', 'is_active' => 0, 'is_visible' => 1]);
+        $node->appendTo($holiday);
         $node = new EnquiryCategory(['name' => 'Cruises', 'alias' => 'cruises', 'image' => 'cruises.png', 'is_active' => 0, 'is_visible' => 1 ]);
-        $node->appendTo($travel);
+        $node->appendTo($holiday);
+        $node = new EnquiryCategory(['name' => 'Activities', 'alias' => 'activities', 'image' => 'activities.png', 'is_active' => 0, 'is_visible' => 1 ]);
+        $node->appendTo($holiday);
+        $node = new EnquiryCategory(['name' => 'Family', 'alias' => 'family', 'image' => 'family.png', 'is_active' => 0, 'is_visible' => 1 ]);
+        $node->appendTo($holiday);
 
+        $node = new EnquiryCategory(['name' => 'Travel', 'alias' => 'travel', 'image' => 'travel.png', 'is_active' => 0, 'is_visible' => 1]);
+        $node->makeRoot();
         $node = new EnquiryCategory(['name' => 'Cars', 'alias' => 'cars', 'image' => 'cars.png', 'is_active' => 0, 'is_visible' => 1]);
         $node->makeRoot();
         $node = new EnquiryCategory(['name' => 'Money', 'alias' => 'money', 'image' => 'money.png', 'is_active' => 0, 'is_visible' => 1]);
         $node->makeRoot();
         $node = new EnquiryCategory(['name' => 'Car Hire', 'alias' => 'car_hire', 'image' => 'car_hire.png', 'is_active' => 0, 'is_visible' => 1]);
         $node->makeRoot();
-        $node = new EnquiryCategory(['name' => 'Flights', 'alias' => 'flights', 'image' => 'flights.png', 'is_active' => 0, 'is_visible' => 1]);
-        $node->makeRoot();
         $node = new EnquiryCategory(['name' => 'Food & Drink', 'alias' => 'food_n_drink', 'image' => 'food_n_drink.png', 'is_active' => 0, 'is_visible' => 1]);
         $node->makeRoot();
-        $node = new EnquiryCategory(['name' => 'Home &Garden', 'alias' => 'home_n_garden', 'image' => 'home_n_garden.png', 'is_active' => 0, 'is_visible' => 1]);
+        $node = new EnquiryCategory(['name' => 'Home & Garden', 'alias' => 'home_n_garden', 'image' => 'home_n_garden.png', 'is_active' => 0, 'is_visible' => 1]);
         $node->makeRoot();
+        $node = new EnquiryCategory(['name' => 'Extras', 'alias' => 'extras', 'image' => 'extras.png', 'is_active' => 0, 'is_visible' => 1]);
+        $node->makeRoot();
+
 
         exit();
 //        return ExitCode::OK;
