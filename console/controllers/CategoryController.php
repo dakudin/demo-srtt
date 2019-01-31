@@ -26,7 +26,7 @@ class CategoryController extends Controller
      */
     public function actionIndex()
     {
-        $holiday = new EnquiryCategory(['name' => 'Holiday', 'alias' => 'holiday', 'image' => 'holidays.png', 'is_active' => 1, 'is_visible' => 1]);
+        $holiday = new EnquiryCategory(['name' => 'Holidays', 'alias' => 'holidays', 'image' => 'holidays.png', 'is_active' => 1, 'is_visible' => 1]);
         $holiday->makeRoot();
 
         $node = new EnquiryCategory(['name' => 'Beach', 'alias' => 'beach', 'image' => 'beach.png', 'is_active' => 1, 'is_visible' => 1 ]);

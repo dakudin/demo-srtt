@@ -120,7 +120,7 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $message = '';
         if($this->quote->category_id == Category::SKI) {
-            $message = 'Need a perfect skiing holidays';
+            $message = 'Need a perfect ski holidays';
         }elseif($this->quote->category_id == Category::LUXURY) {
             $message = 'Need a perfect beach quote';
         }

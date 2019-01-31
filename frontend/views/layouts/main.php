@@ -91,7 +91,6 @@ $this->beginPage(); ?>
 
         $menuItems = [
             ['label' => 'Conveyancing', 'url' => ['/quotes/index']],
-            ['label' => 'Travel', 'url' => ['/travel/index']],
         ];
 
         if (Yii::$app->user->isGuest) {

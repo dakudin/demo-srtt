@@ -70,7 +70,7 @@ class SiteController extends Controller
             'auth' => [
                 'class' => 'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'onAuthSuccess'],
-//                'successUrl' => \yii\helpers\Url::to(['travel/skiing']),
+//                'successUrl' => \yii\helpers\Url::to(['holidays/ski']),
             ],
         ];
     }

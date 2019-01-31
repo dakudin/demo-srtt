@@ -11,12 +11,12 @@ $this->title = 'The Quote Engine';
 
 		<div class="row menu-buttons">
 			<div class="category-thumb col-xs-4 col-md-4">
-				<a href="<?= \yii\helpers\Url::to(['/travel/beach']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
+				<a href="<?= \yii\helpers\Url::to(['/holidays/beach']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
 					<img src="/images/category/icon1.png">
 				</a>
 			</div>
 			<div class="category-thumb col-xs-4 col-md-4">
-				<a href="<?= \yii\helpers\Url::to(['/travel/skiing']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
+				<a href="<?= \yii\helpers\Url::to(['/holidays/ski']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
 					<img src="/images/category/icon2.png">
 				</a>
 			</div>

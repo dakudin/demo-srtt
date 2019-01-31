@@ -72,7 +72,7 @@ foreach($quoteServices as $quoteService){
                                     if(\common\components\Helper::isShowSendEnquiryButton($quoteService->companyId)) {
                                         echo Html::a(
                                             'Send Enquiry >',
-                                            \yii\helpers\url::to(['travel/skiingenquiry', 'id' => $instantQuote->id, 'company_id' => $quoteService->companyId, 'resort_id' => $resortIndex]),
+                                            \yii\helpers\url::to(['holidays/skienquiry', 'id' => $instantQuote->id, 'company_id' => $quoteService->companyId, 'resort_id' => $resortIndex]),
                                             [
                                                 'class' => 'btn btn-primary',
                                             ]

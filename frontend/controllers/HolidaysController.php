@@ -29,7 +29,7 @@ use frontend\helpers\FHelper;
 use common\models\EnquiryCategory;
 
 
-class TravelController extends Controller
+class HolidaysController extends Controller
 {
 
     /**
@@ -75,7 +75,7 @@ class TravelController extends Controller
         ];
     }
 
-    public function actionSkiingenquiry($id, $company_id, $resort_id)
+    public function actionSkienquiry($id, $company_id, $resort_id)
     {
         $instantQuote = TravelQuote::findOne(['id' => $id]);
         if(!is_null($instantQuote->parsed_results)){
@@ -220,7 +220,7 @@ class TravelController extends Controller
     }
 */
     /**
-     * Displays travel categories.
+     * Displays holidays categories.
      *
      * @return mixed
      */
@@ -235,7 +235,7 @@ class TravelController extends Controller
      * @param EnquiryCategory $category
      * @return mixed
      */
-    public function actionSkiing(EnquiryCategory $category)
+    public function actionSki(EnquiryCategory $category)
     {
         $instantQuote = new TravelQuote();
         $instantQuote->category_id = Category::SKI;
@@ -296,7 +296,7 @@ class TravelController extends Controller
     {
         if($instantQuote->category_id == Category::SKI){
             $viewNameCreate = 'createSki';
-            $viewNameView = 'skiing/view';
+            $viewNameView = 'ski/view';
             $companyCountries = [4];
         }else{
             $viewNameCreate = 'createBeach';

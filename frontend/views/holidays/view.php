@@ -19,13 +19,13 @@ if($travelCategory=='luxury'){
     $this->params['breadcrumbs'][] =
         [
             'label' => 'Beach quote',
-            'url' => ['travel/beach']
+            'url' => ['holidays/beach']
         ];
 }elseif($travelCategory=='ski'){
     $this->params['breadcrumbs'][] =
         [
-            'label' => 'Skiing quote',
-            'url' => ['travel/skiing']
+            'label' => 'Ski quote',
+            'url' => ['holidays/ski']
         ];
 }
 
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <h4 class="lead"><?= $quoteInfo ?>&nbsp;&nbsp;<a href="<?= \yii\helpers\Url::to(['travel/update', 'id'=>$instantQuote->id]); ?>">Change search</a></h4>
+    <h4 class="lead"><?= $quoteInfo ?>&nbsp;&nbsp;<a href="<?= \yii\helpers\Url::to(['holidays/update', 'id'=>$instantQuote->id]); ?>">Change search</a></h4>
 
     <div class="row">
             <nav class="navbar navbar-default">

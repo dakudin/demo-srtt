@@ -10,13 +10,13 @@ $this->title = 'Travel Quote';
 
         <div class="row">
             <div class="category-thumb col-xs-4 col-md-4">
-                <a href="<?= \yii\helpers\Url::to(['/travel/beach']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
+                <a href="<?= \yii\helpers\Url::to(['/holidays/beach']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
                     <img src="/images/category/luxury.jpg">
                 </a>
             </div>
             <div class="category-thumb col-xs-4 col-md-4">
-                <a href="<?= \yii\helpers\Url::to(['/travel/skiing']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
-                    <img src="/images/category/skiing.jpg">
+                <a href="<?= \yii\helpers\Url::to(['/holidays/ski']) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
+                    <img src="/images/category/ski.jpg">
                 </a>
             </div>
             <div class="category-thumb col-xs-4 col-md-4">

@@ -11,7 +11,7 @@ $this->registerJsFile(
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
-$this->title = 'Skiing Quote';
+$this->title = 'Ski Quote';
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
 ?>
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBrea
     <div class="body-content">
 
         <?php echo $this->render('_quoteForm', [
-            'quoteName' => 'Skiing Holidays',
+            'quoteName' => 'Ski Quotes',
             'companyIDs' => $companyIDs,
             'model' => $model
         ]);

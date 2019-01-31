@@ -17,17 +17,17 @@ $this->title = $resort['hotelName'];
 $this->params['breadcrumbs'][] =
     [
         'label' => 'Travel',
-        'url' => ['travel/index']
+        'url' => ['holidays/index']
     ];
 $this->params['breadcrumbs'][] =
     [
-        'label' => 'Skiing quote',
-        'url' => ['travel/skiing']
+        'label' => 'Ski quote',
+        'url' => ['holidays/ski']
     ];
 $this->params['breadcrumbs'][] =
     [
         'label' => \common\components\Helper::getTravelQuoteHeader($instantQuote),
-        'url' => ['travel/skiing/view/'.$instantQuote->id]
+        'url' => ['holidays/ski/view/'.$instantQuote->id]
     ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
