@@ -238,7 +238,7 @@ class HolidaysController extends Controller
     public function actionSki(EnquiryCategory $category)
     {
         $instantQuote = new TravelQuote();
-        $instantQuote->category_id = Category::SKI;
+        $instantQuote->category_id = $category->id;
         $instantQuote = $this->setDefaultValues($instantQuote);
 
         return $this->showQuote($instantQuote, $category);
@@ -253,7 +253,7 @@ class HolidaysController extends Controller
     public function actionBeach(EnquiryCategory $category)
     {
         $instantQuote = new TravelQuote();
-        $instantQuote->category_id = Category::LUXURY;
+        $instantQuote->category_id = $category->id;
         $instantQuote = $this->setDefaultValues($instantQuote);
 
         return $this->showQuote($instantQuote, $category);
@@ -294,17 +294,18 @@ class HolidaysController extends Controller
      */
     protected function showQuote(TravelQuote $instantQuote, EnquiryCategory $category)
     {
-        if($instantQuote->category_id == Category::SKI){
-            $viewNameCreate = 'createSki';
-            $viewNameView = 'ski/view';
-            $companyCountries = [4];
-        }else{
-            $viewNameCreate = 'createBeach';
-            $viewNameView = 'beach/view';
-            $companyCountries = [5];
-        }
+//        if($instantQuote->category_id == Category::SKI){
+//            $viewNameCreate = 'createSki';
+//            $viewNameView = 'ski/view';
+//            $companyCountries = [4];
+//        }else{
+//            $viewNameCreate = 'createBeach';
+//            $viewNameView = 'beach/view';
+//            $companyCountries = [5];
+//        }
         $instantQuote->page_number = 1;
-        $instantQuote->fillDictionaryIDs($companyCountries);
+
+//        $instantQuote->fillDictionaryIDs($companyCountries);
 
         if($instantQuote->load(Yii::$app->request->post()) && $instantQuote->validate()){
 /*
@@ -333,10 +334,11 @@ class HolidaysController extends Controller
                 $instantQuote->date = $date->format('d M Y');
         }
 
-        return $this->render($viewNameCreate, [
+        return $this->render('createQuote', [
             'model' => $instantQuote,
-            'companyIDs' => implode(',', $companyCountries),
+//            'companyIDs' => implode(',', $companyCountries),
             'category' => $category,
+            'retailers' => $instantQuote->retailers,
 //            'listRegions' => $this->getListRegions($instantQuote, $companyCountries),
 //            'listCountries' => $this->getListCountries($instantQuote, $companyCountries),
 //            'listResorts' => $this->getListResorts($instantQuote, $companyCountries),

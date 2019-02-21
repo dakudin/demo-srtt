@@ -20,7 +20,7 @@ class DataController extends Controller
 
         return parent::beforeAction($action);
     }
-
+/*
     public function actionResorts() {
         $result = [];
         $cid = Yii::$app->request->post('cid');
@@ -48,7 +48,8 @@ class DataController extends Controller
         }
         return $result;
     }
-
+*/
+/*
     public function actionCountries(){
         $result = [];
         $rid = Yii::$app->request->post('rid');
@@ -76,7 +77,7 @@ class DataController extends Controller
         }
         return $result;
     }
-
+*/
     /**
      * fetch the country list
      */

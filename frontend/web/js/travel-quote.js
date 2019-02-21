@@ -246,6 +246,16 @@ function addListeners()
         });
     });
 
+    //$(".btn-show-retailers").click(function(){
+    //    if (!$(this).find('.has-error').length)
+    //    {
+    //
+    //        $.ajax({
+    //            url: $('#quote-form').attr('action'),
+    //            type:
+    //        })
+    //});
+
     form.on('beforeSubmit', formBeforeSubmitHandler);
 
     quoteConfirmation.change(quoteChangeHandler);
@@ -271,8 +281,6 @@ function removeChildAgeField(inputField){
 
 function quoteChangeHandler()
 {
-//    var checkbox = $('.quote-form__confirmation input'),
-//        value = checkbox.prop('checked'),
     var confirm = true,
         submit = $('.quote-form :submit');
 

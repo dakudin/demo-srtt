@@ -42,7 +42,8 @@ use \common\components\Helper;
  *
  * @property string $userFullName
  * @property User $user
- * @property Category $category
+ * @property EnquiryCategory $enquiryCategory
+ * @property QuoteCompany[] $retailers
  * @property TravelQuoteAirport[] $travelQuoteAirports
  * @property DictAirport[] $dictAirports
  * @property TravelQuoteCountry[] $travelQuoteCountries
@@ -158,7 +159,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             ['phone', 'string', 'max' => 20],
             ['budget', 'string', 'max' => 120],
             ['email', 'email'],
-            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnquiryCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -283,9 +284,17 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCategory()
+    public function getEnquiryCategory()
     {
-        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+        return $this->hasOne(EnquiryCategory::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRetailers()
+    {
+        return $this->hasMany(QuoteCompany::className(), ['id' => 'quote_company_id'])->viaTable('quote_company_category', ['enquiry_category_id' => 'category_id']);
     }
 
     /**
@@ -426,20 +435,21 @@ class TravelQuote extends \yii\db\ActiveRecord
         }
     }
 */
+/*
     public function fillDictionaryIDs($companyIDs){
         $this->boardBasisIDs = 0;
         $this->hotelGradeIDs = 0;
-/*
-        if($this->category_id == Category::SKI){
-            $this->fillDictionaryIDsAsInt($companyIDs);
-        }else {
-            $this->fillDictionaryIDsAsArray($companyIDs);
-        }
-*/
+
+//        if($this->category_id == Category::SKI){
+//            $this->fillDictionaryIDsAsInt($companyIDs);
+//        }else {
+//            $this->fillDictionaryIDsAsArray($companyIDs);
+//        }
+
         $this->fillBoardBasisIDs($companyIDs);
         $this->fillHotelGradeIDs($companyIDs);
     }
-
+*/
     public function setDefaultFilter(){
         $this->boardBasisIDs = 0;
         $this->hotelGradeIDs = 0;
