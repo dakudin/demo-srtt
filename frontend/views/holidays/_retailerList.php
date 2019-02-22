@@ -9,10 +9,11 @@ use common\widgets\IosStyleSwitch\IosStyleSwitch;
 /* @var $model common\models\TravelQuote */
 /* @var $retailers array of common\models\QuoteCompany */
 ?>
+<div class="col-xs-12 col-sm-12 col-md-12"><p></p></div>
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="panel panel-default fieldGroupRetailers">
         <div class="panel-heading">
-            <h2 class="panel-title">Select retailers you want to deal with</h2>
+            <h2 class="panel-title panel_title_m">Select retailers you want to deal with</h2>
         </div>
 
         <div class="panel-body">
@@ -21,38 +22,39 @@ use common\widgets\IosStyleSwitch\IosStyleSwitch;
                 foreach($retailers as $retailer):
             ?>
             <div class="row">
-                    <div class="col-xs-8 col-sm-10 col-md-11 vcenter">
-                        <?php
-                            echo Html::img('../../images/companies/'.$retailer->image, [
-                                'class' => 'img-responsive img-thumbnail',
-                                'alt' => Html::encode($retailer->company_name)
-                            ]);
+                <div class="col-xs-8 col-sm-10 col-md-11 vcenter">
+                    <?php
+                        echo Html::img('../../images/companies/'.$retailer->image, [
+                            'class' => 'img-responsive img-thumbnail',
+                            'alt' => Html::encode($retailer->company_name)
+                        ]);
+                    ?>
+                    <?php
+                        echo PopoverX::widget([
+                            'header' => Html::encode($retailer->company_name),
+                            'placement' => PopoverX::ALIGN_AUTO_RIGHT,
+                            'content' => Html::encode($retailer->info),
+                            'closeButton' => ['style' => 'display:inline'],
+                            'toggleButton' => [
+                                'label' => Html::encode($retailer->company_name) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
+                                'class' => '',
+                                'tag' => 'a',
+                                'style' => 'font-size: 18px; cursor: pointer',
+                                //                                'style' => 'border-bottom: 1px dashed #999;color: black; text-decoration: none;'
+                            ],
+                        ]);
                         ?>
-                        <?php
-                            echo PopoverX::widget([
-                                'header' => Html::encode($retailer->company_name),
-                                'placement' => PopoverX::ALIGN_AUTO_RIGHT,
-                                'content' => Html::encode($retailer->info),
-                                'closeButton' => ['style' => 'display:inline'],
-                                'toggleButton' => [
-                                    'label' => Html::encode($retailer->company_name) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
-                                    'class' => '',
-                                    'tag' => 'a',
-                                    'style' => 'font-size: 18px; cursor: pointer',
-                                    //                                'style' => 'border-bottom: 1px dashed #999;color: black; text-decoration: none;'
-                                ],
-                            ]);
-                            ?>
-                    </div><!--
-                 --><div class="col-xs-4 col-sm-2 col-md-1 vcenter">
-                        <?php
+                </div><!--
+             --><div class="col-xs-4 col-sm-2 col-md-1 vcenter">
+                    <?php
                         echo IosStyleSwitch::widget([
                             'type' => IosStyleSwitch::CHECKBOX,
-                            'name' => 'retailer[' . $retailer->id .']',
+                            'name' => 'TravelQuote[quoteCompanyIDs][' . $retailer->id .']',
                             'value' => 1,
+                            'onTurnOn' => 'quoteChangeHandler();',
+                            'onTurnOff' => 'quoteChangeHandler();',
                         ]);
-
-                        ?>
+                    ?>
                  </div>
             </div>
             <div class="row">
@@ -62,13 +64,6 @@ use common\widgets\IosStyleSwitch\IosStyleSwitch;
             </div>
             <?php
                 endforeach;
-
-//            echo $form->field($model, 'user_title', [
-//                'options' => ['class' => 'col-xs-12 col-sm-12 col-md-2	'],
-//            ])->dropDownList($model::getUserTitleList(), [
-//                'id' => 'user-title',
-//            ]);
-
             ?>
         </div>
     </div>

@@ -294,25 +294,12 @@ class HolidaysController extends Controller
      */
     protected function showQuote(TravelQuote $instantQuote, EnquiryCategory $category)
     {
-//        if($instantQuote->category_id == Category::SKI){
-//            $viewNameCreate = 'createSki';
-//            $viewNameView = 'ski/view';
-//            $companyCountries = [4];
-//        }else{
-//            $viewNameCreate = 'createBeach';
-//            $viewNameView = 'beach/view';
-//            $companyCountries = [5];
-//        }
         $instantQuote->page_number = 1;
 
 //        $instantQuote->fillDictionaryIDs($companyCountries);
 
         if($instantQuote->load(Yii::$app->request->post()) && $instantQuote->validate()){
-/*
-            return $this->render('sendResults',[
-                'quoteInfo' => '<p>All is good</p>'
-            ]);
-*/
+
             if($instantQuote->save()){
 
                 FHelper::setRequestQuoteAgreementCookies();
@@ -322,7 +309,8 @@ class HolidaysController extends Controller
 
                 if($quote->createQuote($instantQuote)){
                     return $this->render('sendResults',[
-                        'quoteInfo' => $quote->getQuoteTextInfo()
+                        'quoteInfo' => $quote->getQuoteTextInfo(),
+                        'quotesCreated' => count($quote->getCompaniesWhichSentRequest()),
                         ]);
                 }
             }

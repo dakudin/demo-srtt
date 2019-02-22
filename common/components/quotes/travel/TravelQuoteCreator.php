@@ -24,7 +24,6 @@ use common\models\CompanyHotelGrade;
 
 class TravelQuoteCreator extends \yii\base\Component
 {
-
     /**
      * @var TravelQuote
      */
@@ -44,7 +43,7 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $this->fillQuoteInfo();
 
-//!!!!!        $this->createRemoteQuote();
+        $this->createRemoteQuote();
 
         Yii::$app->mailer->compose()
             ->setFrom('enquiry@demosortit.com')
@@ -66,16 +65,7 @@ class TravelQuoteCreator extends \yii\base\Component
      * @return bool
      */
     protected function sendQuoteInfoToResistant(){
-        $companies = [];
-        $parsedResults = unserialize($this->quote->parsed_results);
-        if(is_array($parsedResults)) {
-            foreach ($parsedResults as $parsedResult) {
-                if (is_a($parsedResult, 'common\components\quotes\travel\TravelParsedResult')) {
-                    $companies[] = $parsedResult->companyName;
-                }
-            }
-        }
-
+        $companies = $this->getCompaniesWhichSentRequest();
 
         return Yii::$app->mailer->compose(
             ['html' => 'quoteInfoResistant-html', 'text' => 'quoteInfoResistant-text'],
@@ -87,26 +77,39 @@ class TravelQuoteCreator extends \yii\base\Component
         ->send();
     }
 
-    protected function createRemoteQuote(){
-        if($this->quote->category_id == Category::SKI) {
-            // create quote on `eShores`
-//            $this->createQuoteEShores();
+    public function getCompaniesWhichSentRequest()
+    {
+        $companies = [];
+        $parsedResults = unserialize($this->quote->parsed_results);
+        if(is_array($parsedResults)) {
+            foreach ($parsedResults as $parsedResult) {
+                if (is_a($parsedResult, 'common\components\quotes\travel\TravelParsedResult')) {
+                    $companies[] = $parsedResult->companyName;
+                }
+            }
         }
 
-        if($this->quote->category_id == Category::LUXURY) {
-            // create quote on `eShores`
-            $this->createQuoteEShores();
+        return $companies;
+    }
 
-            //create quote on `Design Travel`
-            $this->createQuoteDesignTravel();
-
-            //create quote on `Travel Counsellors`
-            $this->createQuoteTravelCounsellors();
+    protected function createRemoteQuote(){
+        $retailers = $this->quote->retailers;
+        foreach($retailers as $retailer){
+            // if quote company was selected by user then make an enquiry
+            if(array_key_exists($retailer->id, $this->quote->quoteCompanyIDs))
+                $this->createQuoteByCompany($retailer->method_name, $retailer->id);
         }
 
         // store parsed info in quote
         $this->addResultsToQuote();
+    }
 
+    /**
+     * Create quote for enquiry company
+     * @param $methodNameForQuoteCreating
+     */
+    protected function createQuoteByCompany($methodNameForQuoteCreating, $companyId){
+        $this->$methodNameForQuoteCreating($companyId);
     }
 
     public function getQuoteTextInfo()
@@ -118,12 +121,8 @@ class TravelQuoteCreator extends \yii\base\Component
     {
         $this->quoteInfo = [];
 
-        $message = '';
-        if($this->quote->category_id == Category::SKI) {
-            $message = 'Need a perfect ski holidays';
-        }elseif($this->quote->category_id == Category::LUXURY) {
-            $message = 'Need a perfect beach quote';
-        }
+        $category = $this->quote->enquiryCategory;
+        $message = 'Need a perfect ' . $category->name . ' quote';
         $this->quoteInfo[] = $message;
 
         $this->quoteInfo[] = 'User : ' . $this->quote->getUserFullName();
@@ -179,8 +178,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on DesignTravel site
      */
-    protected function createQuoteDesignTravel(){
-        $quote = new DesignTravelQuote($this->quote);
+    protected function createQuoteDesignTravel($companyId){
+        $quote = new DesignTravelQuote($this->quote, $companyId);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
@@ -190,8 +189,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on TravelCounsellors site
      */
-    protected function createQuoteTravelCounsellors(){
-        $quote = new TravelCounsellorsQuote($this->quote);
+    protected function createQuoteTravelCounsellors($companyId){
+        $quote = new TravelCounsellorsQuote($this->quote, $companyId);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
@@ -201,8 +200,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on eShores site
      */
-    protected function createQuoteEShores(){
-        $quote = new EShoresQuote($this->quote);
+    protected function createQuoteEShores($companyId){
+        $quote = new EShoresQuote($this->quote, $companyId);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;

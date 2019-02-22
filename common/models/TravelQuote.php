@@ -25,6 +25,7 @@ use \common\components\Helper;
  * @property array $hotelGradeIDs
  * @property string $room_info
  * @property array $room
+ * @property array $quoteCompanyIDs
  * @property string $flight_category
  * @property string $email
  * @property string $phone
@@ -100,6 +101,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     public $boardBasisIDs;
     public $hotelGradeIDs;
     public $room;
+    public $quoteCompanyIDs;
 
 
 
@@ -148,7 +150,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             [['date'], 'date', 'format' => 'd M Y'],
             ['duration', 'in', 'range'=> [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]],
             ['passengers', 'in', 'range'=> [0,1,2,3,4,5,6,7,8]],
-            [['room', 'regionIDs', 'countryIDs', 'resortIDs', 'airportIDs', 'boardBasisIDs', 'hotelGradeIDs'], 'safe'],
+            [['room', 'quoteCompanyIDs', 'regionIDs', 'countryIDs', 'resortIDs', 'airportIDs', 'boardBasisIDs', 'hotelGradeIDs'], 'safe'],
             [['user_id', 'category_id', 'page_number', 'user_title', 'flight_category', 'user_first_name', 'user_last_name', 'phone', 'email'], 'required'],
             [['airport','country','city', 'address_street', 'address_town', 'address_county'], 'string', 'max' => 100],
             ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS]],

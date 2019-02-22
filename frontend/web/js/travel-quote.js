@@ -144,6 +144,7 @@ function addListeners()
 
         var input = $("input[name='"+fieldName+"']");
         var currentVal = parseInt(input.val());
+
         if (!isNaN(currentVal)) {
             if(type == 'minus') {
 
@@ -246,15 +247,29 @@ function addListeners()
         });
     });
 
-    //$(".btn-show-retailers").click(function(){
-    //    if (!$(this).find('.has-error').length)
-    //    {
-    //
-    //        $.ajax({
-    //            url: $('#quote-form').attr('action'),
-    //            type:
-    //        })
-    //});
+    $("#btn-show-retailers").click(function(){
+        if (!$(this).find('.has-error').length) {
+            var form = $("#quote-form"),
+                data = form.data("yiiActiveForm");
+
+            $.each(data.attributes, function () {
+                this.status = 3;
+            });
+            form.yiiActiveForm("validate");
+
+            if (form.find(".has-error").length) {
+                return false;
+            }
+
+            $("#quote-info-block").addClass("hidden");
+            $("#retailer-block").removeClass("hidden");
+        }
+    });
+
+    $("#btn-back").click(function(){
+        $("#retailer-block").addClass("hidden");
+        $("#quote-info-block").removeClass("hidden");
+    });
 
     form.on('beforeSubmit', formBeforeSubmitHandler);
 
@@ -287,6 +302,10 @@ function quoteChangeHandler()
     $('.quote-form__confirmation input').each(function(i,elem){
         confirm = confirm && $(elem).prop('checked');
     });
+
+    if(!$('.m_switch_check:checkbox:checked').length){
+        confirm = false;
+    }
 
     if (confirm)
         submit.removeAttr('disabled');

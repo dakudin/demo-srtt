@@ -46,7 +46,8 @@ class QuoteBase extends \yii\base\Component {
         if(!$this->fillData()) return false;
 
         //send request to service
-        if(!$this->sendForm()) return false;
+//UNCOMMENT FOR SENDING ENQUIRY
+//        if(!$this->sendForm()) return false;
 
         //parse data and store into database
 //        if(!$this->parseForm()) return false;

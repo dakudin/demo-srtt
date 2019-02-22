@@ -3,10 +3,6 @@ body {
     height: 100%;
 }
 
-a, a:hover {
-    color: #220044;
-}
-
 hr.fancy-line {
     border: 0;
     height: 1px;
@@ -102,6 +98,10 @@ hr.fancy-line, hr.fancy-line:before {
 .term-text {
 	border-bottom: 1px dashed #337ab7;
 	color: #337ab7;
+}
+
+a, a:hover {
+    color: #220044;
 }
 
 /* add sorting icons to gridview sort links */
@@ -242,7 +242,7 @@ body {
 }
 
 .quote-form__title {
-    margin-bottom: 0;
+    margin-bottom: 10px;
 }
 
 .quote-form__looking-types .btn:first-child {
@@ -267,7 +267,7 @@ body {
     display: block;
 }
 
-.quote-form  button[type="submit"] {
+.quote-form  button[type="submit"], .quote-form .btn-back {
     margin-top: 10px;
 }
 
@@ -449,6 +449,13 @@ body {
 .title_padding_t {
     margin-top: 20px;
 }
+.panel_title_m {
+    font-size: 1.6rem;
+    font-weight: bold;
+    font-family: 'Sofia Pro Soft', 'HelveticaNeue-Bold', 'Helvetica Neue Bold', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+    color: #636;
+}
+
 .footer a {
     padding-left: 15px;
 }

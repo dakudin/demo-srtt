@@ -46,10 +46,11 @@ class EShoresQuote extends TravelQuoteBase
 
     /**
      * @param TravelQuote $quote
+     * @param integer $companyId
      */
-    public function __construct(TravelQuote $quote){
-        $this->companyId = 6;
-        $this->categoryId = Category::LUXURY;
+    public function __construct(TravelQuote $quote, $companyId){
+        $this->companyId = $companyId;
+        $this->categoryId = $quote->category_id;
         $this->mainPageUrl = 'https://www.eshores.co.uk/';
         $this->formSenderSDKPath = dirname(__FILE__);
         $this->debug=true;
@@ -118,9 +119,8 @@ class EShoresQuote extends TravelQuoteBase
         $this->formFields['txtEnquiry'][1] = implode(
             "\r\n",
             $this->quote->getQuoteInfoByFields([
-                TravelQuote::REGION_TEXT_FIELD,
                 TravelQuote::COUNTRY_TEXT_FIELD,
-                TravelQuote::RESORT_TEXT_FIELD,
+                TravelQuote::CITY_TEXT_FIELD,
                 TravelQuote::AIRPORT_TEXT_FIELD,
                 TravelQuote::FLIGHT_CATEGORY_TEXT_FIELD,
                 TravelQuote::DURATION_TEXT_FIELD ,

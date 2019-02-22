@@ -10,12 +10,13 @@ use Yii;
  * @property integer $id
  * @property string $image
  * @property string $company_name
+ * @property string $info
+ * @property string $method_name
  *
  * @property QuoteResponse[] $quoteResponses
  */
 class QuoteCompany extends \yii\db\ActiveRecord
 {
-    public static $SkiKingsCompany = 4;
     /**
      * @inheritdoc
      */
@@ -31,7 +32,7 @@ class QuoteCompany extends \yii\db\ActiveRecord
     {
         return [
             [['image'], 'required'],
-            [['image', 'company_name'], 'string', 'max' => 50],
+            [['image', 'company_name', 'method_name'], 'string', 'max' => 50],
             [['company_name'], 'unique'],
         ];
     }

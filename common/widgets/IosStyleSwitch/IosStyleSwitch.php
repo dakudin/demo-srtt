@@ -53,6 +53,16 @@ class IosStyleSwitch extends InputWidget
 //        self::RADIO
     ];
 
+    /*
+     * Function with handle on changing to On
+     */
+    public $onTurnOn = '';
+
+    /*
+     * Function with handle on changing to Off
+     */
+    public $onTurnOff = '';
+
     public function init()
     {
         parent::init();
@@ -83,8 +93,6 @@ class IosStyleSwitch extends InputWidget
         echo $input;
     }
 
-    //Этот метод можно было бы не создавать, но тогда
-    //метод run() был бы менее читаем
     /**
      * @param $type
      * @return mixed
@@ -139,9 +147,11 @@ class IosStyleSwitch extends InputWidget
             onTurnOn: function(elem){
 //              console.log(elem);
                 elem.val({$this->turnOnValue});
+                {$this->onTurnOn}
             },
             onTurnOff: function(elem){
                 elem.val({$this->turnOffValue});
+                {$this->onTurnOff}
             }
         });
 JS;

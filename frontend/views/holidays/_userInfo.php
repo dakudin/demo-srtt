@@ -7,7 +7,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="panel panel-default fieldGroupUserInfo">
         <div class="panel-heading">
-            <h2 class="panel-title">Your details</h2>
+            <h2 class="panel-title panel_title_m">Your details</h2>
         </div>
 
         <div class="panel-body">
@@ -55,7 +55,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="panel panel-default fieldGroupUserAddress">
         <div class="panel-heading">
-            <h2 class="panel-title">Your address</h2>
+            <h2 class="panel-title panel_title_m">Your address</h2>
         </div>
 
         <div class="panel-body">

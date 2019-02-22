@@ -16,11 +16,11 @@ use yii\helpers\Url;
     ?>
 
     <div class="col-xs-12">
-        <h3 class="pull-left quote-form__title">Find Your Perfect <?= $quoteName ?></h3>
+        <h3 class="pull-left title quote-form__title">Find Your Perfect <?= $quoteName ?></h3>
         <input type="hidden" name="show-any-value" id="show-any-value" value="0" />
     </div>
 
-    <div id="quote-info-block" class="col-xs-12 col-sm-12 col-md-12">
+    <div id="quote-info-block" class="row">
 
         <?php
         // Usage with ActiveForm and model (with search term highlighting)
@@ -176,7 +176,7 @@ use yii\helpers\Url;
         </div>
     </div>
 
-    <div id="retailer-block" class="col-xs-12 col-sm-12 col-md-12 hidden">
+    <div id="retailer-block" class="row hidden">
         <?php
             echo $this->render('_retailerList', [
                 'retailers' => $retailers
@@ -187,6 +187,7 @@ use yii\helpers\Url;
 
         <div class="form-group">
             <div class="col-xs-12 text-center">
+                <a id="btn-back" class="btn btn-primary btn-back">Back</a>
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate processing"></span>
                     <span class="default">Request Quotes</span><span class="processing">Loading...</span></button>
             </div>

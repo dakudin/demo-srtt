@@ -11,7 +11,7 @@
 <!-- copy of input fields group -->
 <div class="fieldGroupCopy" style="display: none;">
     <div class="panel-heading">
-        <h3 class="panel-title bold">Room <span class="roomNumber">roomNumberValue</span>
+        <h3 class="panel-title panel_title_m">Room <span class="roomNumber">roomNumberValue</span>
         <a href="javascript:void(0)" class="roomRemove pull-right"><span class="glyphicon glyphicon glyphicon-remove" aria-hidden="true"></span> Remove</a>
         </h3>
     </div>
