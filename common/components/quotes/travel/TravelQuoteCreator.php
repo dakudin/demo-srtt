@@ -47,9 +47,9 @@ class TravelQuoteCreator extends \yii\base\Component
 
         Yii::$app->mailer->compose()
             ->setFrom('enquiry@demosortit.com')
-            ->setTo('dakudin@gmail.com')
-//            ->setTo('charlie.hollinrake@gmail.com')
-//            ->setBcc(['dakudin@gmail.com','belchev2007@gmail.com'])
+//            ->setTo('dakudin@gmail.com')
+            ->setTo('charlie.hollinrake@gmail.com')
+            ->setBcc(['dakudin@gmail.com','belchev2007@gmail.com'])
             ->setSubject('New enquiry')
             ->setTextBody($this->getQuoteMailText())
             ->setHtmlBody($this->getQuoteMailHtml())
