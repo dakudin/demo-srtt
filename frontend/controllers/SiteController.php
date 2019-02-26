@@ -68,9 +68,9 @@ class SiteController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'auth' => [
-                'class' => 'yii\authclient\AuthAction',
+                'class' => 'common\components\SocialAuthAction', //'yii\authclient\AuthAction',
                 'successCallback' => [$this, 'onAuthSuccess'],
-//                'successUrl' => \yii\helpers\Url::to(['holidays/ski']),
+//                'successUrl' => Yii::$app->request->referrer, //\yii\helpers\Url::to(['holidays/ski']),
             ],
         ];
     }
