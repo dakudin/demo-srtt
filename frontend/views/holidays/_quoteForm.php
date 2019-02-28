@@ -20,7 +20,7 @@ use yii\helpers\Url;
         <input type="hidden" name="show-any-value" id="show-any-value" value="0" />
     </div>
 
-    <div id="quote-info-block" class="row">
+    <div id="quote-info-block">
 
         <?php
         // Usage with ActiveForm and model (with search term highlighting)
@@ -176,7 +176,7 @@ use yii\helpers\Url;
         </div>
     </div>
 
-    <div id="retailer-block" class="row hidden">
+    <div id="retailer-block" class="hidden">
         <?php
             echo $this->render('_retailerList', [
                 'retailers' => $retailers
