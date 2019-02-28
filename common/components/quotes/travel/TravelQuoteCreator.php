@@ -15,6 +15,7 @@ use common\components\quotes\travel\quoni\QuoniQuote;
 use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
 use common\components\quotes\travel\eshores\EShoresQuote;
 use common\models\TravelQuote;
+use common\models\QuoteCompany;
 use common\models\Category;
 use common\models\CompanyCountry;
 use common\models\CompanyAirport;
@@ -47,9 +48,9 @@ class TravelQuoteCreator extends \yii\base\Component
 
         Yii::$app->mailer->compose()
             ->setFrom('enquiry@demosortit.com')
-//            ->setTo('dakudin@gmail.com')
-            ->setTo('charlie.hollinrake@gmail.com')
-            ->setBcc(['dakudin@gmail.com','belchev2007@gmail.com'])
+            ->setTo('dakudin@gmail.com')
+//            ->setTo('charlie.hollinrake@gmail.com')
+//            ->setBcc(['dakudin@gmail.com','belchev2007@gmail.com'])
             ->setSubject('New enquiry')
             ->setTextBody($this->getQuoteMailText())
             ->setHtmlBody($this->getQuoteMailHtml())
@@ -80,14 +81,28 @@ class TravelQuoteCreator extends \yii\base\Component
     public function getCompaniesWhichSentRequest()
     {
         $companies = [];
+
         $parsedResults = unserialize($this->quote->parsed_results);
         if(is_array($parsedResults)) {
             foreach ($parsedResults as $parsedResult) {
                 if (is_a($parsedResult, 'common\components\quotes\travel\TravelParsedResult')) {
-                    $companies[] = $parsedResult->companyName;
+                    $companies[$parsedResult->companyId] = [
+                        'name' => $parsedResult->companyName,
+                        'rating' => null,
+                        'reviews' => null,
+                    ];
                 }
             }
         }
+
+        $allCompanies = QuoteCompany::getCompaniesWithRatingByCategory($this->quote->category_id);
+        foreach($allCompanies as $company){
+            if(array_key_exists($company['id'], $companies)){
+                $companies[$company['id']]['rating'] = $company['rating'];
+                $companies[$company['id']]['reviews'] = $company['reviews'];
+            }
+        }
+
 
         return $companies;
     }

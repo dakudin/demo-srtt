@@ -15,7 +15,7 @@ use yii\helpers\Html;
     <p>
         <?php
             foreach($companies as $company){
-                echo Html::encode($company).'<br>';
+                echo Html::encode($company['name']).'<br>';
             }
         ?>
     </p>

@@ -311,7 +311,7 @@ class HolidaysController extends Controller
                 if($quote->createQuote($instantQuote)){
                     return $this->render('sendResults',[
                         'quoteInfo' => $quote->getQuoteTextInfo(),
-                        'quotesCreated' => count($quote->getCompaniesWhichSentRequest()),
+                        'quoteRetailers' => $quote->getCompaniesWhichSentRequest(),
                         ]);
                 }
             }

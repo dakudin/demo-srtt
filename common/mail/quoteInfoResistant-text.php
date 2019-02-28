@@ -11,7 +11,7 @@ Thank you for using Sortit.com. We have sent you enquiry to the following suppli
 
 <?php
     foreach($companies as $company){
-        echo $company . "\r\n";
+        echo $company['name'] . "\r\n";
     }
 ?>
 
