@@ -33,7 +33,7 @@ use common\models\CompanyRating;
                     <?php
                         echo PopoverX::widget([
                             'header' => '<span class="panel_title_m">' . Html::encode($retailer['company_name']) . '</span>',
-                            'placement' => PopoverX::ALIGN_AUTO_RIGHT,
+                            'placement' => PopoverX::ALIGN_BOTTOM_LEFT,
                             'content' => '<div><span class="label label-rating pull-right"><h5>'. Html::encode($retailer['rating'])
                                 . '</h5><h5 class="small">' . Html::encode(CompanyRating::getReviewCaption($retailer['reviews']))
                                 . '</h5></span></div><div class="text-justify">' . Html::encode($retailer['info']) . '</div>',

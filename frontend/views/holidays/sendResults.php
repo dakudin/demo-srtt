@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 use common\models\CompanyRating;
-use kartik\popover\PopoverX;
 
 /* @var $this yii\web\View */
 /* @var $quoteRetailers array */
