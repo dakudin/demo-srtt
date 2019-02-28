@@ -295,6 +295,12 @@ body {
     background-color: #D5D5D5;
 }
 
+.quote-form__retailer-title {
+    font-size: 18px;
+    cursor: pointer
+}
+
+
 .quote-form .btn.active,
 .quote-form .btn:hover:enabled,
 .navbar-header .btn.active,
@@ -404,6 +410,11 @@ body {
 
     .quote-form .button-wrapper.quote-form__looking-types .btn {
         float: none;
+    }
+
+    .quote-form__retailer-title {
+        font-size: 16px;
+        cursor: pointer
     }
 }
 

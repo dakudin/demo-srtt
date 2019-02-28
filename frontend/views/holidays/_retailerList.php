@@ -23,7 +23,7 @@ use common\models\CompanyRating;
                 foreach($retailers as $retailer):
             ?>
             <div class="row">
-                <div class="col-xs-6 col-sm-8 col-md-9 vcenter">
+                <div class="col-xs-7 col-sm-8 col-md-9 vcenter">
                     <?php
                         echo Html::img('../../images/companies/'.$retailer['image'], [
                             'class' => 'img-responsive img-thumbnail',
@@ -40,19 +40,19 @@ use common\models\CompanyRating;
                             'closeButton' => ['style' => 'display:inline'],
                             'toggleButton' => [
                                 'label' => Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
-                                'class' => '',
+                                'class' => 'quote-form__retailer-title',
                                 'tag' => 'a',
-                                'style' => 'font-size: 18px; cursor: pointer',
+                                'style' => '',
                                 //                                'style' => 'border-bottom: 1px dashed #999;color: black; text-decoration: none;'
                             ],
                         ]);
                         ?>
                 </div><!--
-             --><div class="col-xs-3 col-sm-2 col-md-2 vcenter">
+             --><div class="col-xs-2 col-sm-2 col-md-2 vcenter">
                     <h3><?= Html::encode($retailer['rating']); ?></h3>
                     <h5><?= Html::encode(CompanyRating::getReviewCaption($retailer['reviews'])); ?></h5>
                 </div><!--
-             --><div class="col-xs-3 col-sm-2 col-md-1 vcenter">
+             --><div class="col-xs-2 col-sm-2 col-md-1 vcenter">
                     <?php
                         echo IosStyleSwitch::widget([
                             'type' => IosStyleSwitch::CHECKBOX,
