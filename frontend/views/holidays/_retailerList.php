@@ -23,7 +23,7 @@ use common\models\CompanyRating;
                 foreach($retailers as $retailer):
             ?>
             <div class="row">
-                <div class="col-xs-8 col-sm-8 col-md-9 vcenter">
+                <div class="col-xs-7 col-sm-8 col-md-9 vcenter">
                     <?php
                         echo Html::img('../../images/companies/'.$retailer['image'], [
                             'class' => 'img-responsive img-thumbnail',
