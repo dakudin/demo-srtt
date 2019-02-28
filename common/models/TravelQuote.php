@@ -266,19 +266,11 @@ class TravelQuote extends \yii\db\ActiveRecord
 
         //delete old regions, countries, resorts, airports if update
         if(!$insert){
-//            TravelQuoteAirport::deleteAllByTravelQuote($this->id);
-//            TravelQuoteCountry::deleteAllByTravelQuote($this->id);
-//            TravelQuoteRegion::deleteAllByTravelQuote($this->id);
-//            TravelQuoteResort::deleteAllByTravelQuote($this->id);
             TravelQuoteBoardBasis::deleteAllByTravelQuote($this->id);
             TravelQuoteHotelGrade::deleteAllByTravelQuote($this->id);
         }
 
         //add new regions, countries, resorts, airports
-//        TravelQuoteAirport::addAirports($this->id, $this->airportIDs);
-//        TravelQuoteRegion::addRegions($this->id, $this->regionIDs);
-//        TravelQuoteCountry::addCountries($this->id, $this->countryIDs);
-//        TravelQuoteResort::addResorts($this->id, $this->resortIDs);
         TravelQuoteBoardBasis::addBoardBasis($this->id, $this->boardBasisIDs);
         TravelQuoteHotelGrade::addHotelGrades($this->id, $this->hotelGradeIDs);
     }

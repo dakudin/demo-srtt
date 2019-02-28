@@ -16,6 +16,7 @@ use common\models\DictBoardBasis;
 use common\models\DictHotelGrade;
 //use common\models\DictRegion;
 //use common\models\DictResort;
+use common\models\QuoteCompany;
 use Yii;
 use yii\web\Controller;
 use common\models\TravelQuote;
@@ -326,7 +327,7 @@ class HolidaysController extends Controller
             'model' => $instantQuote,
 //            'companyIDs' => implode(',', $companyCountries),
             'category' => $category,
-            'retailers' => $instantQuote->retailers,
+            'retailers' => QuoteCompany::getCompaniesWithRatingByCategory($instantQuote->category_id),
 //            'listRegions' => $this->getListRegions($instantQuote, $companyCountries),
 //            'listCountries' => $this->getListCountries($instantQuote, $companyCountries),
 //            'listResorts' => $this->getListResorts($instantQuote, $companyCountries),

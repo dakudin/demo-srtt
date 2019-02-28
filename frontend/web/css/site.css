@@ -332,6 +332,29 @@ body {
     vertical-align: bottom;
 }
 
+.label-rating {
+    background-color: #636;
+    margin-left: 1em;
+}
+
+.popover-srtt.bottom > .arrow:after {
+    border-bottom-color: #cce5ff;
+}
+
+.popover-srtt.left-top > .arrow:after {
+    border-left-color: #cce5ff;
+}
+
+.popover-srtt.right-top > .arrow:after {
+    border-right-color: #cce5ff;
+}
+
+.popover-srtt > .popover-title {
+    color: #004085;
+    background-color: #cce5ff;
+    border-bottom: 1px solid #b8daff;
+}
+
 .menu-buttons .category-thumb,
 .menu-buttons .category-thumb-center{
     padding-left: 2px;

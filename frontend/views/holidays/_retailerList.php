@@ -4,6 +4,7 @@ use yii\helpers\Html;
 //use kartik\switchinput\SwitchInput;
 use kartik\popover\PopoverX;
 use common\widgets\IosStyleSwitch\IosStyleSwitch;
+use common\models\CompanyRating;
 
 
 /* @var $model common\models\TravelQuote */
@@ -22,21 +23,23 @@ use common\widgets\IosStyleSwitch\IosStyleSwitch;
                 foreach($retailers as $retailer):
             ?>
             <div class="row">
-                <div class="col-xs-8 col-sm-10 col-md-11 vcenter">
+                <div class="col-xs-6 col-sm-8 col-md-9 vcenter">
                     <?php
-                        echo Html::img('../../images/companies/'.$retailer->image, [
+                        echo Html::img('../../images/companies/'.$retailer['image'], [
                             'class' => 'img-responsive img-thumbnail',
-                            'alt' => Html::encode($retailer->company_name)
+                            'alt' => Html::encode($retailer['company_name'])
                         ]);
                     ?>
                     <?php
                         echo PopoverX::widget([
-                            'header' => Html::encode($retailer->company_name),
+                            'header' => '<span class="panel_title_m">' . Html::encode($retailer['company_name']) . '</span>',
                             'placement' => PopoverX::ALIGN_AUTO_RIGHT,
-                            'content' => Html::encode($retailer->info),
+                            'content' => '<div><span class="label label-rating pull-right"><h5>'. Html::encode($retailer['rating'])
+                                . '</h5><h5 class="small">' . Html::encode(CompanyRating::getReviewCaption($retailer['reviews']))
+                                . '</h5></span></div><div class="text-justify">' . Html::encode($retailer['info']) . '</div>',
                             'closeButton' => ['style' => 'display:inline'],
                             'toggleButton' => [
-                                'label' => Html::encode($retailer->company_name) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
+                                'label' => Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
                                 'class' => '',
                                 'tag' => 'a',
                                 'style' => 'font-size: 18px; cursor: pointer',
@@ -45,11 +48,15 @@ use common\widgets\IosStyleSwitch\IosStyleSwitch;
                         ]);
                         ?>
                 </div><!--
-             --><div class="col-xs-4 col-sm-2 col-md-1 vcenter">
+             --><div class="col-xs-3 col-sm-2 col-md-2 vcenter">
+                    <h3><?= Html::encode($retailer['rating']); ?></h3>
+                    <h5><?= Html::encode(CompanyRating::getReviewCaption($retailer['reviews'])); ?></h5>
+                </div><!--
+             --><div class="col-xs-3 col-sm-2 col-md-1 vcenter">
                     <?php
                         echo IosStyleSwitch::widget([
                             'type' => IosStyleSwitch::CHECKBOX,
-                            'name' => 'TravelQuote[quoteCompanyIDs][' . $retailer->id .']',
+                            'name' => 'TravelQuote[quoteCompanyIDs][' . $retailer['id'] .']',
                             'value' => 1,
                             'onTurnOn' => 'quoteChangeHandler();',
                             'onTurnOff' => 'quoteChangeHandler();',
