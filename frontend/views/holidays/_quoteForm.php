@@ -176,7 +176,7 @@ use yii\helpers\Url;
         </div>
     </div>
 
-    <div id="retailer-block" class="hidden">
+    <div id="retailer-block" class="">
         <?php
             echo $this->render('_retailerList', [
                 'retailers' => $retailers

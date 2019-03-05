@@ -271,6 +271,11 @@ class HolidaysController extends Controller
         return $instantQuote;
     }
 
+    public function actionQuotes()
+    {
+
+    }
+
     /**
      * @param $id
      * @return mixed

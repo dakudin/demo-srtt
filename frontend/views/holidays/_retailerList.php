@@ -25,21 +25,22 @@ use common\models\CompanyRating;
             <div class="row">
                 <div class="col-xs-7 col-sm-8 col-md-9 vcenter">
                     <?php
-                        echo Html::img('../../images/companies/'.$retailer['image'], [
-                            'class' => 'img-responsive img-thumbnail',
-                            'alt' => Html::encode($retailer['company_name'])
-                        ]);
-                    ?>
-                    <?php
                         echo PopoverX::widget([
+                            'pluginOptions' => [
+                                'trigger' => 'hover focus',
+                            ],
                             'header' => '<span class="panel_title_m">' . Html::encode($retailer['company_name']) . '</span>',
-                            'placement' => PopoverX::ALIGN_BOTTOM_LEFT,
+//                            'placement' => PopoverX::ALIGN_BOTTOM_LEFT,
                             'content' => '<div><span class="label label-rating pull-right"><h5>'. Html::encode($retailer['rating'])
                                 . '</h5><h5 class="small">' . Html::encode(CompanyRating::getReviewCaption($retailer['reviews']))
                                 . '</h5></span></div><div class="text-justify">' . Html::encode($retailer['info']) . '</div>',
                             'closeButton' => ['style' => 'display:inline'],
                             'toggleButton' => [
-                                'label' => Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
+                                'id' => 'retailer-info',
+                                'label' => Html::img('../../images/companies/'.$retailer['image'], [
+                                    'class' => 'img-responsive img-thumbnail',
+                                    'alt' => Html::encode($retailer['company_name'])
+                                ]) . Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
                                 'class' => 'quote-form__retailer-title',
                                 'tag' => 'a',
                                 'style' => '',

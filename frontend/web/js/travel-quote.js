@@ -135,7 +135,6 @@ function addListeners()
     var form = $('.quote-form'),
         quoteConfirmation = form.find('.quote-form__confirmation input');
 
-
     $("#quote-form").on("click", "button.btn-number", function(e){
         e.preventDefault();
 
