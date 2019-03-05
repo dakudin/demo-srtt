@@ -27,7 +27,7 @@ use common\models\CompanyRating;
                     <?php
                         echo PopoverX::widget([
                             'pluginOptions' => [
-                                'trigger' => 'hover focus',
+                                'trigger' => 'hover focus click',
                             ],
                             'header' => '<span class="panel_title_m">' . Html::encode($retailer['company_name']) . '</span>',
 //                            'placement' => PopoverX::ALIGN_BOTTOM_LEFT,
