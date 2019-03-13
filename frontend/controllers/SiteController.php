@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\EnquiryCategory;
+use common\models\QuoteHistorySearch;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -220,6 +221,17 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionHistoryQuotes()
+    {
+        $searchModel = new QuoteHistorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->get());
+
+        return $this->render('historyQuotes', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
     /**

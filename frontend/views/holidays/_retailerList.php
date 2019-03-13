@@ -38,9 +38,10 @@ use common\models\CompanyRating;
                             'toggleButton' => [
                                 'id' => 'retailer-info',
                                 'label' => Html::img('../../images/companies/'.$retailer['image'], [
-                                    'class' => 'img-responsive img-thumbnail',
-                                    'alt' => Html::encode($retailer['company_name'])
-                                ]) . Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
+                                                'class' => 'img-responsive img-thumbnail',
+                                                'alt' => Html::encode($retailer['company_name'])
+                                            ])
+                                           . Html::encode($retailer['company_name']) . '<i class="glyphicon glyphicon-info-sign">&nbsp;</i>',
                                 'class' => 'quote-form__retailer-title',
                                 'tag' => 'a',
                                 'style' => '',

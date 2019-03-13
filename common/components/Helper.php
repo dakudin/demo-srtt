@@ -116,4 +116,28 @@ class Helper {
 		return $companyId == QuoteCompany::$SkiKingsCompany;
 	}
 
+	static function getRetailersInfoByEnquiryResult($parsedResult)
+	{
+		$companies = [];
+
+		$parsedResults = unserialize($parsedResult);
+		if(is_array($parsedResults)) {
+			foreach ($parsedResults as $parsedResult) {
+				if(!empty($parsedResult->companyId)) {
+					$company = [];
+					if(!empty($parsedResult->companyName))
+						$company['name'] = $parsedResult->companyName;
+					if(!empty($parsedResult->companyUrl))
+						$company['image'] = $parsedResult->companyUrl;
+					if(!empty($parsedResult->companyRating))
+						$company['rated'] = $parsedResult->companyRatingSet;
+
+					$companies[$parsedResult->companyId] = $company;
+				}
+			}
+		}
+
+		return $companies;
+	}
+
 }

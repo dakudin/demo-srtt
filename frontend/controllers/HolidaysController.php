@@ -126,19 +126,19 @@ class HolidaysController extends Controller
      * @param $id integer
      * @return mixed
      */
-    public function actionViewski($id)
+/*    public function actionViewski($id)
     {
         return $this->viewQuote($id, 'ski');
-    }
+    }*/
 
     /**
      * @param $id integer
      * @return mixed
      */
-    public function actionViewbeach($id)
+/*    public function actionViewbeach($id)
     {
         return $this->viewQuote($id, 'luxury');
-    }
+    }*/
 
     /**
      * @param integer
@@ -146,7 +146,7 @@ class HolidaysController extends Controller
      * @return string
      * @throws BadRequestHttpException
      */
-    protected function viewQuote($id, $travelCategory)
+/*    protected function viewQuote($id, $travelCategory)
     {
         $instantQuote = TravelQuote::findOne(['id' => $id]);
         if(!isset($instantQuote)){
@@ -183,7 +183,7 @@ class HolidaysController extends Controller
             'listBoardBasis' => $this->getListBoardBasis($companyCountries),
             'listHotelGrade' => $this->getListHotelGrade($companyCountries),
         ]);
-    }
+    }*/
 
     /**
      * @param $instantQuote TravelQuote
@@ -231,6 +231,18 @@ class HolidaysController extends Controller
     }
 
     /**
+     * @param EnquiryCategory $category
+     * @return string
+     */
+    protected function createEnquiry(EnquiryCategory $category)
+    {
+        $instantQuote = new TravelQuote();
+        $instantQuote->category_id = $category->id;
+        $instantQuote = $this->setDefaultValues($instantQuote);
+
+        return $this->showQuote($instantQuote, $category);
+    }
+    /**
      * Displays `Beach quote form`.
      *
      * @param EnquiryCategory $category
@@ -238,11 +250,7 @@ class HolidaysController extends Controller
      */
     public function actionSki(EnquiryCategory $category)
     {
-        $instantQuote = new TravelQuote();
-        $instantQuote->category_id = $category->id;
-        $instantQuote = $this->setDefaultValues($instantQuote);
-
-        return $this->showQuote($instantQuote, $category);
+        return $this->createEnquiry($category);
     }
 
     /**
@@ -253,11 +261,7 @@ class HolidaysController extends Controller
      */
     public function actionBeach(EnquiryCategory $category)
     {
-        $instantQuote = new TravelQuote();
-        $instantQuote->category_id = $category->id;
-        $instantQuote = $this->setDefaultValues($instantQuote);
-
-        return $this->showQuote($instantQuote, $category);
+        return $this->createEnquiry($category);
     }
 
     /**

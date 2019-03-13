@@ -27,12 +27,17 @@ use yii\helpers\Html;
     <ul class="nav navbar-nav navbar-left">
         <li><a href="<?= \yii\helpers\Url::to(['/site/contact']) ?>">Contact us</a></li>
         <li><a href="<?= \yii\helpers\Url::to(['/site/about']) ?>">About us</a></li>
+    </ul>
 
+    <ul class="nav navbar-nav navbar-left">
         <?php if (Yii::$app->user->isGuest){ ?>
             <li><a href="#" data-toggle="modal" data-target="#signup-modal">Signup</a></li>
             <li><a href="#" data-toggle="modal" data-target="#login-modal">Sign in</a></li>
         <?php } else { ?>
-            <li><a href="#" data-toggle="modal" data-target="#profile-modal">Profile</a></li>
+                <li><a href="<?= \yii\helpers\Url::to(['/site/history-quotes']) ?>">My quotes</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#profile-modal">Profile</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-left">
             <?php
             echo '<li>'
                 . Html::beginForm(['/site/logout'], 'post')

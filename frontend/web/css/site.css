@@ -300,6 +300,11 @@ body {
     cursor: pointer
 }
 
+.quote-form__retailer-title img {
+    height: 2.5em;
+    margin-right: 10px;
+}
+
 
 .quote-form .btn.active,
 .quote-form .btn:hover:enabled,
