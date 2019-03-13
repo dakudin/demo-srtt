@@ -124,6 +124,18 @@ a.desc:after {
     content: "\e152";
 }
 
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    background-color: #636;
+    border-color: #636;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #220044;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 .horizontal-divider {
     width: 100%;
     text-align: center;

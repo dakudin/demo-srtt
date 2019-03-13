@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'showFooter' => false,
         'tableOptions' => ['class' => 'table'],
-        'layout' => '{items}',
+        'layout' => '{items}{pager}',
         'columns' => [
             [
                 'attribute' => 'category_id',
