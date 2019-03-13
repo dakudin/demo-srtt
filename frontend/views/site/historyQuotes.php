@@ -9,7 +9,7 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\grid\gridview;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use common\components\Helper;
 
