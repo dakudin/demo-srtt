@@ -262,6 +262,8 @@ function addListeners()
 
             $("#quote-info-block").addClass("hidden");
             $("#retailer-block").removeClass("hidden");
+
+
         }
     });
 
