@@ -55,7 +55,7 @@ class QuoteController extends Controller
         )
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
             ->setTo($quote->email)
-            ->setSubject('Your experience in communication with retailers')
+            ->setSubject('Your experience in communication with retailers on Sortit.com')
             ->send();
     }
 
