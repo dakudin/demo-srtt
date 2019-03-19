@@ -60,13 +60,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             $value .= Html::encode($company['name']);
                         }
                         if (!empty($company['rated'])) {
-                            $value .= Html::encode('(' . $company['rated'] . ')');
+                            $value .= Html::encode(' ' . $company['rated'] . ' scores');
                         }
                         $value .= '</div>';
                     }
                     return $value;
                 },
-//                'headerOptions' => ['style' => 'width:20%'],
             ],
 
         ]

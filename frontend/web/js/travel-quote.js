@@ -125,8 +125,10 @@ function restoreTravelFields()
 
     //submit form after authorization
     if(!$("#login-modal").length) {
+        $("#btn-show-retailers").click();
 //        $('.quote-form').submit();
     }
+
 }
 
 function addListeners()

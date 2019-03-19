@@ -6,7 +6,7 @@
 /* @var $form yii\bootstrap\ActiveForm */
 
 $this->registerJsFile(
-    '@web/js/travel-quote.js?v=0.12',
+    '@web/js/travel-quote.js?v=0.13',
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
