@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Monk
+ * Created by Kudin Dmitry
  * Date: 18.09.17
  * Time: 15:44
  */
@@ -10,25 +9,12 @@ namespace common\components;
 
 use common\models\InstantQuote;
 use common\models\QuoteCompany;
-use common\models\TravelQuote;
 use yii\helpers\Html;
 use yii\helpers\Url;
 
 class Helper {
 	const REGEXP_POSTCODE = "/[A-Za-z]{1,2}[0-9][0-9A-Za-z]?\s?([0-9][A-Za-z]{2})?/"; //"/^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i";
 	const REGEXP_PHONE = "/^\+?[0-9()\s-]{6,20}$/";
-
-	const QUOTE_CONFIRMATION_TEXT = 'I confirm acceptance of the Terms and Conditions, Privacy and Cookies policies and for my details to be passed on to selected suppliers who will contact me directly by phone or email to provide personalised quotes.';
-
-	static function getQuotePriceForView($amount){
-		return $amount==0 ? 'Included' : '&pound;' . number_format($amount,2);
-	}
-
-	static function getQuoteMarketingConsent(){
-		return 'I consent to sortit.com using my details to send marketing information by email. For more information on how your personal details will be used, please refer to our Privacy Policy'
-//			. Html::a('Privacy Policy', Url::to(['privacy-policy'], ['target' => 'privacyAndCookies']))
-			. ' and Cookie Policy.';
-	}
 
 	static function getInstantConveyancingInfoById($id){
 		$text = 'I am looking to';
@@ -80,64 +66,29 @@ class Helper {
 
 	}
 
-	static function getTravelQuoteInfoById(TravelQuote $quote){
-		$text = 'Leaving on ';
-
-		if(!is_null($quote->date))
-			$text .= '<span class="term-text">' . $quote->date . '</span>';
-		else
-			$text .= ' <span class="term-text">any time</span>';
-
-		if(!is_null($quote->duration) && $quote->duration!=0)
-			$text .= ' <span class="term-text">'.$quote->duration . ' nights</span>';
-
-		if(!is_null($quote->passengers))
-			$text .= ' for <span class="term-text">'.$quote->passengers . '</span> people';
-
-		if(!empty($quote->dictAirports)) {
-			$text .= '. Flying from ' . $quote->dictAirports[0]->name;
-		}
-
-		return $text;
-	}
-
-	static function getTravelQuoteHeader(TravelQuote $quote){
-		if(!empty($quote->dictResorts) && count($quote->dictResorts)==1){
-			return $quote->dictResorts[0]->name;
-		}elseif(!empty($quote->dictCountries) && count($quote->dictCountries)==1){
-			return $quote->dictCountries[0]->name;
-		}
-
-		return 'Traveling';
-	}
-
 	static function isShowSendEnquiryButton($companyId)
 	{
 		return $companyId == QuoteCompany::$SkiKingsCompany;
 	}
 
-	static function getRetailersInfoByEnquiryResult($parsedResult)
+	/**
+	 * @param $id
+	 * @return string
+	 */
+	static function getRateImageByRetailerId($id)
 	{
-		$companies = [];
-
-		$parsedResults = unserialize($parsedResult);
-		if(is_array($parsedResults)) {
-			foreach ($parsedResults as $parsedResult) {
-				if(!empty($parsedResult->companyId)) {
-					$company = [];
-					if(!empty($parsedResult->companyName))
-						$company['name'] = $parsedResult->companyName;
-					if(!empty($parsedResult->companyUrl))
-						$company['image'] = $parsedResult->companyUrl;
-					if(!empty($parsedResult->companyRating))
-						$company['rated'] = $parsedResult->companyRatingSet;
-
-					$companies[$parsedResult->companyId] = $company;
-				}
-			}
+		switch ($id) {
+			case 2.5 : $img = "/images/rate-poor.png";
+						break;
+			case 5 : $img = "/images/rate-neutral.png";
+				break;
+			case 7.5 : $img = "/images/rate-good.png";
+				break;
+			case 10 : $img = "/images/rate-excellent.png";
+				break;
+			default : $img = '';
 		}
 
-		return $companies;
+		return $img;
 	}
-
 }

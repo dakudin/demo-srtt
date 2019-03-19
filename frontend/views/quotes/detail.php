@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
 
     <div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #e0e0e0">
         <div class="col-xs-6 col-sm-6 col-md-8" style="padding:0!important"><strong>Sub-total</strong></div>
-        <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($dataProvider['self']['sub-total']); ?></div>
+        <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($dataProvider['self']['sub-total']); ?></div>
     </div>
 
 
@@ -112,7 +112,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -131,7 +131,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -144,7 +144,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
             ?>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="col-xs-6 col-sm-6 col-md-8"><?= $description ?></div>
-                <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($amount); ?></div>
+                <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($amount); ?></div>
             </div>
             <?php
         endforeach;
@@ -153,7 +153,7 @@ $this->params['breadcrumbs'][] = $quoteResult->quoteCompany->company_name;
 
     <div class="col-xs-12 col-sm-12 col-md-12" style="background-color: #e0e0e0">
         <div class="col-xs-6 col-sm-6 col-md-8" style="padding:0!important"><strong>Sub-total</strong></div>
-        <div class="col-xs-6 col-sm-6 col-md-4"><?= Helper::getQuotePriceForView($dataProvider['other']['sub-total']); ?></div>
+        <div class="col-xs-6 col-sm-6 col-md-4"><?= QuoteHelper::getQuotePriceForView($dataProvider['other']['sub-total']); ?></div>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12">

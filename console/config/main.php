@@ -26,6 +26,13 @@ return [
                 ],
             ],
         ],
+        'urlManager' => [
+            'scriptUrl' => 'https://demosortit.com',
+            'enablePrettyUrl' => true,
+            'rules' => [
+                'rate-retailers/<category_alias>/<quote_id:\d+>' => 'site/rate-retailers',
+                ]
+        ],
     ],
     'params' => $params,
 ];

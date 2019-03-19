@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] =
     ];
 $this->params['breadcrumbs'][] =
     [
-        'label' => \common\components\Helper::getTravelQuoteHeader($instantQuote),
+        'label' => \common\components\QuoteHelper::getTravelQuoteHeader($instantQuote),
         'url' => ['holidays/ski/view/'.$instantQuote->id]
     ];
 $this->params['breadcrumbs'][] = $this->title;
@@ -156,7 +156,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="col-xs-12 col-sm-12 col-md-12 quote-form__confirmation">
                 <label>
                     <input type="checkbox" id="acceptConfirm" name="SkiEnquiryForm[accept-confirm]" />
-                    <span style="padding-left: 5px"><?php echo \common\components\Helper::QUOTE_CONFIRMATION_TEXT ?></span>
+                    <span style="padding-left: 5px"><?php echo \common\components\QuoteHelper::QUOTE_CONFIRMATION_TEXT ?></span>
                 </label>
             </div>
             <div class="form-group">

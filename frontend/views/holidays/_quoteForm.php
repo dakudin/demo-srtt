@@ -171,7 +171,7 @@ use yii\helpers\Url;
 
         <div class="form-group">
             <div class="col-xs-12 text-center">
-                <a id="btn-show-retailers" class="btn btn-primary">Next</a>
+                <a id="btn-show-retailers" class="btn btn-form">Next</a>
             </div>
         </div>
     </div>
@@ -187,7 +187,7 @@ use yii\helpers\Url;
 
         <div class="form-group">
             <div class="col-xs-12 text-center">
-                <a id="btn-back" class="btn btn-primary btn-back">Back</a>
+                <a id="btn-back" class="btn btn-form btn-back">Back</a>
                 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate processing"></span>
                     <span class="default">Request Quotes</span><span class="processing">Loading...</span></button>
             </div>

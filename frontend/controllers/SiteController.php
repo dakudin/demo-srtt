@@ -11,6 +11,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\TravelQuote;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
@@ -18,12 +19,15 @@ use frontend\models\ContactForm;
 use frontend\models\ProfileForm;
 use common\components\AuthHandler;
 use yii\helpers;
+use common\components\Helper;
+use common\components\QuoteHelper;
 
 /**
  * Site controller
  */
 class SiteController extends Controller
 {
+
     /**
      * @inheritdoc
      */
@@ -223,6 +227,11 @@ class SiteController extends Controller
         }
     }
 
+    /**
+     * Display history page for a user with all the quotes sent and showing what rating was set to each  retailer on each quote
+     *
+     * @return mixed
+     */
     public function actionHistoryQuotes()
     {
         $searchModel = new QuoteHistorySearch();
@@ -231,6 +240,50 @@ class SiteController extends Controller
         return $this->render('historyQuotes', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionRateRetailers($category_alias, $quote_id)
+    {
+        // need to login if not authorized
+        if(Yii::$app->user->isGuest) {
+            return $this->render('rateRetailers', ['ratedStatus' => QuoteHelper::QUOTE_NOT_RATED]);
+        }
+
+        if(($enquiryCategory = EnquiryCategory::findOne([
+                'alias' => $category_alias,
+                'is_visible' => 1,
+                'is_active' => 1,
+                ])) == NULL){
+            throw new \yii\web\NotFoundHttpException(404);
+        }
+        // detect class of enquiry
+        if(empty($enquiryCategory->enquiry_class_name)){
+            throw new \yii\web\NotFoundHttpException(404);
+        }
+
+        //find enquiry by user and its ID
+        //detect class of enquiry and find it
+        $enquiryClass = 'common\models\\' . $enquiryCategory->enquiry_class_name;
+        $enquiry = $enquiryClass::findOne(['id' => $quote_id, 'user_id' => Yii::$app->user->id]);
+        if($enquiry == null){
+            throw new \yii\web\NotFoundHttpException(404);
+        }
+
+        //if quote already rated
+        if($enquiry->is_rated == QuoteHelper::QUOTE_RATED){
+            Yii::$app->session->setFlash('info', 'Retailer(s) rating has been set for this quote');
+        }
+
+        // save retailers rating
+        if(QuoteHelper::rateRetailersForEnquiry($enquiry, Yii::$app->request->post('rate_retailer'))){
+            $enquiry->refresh();
+        }
+
+        return $this->render('rateRetailers', [
+            'categoryName' => $enquiry->enquiryCategory->name,
+            'ratedStatus' => $enquiry->is_rated,
+            'model' => $enquiry
         ]);
     }
 
@@ -285,10 +338,10 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestResult()
+/*    public function actionRequestResult()
     {
         return $this->render('requestResult');
-    }
+    }*/
 
     /**
      * Requests password reset.

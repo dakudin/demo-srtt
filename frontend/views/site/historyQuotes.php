@@ -11,7 +11,7 @@
 
 use yii\grid\GridView;
 use yii\helpers\Html;
-use common\components\Helper;
+use common\components\QuoteHelper;
 
 $this->title = 'My quotes';
 
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Sent to',
                 'format' => 'html',
                 'value' => function($model){
-                    $companies = Helper::getRetailersInfoByEnquiryResult($model->parsed_results);
+                    $companies = QuoteHelper::getRetailersInfoByEnquiryResult($model->parsed_results);
                     $value = '';
                     foreach($companies as $id => $company) {
                         $value .= '<div class="quote-form__retailer-title">';

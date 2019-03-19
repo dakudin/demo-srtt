@@ -41,6 +41,8 @@ use \common\components\Helper;
  * @property string $city
  * @property string $airport
  * @property integer $created_at
+ * @property integer $is_rated
+ * @property integer $is_rate_email_sent
  *
  * @property string $userFullName
  * @property User $user
@@ -95,6 +97,12 @@ class TravelQuote extends \yii\db\ActiveRecord
     const MIN_ADULTS_COUNT = 1;
     const MAX_ADULTS_COUNT = 12;
 
+    const RATED = 1;
+    const NOT_RATED = 0;
+
+    const RATED_EMAIL_SENT = 1;
+    const RATED_EMAIL_NOT_SENT = 0;
+
 //    public $regionIDs;
 //    public $countryIDs;
 //    public $resortIDs;
@@ -115,8 +123,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     {
         parent::init();
 
-        $user = User::findOne(['id' => Yii::$app->user->id]);
-        if($user){
+        if(!empty(Yii::$app->user) && $user = User::findOne(['id' => Yii::$app->user->id])){
             $this->setAttributes([
                 'email' => $user->contact_email,
                 'phone' => $user->contact_phone,
@@ -147,6 +154,10 @@ class TravelQuote extends \yii\db\ActiveRecord
         return [
             [['user_id', 'duration', 'passengers', 'category_id', 'page_number', 'created_at'], 'integer'],
             [['user_id'], 'default', 'value'=> Yii::$app->user->id],
+            ['is_rated', 'default', 'value' => self::NOT_RATED],
+            ['is_rated', 'in', 'range' => [self::RATED, self::NOT_RATED]],
+            ['is_rate_email_sent', 'default', 'value' => self::RATED_EMAIL_NOT_SENT],
+            ['is_rate_email_sent', 'in', 'range' => [self::RATED_EMAIL_SENT, self::RATED_EMAIL_NOT_SENT]],
             [['details', 'parsed_results', 'room_info', 'budget'], 'string'],
             [['date'], 'date', 'format' => 'd M Y'],
             ['duration', 'in', 'range'=> [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]],
@@ -265,7 +276,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
-
+/*
         //delete old regions, countries, resorts, airports if update
         if(!$insert){
             TravelQuoteBoardBasis::deleteAllByTravelQuote($this->id);
@@ -275,6 +286,7 @@ class TravelQuote extends \yii\db\ActiveRecord
         //add new regions, countries, resorts, airports
         TravelQuoteBoardBasis::addBoardBasis($this->id, $this->boardBasisIDs);
         TravelQuoteHotelGrade::addHotelGrades($this->id, $this->hotelGradeIDs);
+*/
     }
 
     /**
@@ -560,7 +572,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @param $companyIDs array
      */
-    protected function fillBoardBasisIDs($companyIDs){
+/*    protected function fillBoardBasisIDs($companyIDs){
         $this->boardBasisIDs = [];
 
         //load selected boards basis
@@ -577,12 +589,12 @@ class TravelQuote extends \yii\db\ActiveRecord
                     $this->boardBasisIDs[] = $boardBasis->id;
             }
         }
-    }
+    }*/
 
     /**
      * @param $companyIDs array
      */
-    protected function fillHotelGradeIDs($companyIDs){
+/*    protected function fillHotelGradeIDs($companyIDs){
         $this->hotelGradeIDs = [];
 
         //load selected hotel grades
@@ -599,7 +611,7 @@ class TravelQuote extends \yii\db\ActiveRecord
                     $this->hotelGradeIDs[] = $hotelGrade->id;
             }
         }
-    }
+    }*/
 
     public static function getUserTitleList()
     {
@@ -827,6 +839,26 @@ class TravelQuote extends \yii\db\ActiveRecord
         return (empty($this->details)) ? '' : 'Details: ' . $this->details;
     }
 
+
+    /**
+     * @return array
+     */
+    public function getFullQuoteInfo()
+    {
+        return $this->getQuoteInfoByFields([
+            self::USER_ADDRESS_FIELD,
+            self::COUNTRY_TEXT_FIELD,
+            self::CITY_TEXT_FIELD,
+            self::AIRPORT_TEXT_FIELD,
+            self::FLIGHT_CATEGORY_TEXT_FIELD,
+            self::DEPARTURE_DATE_TEXT_FILED,
+            self::DURATION_TEXT_FIELD ,
+            self::TOTAL_BUDGET_TEXT_FIELD,
+            self::ROOMS_TEXT_FIELD,
+            self::DETAIL_TEXT_FIELD,
+        ]);
+    }
+
     /**
      * @return array
      */
@@ -871,5 +903,6 @@ class TravelQuote extends \yii\db\ActiveRecord
 
         return $quoteInfo;
     }
+
 
 }

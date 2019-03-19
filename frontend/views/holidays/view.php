@@ -13,7 +13,7 @@ use common\widgets\sumoselect\SumoSelect;
 /* @var $listHotelGrade array */
 /* @var $listBoardBasis array */
 
-$this->title = \common\components\Helper::getTravelQuoteHeader($instantQuote);
+$this->title = \common\components\QuoteHelper::getTravelQuoteHeader($instantQuote);
 
 if($travelCategory=='luxury'){
     $this->params['breadcrumbs'][] =

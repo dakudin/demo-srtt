@@ -51,15 +51,13 @@ return [
             'rules' => [
 				'/' => 'site/index',
 //                'catchAll' => ['site/offline'], // for maintenance mode
-
+                'rate-retailers/<category_alias>/<quote_id:\d+>' => 'site/rate-retailers',
 //                'auth' => 'site/auth',
 //				'request-filledin' => 'site/quoteprefilled',
 //				'<action:\w+ >' => '<action>',
                 [
                     'class' => 'common\components\EnquiryCategoryUrlRule',
                 ],
-//				'quotes/view/<id:\d+>'=>'quotes/view',
-//				'quotes/show/<id:\d+>'=>'quotes/show',
                 '<action:[\w\-]+>' => 'site/<action>',
            ],
         ],

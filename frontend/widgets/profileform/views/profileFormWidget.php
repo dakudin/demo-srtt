@@ -123,7 +123,7 @@ Modal::begin([
         <div class="col-xs-6 col-sm-3 col-md-2">
             <?php
                 echo Html::button('Close', [
-                    'class' => 'btn btn-primary pull-left',
+                    'class' => 'btn btn-form pull-left',
                     'onClick' => '$("#profile-modal").modal("hide")'
                 ]);
             ?>
@@ -131,7 +131,7 @@ Modal::begin([
         <div class="col-xs-6 col-sm-6 col-md-8"></div>
         <div class="col-xs-6 col-sm-3 col-md-2">
             <?php
-                echo Html::submitButton('Save', ['class' => 'btn btn-primary pull-right', 'name' => 'save_button']);
+                echo Html::submitButton('Save', ['class' => 'btn btn-form pull-right', 'name' => 'save_button']);
             ?>
         </div>
     </div>

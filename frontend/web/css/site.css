@@ -3,6 +3,28 @@ body {
     height: 100%;
 }
 
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+    transition: box-shadow 1s, color 1s;
+    border-radius: 15px;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.4);
+    color: #663366;
+    background-color: #e0e0e0;
+}
+
 hr.fancy-line {
     border: 0;
     height: 1px;

@@ -97,7 +97,7 @@ class HolidaysController extends Controller
         }
 
         $skiEnquiryForm = new SkiEnquiryForm();
-        $skiEnquiryForm->enquire_message = strip_tags(Helper::getTravelQuoteInfoById($instantQuote));
+        $skiEnquiryForm->enquire_message = strip_tags(QuoteHelper::getTravelQuoteInfoById($instantQuote));
         $skiEnquiryForm->current_url = $resort['detailUrl'];
 
         if($skiEnquiryForm->load(Yii::$app->request->post()) && $skiEnquiryForm->validate()){
@@ -179,7 +179,7 @@ class HolidaysController extends Controller
             'instantQuote' => $instantQuote,
             'quoteServices' => $quoteServices,
             'travelCategory' => $travelCategory,
-            'quoteInfo' => Helper::getTravelQuoteInfoById($instantQuote),
+            'quoteInfo' => QuoteHelper::getTravelQuoteInfoById($instantQuote),
             'listBoardBasis' => $this->getListBoardBasis($companyCountries),
             'listHotelGrade' => $this->getListHotelGrade($companyCountries),
         ]);
@@ -273,11 +273,6 @@ class HolidaysController extends Controller
         $instantQuote->passengers = 2;
 
         return $instantQuote;
-    }
-
-    public function actionQuotes()
-    {
-
     }
 
     /**
