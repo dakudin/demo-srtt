@@ -68,28 +68,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 $retailers = QuoteHelper::getRetailersInfoByEnquiryResult($model->parsed_results);
                 foreach($retailers as $retailerId=>$retailer):
             ?>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-                        <?php if($ratedStatus != QuoteHelper::QUOTE_RATED): ?>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <h4><?php echo Html::encode($retailer['name']) ?></h4>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                    <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="2.5"><img src="/images/rate-poor.png"></label>
-                                    <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="5"><img src="/images/rate-neutral.png"></label>
-                                    <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="7.5" checked><img src="/images/rate-good.png"></label>
-                                    <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="10"><img src="/images/rate-excellent.png"></label>
-                            </div>
-                        <?php elseif($ratedStatus == QuoteHelper::QUOTE_RATED): ?>
-                            <div class="col-xs-12 col-sm-12 col-md-12">
-                                <h4 class="pull-left"><?php echo Html::encode($retailer['name']) ?>
-                                <?php if ( !empty($retailer['rated'])): ?>
-                                    <img src="<?php echo Helper::getRateImageByRetailerId($retailer['rated']); ?>">
-                                <?php endif; ?>
-                                </h4>
-                            </div>
-                        <?php endif; ?>
-                    </div>
+                    <?php if($ratedStatus != QuoteHelper::QUOTE_RATED): ?>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <h4><?php echo Html::encode($retailer['name']) ?></h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="2.5"><img src="/images/rate-poor.png"></label>
+                                <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="5"><img src="/images/rate-neutral.png"></label>
+                                <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="7.5" checked><img src="/images/rate-good.png"></label>
+                                <label><input type="radio" name="rate_retailer[<?= $retailerId ?>]" value="10"><img src="/images/rate-excellent.png"></label>
+                        </div>
+                    <?php elseif($ratedStatus == QuoteHelper::QUOTE_RATED): ?>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <h4 class="pull-left"><?php echo Html::encode($retailer['name']) ?>
+                            <?php if ( !empty($retailer['rated'])): ?>
+                                <img src="<?php echo Helper::getRateImageByRetailerId($retailer['rated']); ?>">
+                            <?php endif; ?>
+                            </h4>
+                        </div>
+                    <?php endif; ?>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <hr class="fancy-line" />
