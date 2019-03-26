@@ -75,7 +75,7 @@ class HolidaysController extends Controller
             ],
         ];
     }
-
+/*
     public function actionSkienquiry($id, $company_id, $resort_id)
     {
         $instantQuote = TravelQuote::findOne(['id' => $id]);
@@ -121,7 +121,7 @@ class HolidaysController extends Controller
 
         ]);
     }
-
+*/
     /**
      * @param $id integer
      * @return mixed
@@ -312,7 +312,7 @@ class HolidaysController extends Controller
                 $quote = new TravelQuoteCreator();
                 $instantQuote->refresh();
 
-                if($quote->createQuote($instantQuote)){
+                if($quote->createQuote($instantQuote, Yii::$app->params['sendRealQuote'])){
                     return $this->render('sendResults',[
                         'quoteInfo' => $quote->getQuoteTextInfo(),
                         'quoteRetailers' => $quote->getCompaniesWhichSentRequest(),

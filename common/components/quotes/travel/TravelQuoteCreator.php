@@ -17,11 +17,11 @@ use common\components\quotes\travel\eshores\EShoresQuote;
 use common\models\TravelQuote;
 use common\models\QuoteCompany;
 use common\models\Category;
-use common\models\CompanyCountry;
-use common\models\CompanyAirport;
-use common\models\CompanyResort;
-use common\models\CompanyBoardBasis;
-use common\models\CompanyHotelGrade;
+//use common\models\CompanyCountry;
+//use common\models\CompanyAirport;
+//use common\models\CompanyResort;
+//use common\models\CompanyBoardBasis;
+//use common\models\CompanyHotelGrade;
 
 class TravelQuoteCreator extends \yii\base\Component
 {
@@ -34,7 +34,7 @@ class TravelQuoteCreator extends \yii\base\Component
 
     protected $quoteInfo;
 
-    public function createQuote(TravelQuote $quote){
+    public function createQuote(TravelQuote $quote, $sendRealQuote){
         $this->quoteResults = [];
         $this->quoteInfo = [];
 
@@ -44,7 +44,7 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $this->fillQuoteInfo();
 
-        $this->createRemoteQuote();
+        $this->createRemoteQuote($sendRealQuote);
 
         Yii::$app->mailer->compose()
             ->setFrom('enquiry@demosortit.com')
@@ -107,12 +107,12 @@ class TravelQuoteCreator extends \yii\base\Component
         return $companies;
     }
 
-    protected function createRemoteQuote(){
+    protected function createRemoteQuote($sendRealQuote){
         $retailers = $this->quote->retailers;
         foreach($retailers as $retailer){
             // if quote company was selected by user then make an enquiry
             if(array_key_exists($retailer->id, $this->quote->quoteCompanyIDs))
-                $this->createQuoteByCompany($retailer->method_name, $retailer->id);
+                $this->createQuoteByCompany($retailer->method_name, $retailer->id, $sendRealQuote);
         }
 
         // store parsed info in quote
@@ -123,8 +123,8 @@ class TravelQuoteCreator extends \yii\base\Component
      * Create quote for enquiry company
      * @param $methodNameForQuoteCreating
      */
-    protected function createQuoteByCompany($methodNameForQuoteCreating, $companyId){
-        $this->$methodNameForQuoteCreating($companyId);
+    protected function createQuoteByCompany($methodNameForQuoteCreating, $companyId, $sendRealQuote){
+        $this->$methodNameForQuoteCreating($companyId, $sendRealQuote);
     }
 
     public function getQuoteTextInfo()
@@ -193,8 +193,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on DesignTravel site
      */
-    protected function createQuoteDesignTravel($companyId){
-        $quote = new DesignTravelQuote($this->quote, $companyId);
+    protected function createQuoteDesignTravel($companyId, $sendRealQuote){
+        $quote = new DesignTravelQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
@@ -204,8 +204,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on TravelCounsellors site
      */
-    protected function createQuoteTravelCounsellors($companyId){
-        $quote = new TravelCounsellorsQuote($this->quote, $companyId);
+    protected function createQuoteTravelCounsellors($companyId, $sendRealQuote){
+        $quote = new TravelCounsellorsQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
@@ -215,8 +215,8 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on eShores site
      */
-    protected function createQuoteEShores($companyId){
-        $quote = new EShoresQuote($this->quote, $companyId);
+    protected function createQuoteEShores($companyId, $sendRealQuote){
+        $quote = new EShoresQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
@@ -226,24 +226,24 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on SkiKings site
      */
-    protected function createQuoteSkiKings(){
+/*    protected function createQuoteSkiKings(){
         $quote = new SkiKingsQuote($this->quote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
         }
-    }
+    }*/
 
     /*
      * Create remote quote on Quoni site
      */
-    protected function createQuoteQuoni(){
+/*    protected function createQuoteQuoni(){
         $quote = new QuoniQuote($this->quote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
         }
-    }
+    }*/
 
     protected function addResultsToQuote(){
         $this->quote->parsed_results = serialize($this->quoteResults);

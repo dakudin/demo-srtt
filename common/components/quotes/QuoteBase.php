@@ -21,6 +21,11 @@ class QuoteBase extends \yii\base\Component {
     protected $resultPage = '';
     protected $mainPageUrl = '';
 
+    /**
+     * @var bool Set to TRUE for sending quotes to retailers
+     */
+    protected $sendRealQuote = false;
+
     protected $pageGetter;
     protected $logger;
 
@@ -47,10 +52,12 @@ class QuoteBase extends \yii\base\Component {
 
         //send request to service
 //UNCOMMENT FOR SENDING ENQUIRY
-//        if(!$this->sendForm()) return false;
+        if($this->sendRealQuote){
+            if (!$this->sendForm()) return false;
 
-        //parse data and store into database
+            //parse data and store into database
 //        if(!$this->parseForm()) return false;
+        }
 
         return true;
     }

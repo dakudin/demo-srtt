@@ -47,13 +47,15 @@ class EShoresQuote extends TravelQuoteBase
     /**
      * @param TravelQuote $quote
      * @param integer $companyId
+     * @param boolean $sendRealQuote
      */
-    public function __construct(TravelQuote $quote, $companyId){
+    public function __construct(TravelQuote $quote, $companyId, $sendRealQuote){
         $this->companyId = $companyId;
         $this->categoryId = $quote->category_id;
         $this->mainPageUrl = 'https://www.eshores.co.uk/';
         $this->formSenderSDKPath = dirname(__FILE__);
         $this->debug=true;
+        $this->sendRealQuote = $sendRealQuote;
 
         parent::__construct($quote);
     }
