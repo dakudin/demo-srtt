@@ -1,7 +1,6 @@
 <?php
 /**
  * Created by Kudin Dmitry.
- * User: Monk
  * Date: 09.08.2018
  * Time: 14:30
  */
