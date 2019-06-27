@@ -10,7 +10,7 @@ class m190627_120647_add_flightcentre extends Migration
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
-/*
+
         $this->execute('INSERT INTO quote_company SET id=9, image="flight_centre.png", company_name="Flight Centre", method_name="createQuoteFlightCentre", info="Hotels, experiences, car hire, insurance, visa, not to mention finding the right flight... We get it. Planning a holiday can be hard. But that`s where Flight Centre can help. Whether it`s a city break, beach holiday, or dreamy big adventure (to name a few!), we`ll take the hassle out of the organisation, so you can focus on having an amazing time. And it`s our lovely Travel Consultants we have to thank. Pop in-store or give us a bell, and they`ll get to know you, your travel style and your budget to build a unique holiday. They`ll source the best deals and have your back before, during and after your trip. It`s no surprise, then, that we have more 5-star reviews than any other travel agent! Let our friendly people tailor-make it easy."');
 
 
@@ -37,7 +37,7 @@ class m190627_120647_add_flightcentre extends Migration
                 [9,3],
             ]
         );
-*/
+
         $this->batchInsert('quote_company_destination',
             ['id', 'quote_company_id', 'destination_value', 'geo_country', 'geo_country_code', 'geo_city', 'geo_region'],
             [
