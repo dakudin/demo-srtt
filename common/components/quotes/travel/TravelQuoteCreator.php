@@ -11,12 +11,13 @@ use common\components\quotes\travel\designtravel\DesignTravelQuote;
 use common\components\quotes\travel\travelcounsellors\TravelCounsellorsQuote;
 use common\models\TravelQuoteCountry;
 use Yii;
-use common\components\quotes\travel\quoni\QuoniQuote;
-use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
+//use common\components\quotes\travel\quoni\QuoniQuote;
+//use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
 use common\components\quotes\travel\eshores\EShoresQuote;
+use common\components\quotes\travel\flightcentre\FCentreTravelQuote;
 use common\models\TravelQuote;
 use common\models\QuoteCompany;
-use common\models\Category;
+//use common\models\Category;
 //use common\models\CompanyCountry;
 //use common\models\CompanyAirport;
 //use common\models\CompanyResort;
@@ -46,12 +47,14 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $this->createRemoteQuote($sendRealQuote);
 
-        Yii::$app->mailer->compose()
-            ->setFrom('enquiry@demosortit.com')
-//            ->setTo('dakudin@gmail.com')
-            ->setTo('charlie.hollinrake@gmail.com')
-            ->setBcc(['dakudin@gmail.com','belchev2007@gmail.com'])
-            ->setSubject('New enquiry')
+        $email = Yii::$app->mailer->compose()
+            ->setFrom(Yii::$app->params['enquiryEmailSendFrom'])
+            ->setTo(Yii::$app->params['enquiryEmailSendTo']);
+
+        if(!empty(Yii::$app->params['enquiryEmailSendToBcc']))
+            $email->setBcc(Yii::$app->params['enquiryEmailSendToBcc']);
+
+        $email->setSubject('New enquiry')
             ->setTextBody($this->getQuoteMailText())
             ->setHtmlBody($this->getQuoteMailHtml())
             ->send();
@@ -217,6 +220,17 @@ class TravelQuoteCreator extends \yii\base\Component
      */
     protected function createQuoteEShores($companyId, $sendRealQuote){
         $quote = new EShoresQuote($this->quote, $companyId, $sendRealQuote);
+
+        if($quote->MakeQuote()){
+            $this->quoteResults[] = $quote->parsedData;
+        }
+    }
+
+    /*
+     * Create remote quote on FlightCentre site
+     */
+    protected function createQuoteFlightCentre($companyId, $sendRealQuote){
+        $quote = new FCentreTravelQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
