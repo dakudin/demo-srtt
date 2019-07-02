@@ -10,6 +10,7 @@ use yii\helpers\Json;
  *
  * @property integer $id
  * @property string $name
+ * @property string $flightcentre_value // value for Flight Centre
  *
  * @property CompanyAirport[] $companyAirports
  * @property QuoteCompany[] $quoteCompanies
@@ -32,7 +33,7 @@ class DictAirport extends \yii\db\ActiveRecord
     {
         return [
             [['name'], 'required'],
-            [['name'], 'string', 'max' => 50],
+            [['name','flightcentre_value'], 'string', 'max' => 50],
             [['name'], 'unique'],
         ];
     }
@@ -95,6 +96,12 @@ class DictAirport extends \yii\db\ActiveRecord
         }
 
         return $out;
+    }
+
+    public static function getFlightCentreValueByName($name){
+        $model = DictAirport::find()->select('flightcentre_value')->where(['name' => $name])->one();
+
+        return $model->flightcentre_value;
     }
 }
 
