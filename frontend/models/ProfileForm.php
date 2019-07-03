@@ -22,6 +22,7 @@ class ProfileForm extends Model
     const USER_TITLE_MRS = 'Mrs';
     const USER_TITLE_MISS = 'Miss';
     const USER_TITLE_MS = 'Ms';
+    const USER_TITLE_DR = 'Dr';
 
     public $id;
     public $email;
@@ -55,7 +56,7 @@ class ProfileForm extends Model
             ],
 
             [['address_street', 'address_town', 'address_county'], 'string', 'max' => 100],
-            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS]],
+            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS, self::USER_TITLE_DR]],
             ['contact_phone', 'match', 'pattern' => Helper::REGEXP_PHONE],
             ['address_postcode', 'match', 'pattern' => Helper::REGEXP_POSTCODE],
             [['user_first_name', 'user_last_name'], 'string', 'max' => 50],
@@ -122,6 +123,7 @@ class ProfileForm extends Model
             User::USER_TITLE_MRS => User::USER_TITLE_MRS,
             User::USER_TITLE_MISS => User::USER_TITLE_MISS,
             User::USER_TITLE_MS => User::USER_TITLE_MS,
+            User::USER_TITLE_DR => User::USER_TITLE_DR,
         ];
     }
 

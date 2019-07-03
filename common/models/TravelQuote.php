@@ -68,6 +68,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     const USER_TITLE_MRS = 'Mrs';
     const USER_TITLE_MISS = 'Miss';
     const USER_TITLE_MS = 'Ms';
+    const USER_TITLE_DR = 'Dr';
 
     const FLIGHT_ECONOMY = 'economy';
     const FLIGHT_PREMIUM = 'premium';
@@ -165,7 +166,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             [['room', 'quoteCompanyIDs', 'regionIDs', 'countryIDs', 'resortIDs', 'airportIDs', 'boardBasisIDs', 'hotelGradeIDs', 'created_at'], 'safe'],
             [['user_id', 'category_id', 'page_number', 'user_title', 'flight_category', 'user_first_name', 'user_last_name', 'phone', 'email'], 'required'],
             [['airport','country','city', 'address_street', 'address_town', 'address_county'], 'string', 'max' => 100],
-            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS]],
+            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS, self::USER_TITLE_DR]],
             ['flight_category', 'in', 'range' => [self::FLIGHT_ECONOMY, self::FLIGHT_PREMIUM, self::FLIGHT_BUSINESS]],
             ['phone', 'match', 'pattern' => Helper::REGEXP_PHONE],
             [['address_postcode'], 'match', 'pattern' => Helper::REGEXP_POSTCODE],
@@ -620,6 +621,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             self::USER_TITLE_MRS => self::USER_TITLE_MRS,
             self::USER_TITLE_MISS => self::USER_TITLE_MISS,
             self::USER_TITLE_MS => self::USER_TITLE_MS,
+            self::USER_TITLE_DR => self::USER_TITLE_DR,
         ];
     }
 

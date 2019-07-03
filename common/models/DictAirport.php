@@ -101,7 +101,10 @@ class DictAirport extends \yii\db\ActiveRecord
     public static function getFlightCentreValueByName($name){
         $model = DictAirport::find()->select('flightcentre_value')->where(['name' => $name])->one();
 
-        return $model->flightcentre_value;
+        if($model)
+            return $model->flightcentre_value;
+
+        return false;
     }
 }
 

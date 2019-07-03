@@ -47,6 +47,7 @@ class User extends ActiveRecord implements IdentityInterface
     const USER_TITLE_MRS = 'Mrs';
     const USER_TITLE_MISS = 'Miss';
     const USER_TITLE_MS = 'Ms';
+    const USER_TITLE_DR = 'Dr';
 
     /**
      * @inheritdoc
@@ -75,7 +76,7 @@ class User extends ActiveRecord implements IdentityInterface
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
             [['address_street', 'address_town', 'address_county'], 'string', 'max' => 100],
-            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS]],
+            ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS, self::USER_TITLE_DR]],
             ['contact_phone', 'match', 'pattern' => Helper::REGEXP_PHONE],
             [['address_postcode'], 'match', 'pattern' => Helper::REGEXP_POSTCODE],
             [['contact_email'], 'string', 'max' => 255],
