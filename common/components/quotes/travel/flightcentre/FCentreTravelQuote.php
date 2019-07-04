@@ -54,8 +54,8 @@ class FCentreTravelQuote extends TravelQuoteBase
         'brand' => 'FCUK',
         'country' => 'UK',
         'validationTemplate' => 'uk/fc/basicHoneypotValidate.ftl',
-        'failUrl' => '/contact-us/failure',
-        'forwardUrl' => '/contact-us/success',
+        'failUrl' => 'https://www.flightcentre.co.uk/contact-us/failure',
+        'forwardUrl' => 'https://www.flightcentre.co.uk/contact-us/success',
         'productEnquire' => 'no',
         'js' => 'true',
 
