@@ -69,7 +69,7 @@ class FCentreTravelQuote extends TravelQuoteBase
         'cus_title' => '', // user title
         'firstName' => '',  //user first name
         'surname' => '', // user last name
-        'phone' => '', // contact phone '00441234123456'
+        'phone' => '', // contact phone '00447434123456'
         'email' => '', // user email
         'todaysDate' => '', // current date '28/06/2019'
         'pageUrl' => '', //'https://www.flightcentre.co.uk/holidays/australia',
@@ -291,6 +291,7 @@ js: true*/
         $this->formFields['firstName'] = $this->quote->user_first_name;
         $this->formFields['surname'] = $this->quote->user_last_name;
         $this->formFields['email'] = $this->quote->email;
+        $this->formFields['pageUrl'] = static::$enquiryPageUrls[rand(0, count(static::$enquiryPageUrls)-1)];
 
         $this->formFields['quoteText'] = implode(
             "\r\n",
@@ -304,7 +305,7 @@ js: true*/
     }
 
     protected function getSendEnquiryPageUrl(){
-        return $this->formFields['pageUrl'] = static::$enquiryPageUrls[rand(0, count(static::$enquiryPageUrls)-1)];
+        return $this->formFields['pageUrl'];
     }
 
     protected function isFormFilledGood()
