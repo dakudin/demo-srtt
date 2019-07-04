@@ -313,10 +313,15 @@ class HolidaysController extends Controller
                 $instantQuote->refresh();
 
                 if($quote->createQuote($instantQuote, Yii::$app->params['sendRealQuote'])){
-                    return $this->render('sendResults',[
-                        'quoteInfo' => $quote->getQuoteTextInfo(),
-                        'quoteRetailers' => $quote->getCompaniesWhichSentRequest(),
+                    $companies = $quote->getCompaniesWhichSentRequest();
+                    if(empty($companies)){
+                        Yii::$app->session->setFlash('warning', "Unfortunately there is no match with any selected retailers. Please adjust your search and try again!");
+                    }else{
+                        return $this->render('sendResults', [
+                            'quoteInfo' => $quote->getQuoteTextInfo(),
+                            'quoteRetailers' => $companies,
                         ]);
+                    }
                 }
             }
         }

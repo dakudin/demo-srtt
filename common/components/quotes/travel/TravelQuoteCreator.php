@@ -47,30 +47,34 @@ class TravelQuoteCreator extends \yii\base\Component
 
         $this->createRemoteQuote($sendRealQuote);
 
-        $email = Yii::$app->mailer->compose()
-            ->setFrom(Yii::$app->params['enquiryEmailSendFrom'])
-            ->setTo(Yii::$app->params['enquiryEmailSendTo']);
+        // detect companies for which enquiry was sent
+        $companies = $this->getCompaniesWhichSentRequest();
 
-        if(!empty(Yii::$app->params['enquiryEmailSendToBcc']))
-            $email->setBcc(Yii::$app->params['enquiryEmailSendToBcc']);
+        if(!empty($companies)) {
+            $email = Yii::$app->mailer->compose()
+                ->setFrom(Yii::$app->params['enquiryEmailSendFrom'])
+                ->setTo(Yii::$app->params['enquiryEmailSendTo']);
 
-        $email->setSubject('New enquiry')
-            ->setTextBody($this->getQuoteMailText())
-            ->setHtmlBody($this->getQuoteMailHtml())
-            ->send();
+            if (!empty(Yii::$app->params['enquiryEmailSendToBcc']))
+                $email->setBcc(Yii::$app->params['enquiryEmailSendToBcc']);
 
-        $this->sendQuoteInfoToResistant();
+            $email->setSubject('New enquiry')
+                ->setTextBody($this->getQuoteMailText())
+                ->setHtmlBody($this->getQuoteMailHtml())
+                ->send();
+
+            $this->sendQuoteInfoToResistant($companies);
+        }
 
         return true;
     }
 
     /**
      * Send an auto email to go to the resistant
+     * $companies array Companies for which enquiry was sent
      * @return bool
      */
-    protected function sendQuoteInfoToResistant(){
-        $companies = $this->getCompaniesWhichSentRequest();
-
+    protected function sendQuoteInfoToResistant($companies){
         return Yii::$app->mailer->compose(
             ['html' => 'quoteInfoResistant-html', 'text' => 'quoteInfoResistant-text'],
             ['quote' => $this->quote, 'companies' => $companies]

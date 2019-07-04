@@ -251,6 +251,9 @@ js: true*/
     {
         $isValid = false;
 
+        //correct phone number for FC
+        $phone = str_replace(' ()', '', $phone);
+
         // Validate UK landline numbers.
         if (preg_match('/^(01)\d{8}$/', $phone, $matches) === 1){
             $isValid = true;
@@ -263,7 +266,7 @@ js: true*/
         }
 
         // Validate mobile numbers.
-        if (preg_match('/^(?:(?:(?:00\s?|\+)44\s?|0)7(?:[45789]\d{2}|624)\s?\d{3}\s?\d{3})$/', $phone, $matches) === 1){
+        if (preg_match('/^(?:(?:(?:00\s?|\+)44\s?|0)[1235789](?:[45789]\d{2}|624)\s?\d{3}\s?\d{3})$/', $phone, $matches) === 1){
             $isValid = true;
         }
 
