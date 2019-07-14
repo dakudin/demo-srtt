@@ -7,6 +7,7 @@
 
 namespace common\components\quotes\travel;
 
+use common\components\quotes\travel\bestattravel\BestAtTravelQuote;
 use common\components\quotes\travel\designtravel\DesignTravelQuote;
 use common\components\quotes\travel\travelcounsellors\TravelCounsellorsQuote;
 use common\models\TravelQuoteCountry;
@@ -235,6 +236,17 @@ class TravelQuoteCreator extends \yii\base\Component
      */
     protected function createQuoteFlightCentre($companyId, $sendRealQuote){
         $quote = new FCentreTravelQuote($this->quote, $companyId, $sendRealQuote);
+
+        if($quote->MakeQuote()){
+            $this->quoteResults[] = $quote->parsedData;
+        }
+    }
+
+    /*
+     * Create remote quote on BestAtTravel site
+     */
+    protected function createQuoteBestAtTravel($companyId, $sendRealQuote){
+        $quote = new BestAtTravelQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
