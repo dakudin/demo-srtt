@@ -169,10 +169,20 @@ Title=DR&FirstName=John&LastName=Brown&EmailAddress=b4972286%40urhen.com&Telepho
             return false;
         }
 
-        if(!$this->isPageGood($result['Response'], '#Thank you for your travel quote request#', 'Error Page: Didn`t find correct response'))
+        if(!$this->isPageGood($result['Response'], '#\d{5,10}#', 'Error Page: Didn`t find correct response'))
             return false;
 
         $this->resultPage = $result['Response'];
+
+        return true;
+    }
+
+    protected function isPageGood($content, $pattern, $message)
+    {
+        if (!is_numeric($content)) {
+            $this->log($message . "\r\n" . $content);
+            return false;
+        }
 
         return true;
     }

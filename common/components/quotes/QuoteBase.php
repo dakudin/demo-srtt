@@ -100,7 +100,7 @@ class QuoteBase extends \yii\base\Component {
     }
 
     /**
-     * Detecting is remote page was got correct
+     * Detecting is remote page was gotten correct
      *
      * @param  string  $content
      * @param  string  $pattern
