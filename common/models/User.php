@@ -31,6 +31,7 @@ use \common\components\Helper;
  * @property string $address_town
  * @property string $address_county
  * @property string $address_postcode
+ * @property string $best_time2contact
 
  *
  * @property Auth $auths
@@ -81,6 +82,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['address_postcode'], 'match', 'pattern' => Helper::REGEXP_POSTCODE],
             [['contact_email'], 'string', 'max' => 255],
             ['contact_phone', 'string', 'max' => 20],
+            ['best_time2contact', 'string', 'max' => 50],
             ['contact_email', 'email'],
             ['email', 'emailUniqueValidator', 'on'=>'update'],
         ];
@@ -91,7 +93,6 @@ class User extends ActiveRecord implements IdentityInterface
             if(User::find()->where([$attribute=>$this->$attribute])->andWhere(['<>','id',Yii::$app->user->id])){
 
             }
-
         }
     }
 
@@ -108,14 +109,6 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-/*
-         return static::find()
-            ->joinWith('tokens t')
-            ->andWhere(['t.token' => $token])
-            ->andWhere(['>', 't.expired_at', time()])
-            ->one();
-
- */
         return static::find()
             ->joinWith('user_tokens t')
             ->andWhere(['t.access_token' => $token])
@@ -292,14 +285,15 @@ class User extends ActiveRecord implements IdentityInterface
      * @param $address_town
      * @param $address_county
      * @param $address_postcode
+     * @param $best_time2contact
      * @return bool
      */
     public function setProfileInfoForFirstValues($contact_email, $contact_phone, $user_title, $user_first_name,
-        $user_last_name, $address_street, $address_town, $address_county, $address_postcode)
+        $user_last_name, $address_street, $address_town, $address_county, $address_postcode, $best_time2contact)
     {
         $fields = [];
         if(empty($this->contact_email) && empty($this->contact_phone)
-            && empty($this->user_first_name) && empty($this->user_last_name)
+            && empty($this->user_first_name) && empty($this->user_last_name) && empty($this->best_time2contact)
         ){
             $fields = ['contact_email','contact_phone','user_title','user_first_name','user_last_name'];
             $this->contact_email = $contact_email;
@@ -307,6 +301,7 @@ class User extends ActiveRecord implements IdentityInterface
             $this->user_title = $user_title;
             $this->user_first_name = $user_first_name;
             $this->user_last_name = $user_last_name;
+            $this->best_time2contact = $best_time2contact;
         }
 
         if(empty($this->address_street) && empty($this->address_town) && empty($this->address_county)
@@ -338,6 +333,7 @@ class User extends ActiveRecord implements IdentityInterface
             'address_town' => 'address_town',
             'address_county' => 'address_county',
             'address_postcode' => 'address_postcode',
+            'best_time2contact' => 'best_time2contact',
         ];
     }
 }

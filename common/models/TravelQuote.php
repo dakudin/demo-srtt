@@ -36,6 +36,7 @@ use \common\components\Helper;
  * @property string $address_town
  * @property string $address_county
  * @property string $address_postcode
+ * @property string $best_time2contact
  * @property string $budget
  * @property string $country
  * @property string $city
@@ -75,6 +76,7 @@ class TravelQuote extends \yii\db\ActiveRecord
     const FLIGHT_BUSINESS = 'business';
 
     const USER_ADDRESS_FIELD = 'user_address';
+    const USER_BEST_TIME2CONTACT = 'best_time2contact';
 //    const REGION_TEXT_FIELD = 'region';
     const COUNTRY_TEXT_FIELD = 'country';
     const CITY_TEXT_FIELD = 'city';
@@ -135,6 +137,7 @@ class TravelQuote extends \yii\db\ActiveRecord
                 'address_town' => $user->address_town,
                 'address_county' => $user->address_county,
                 'address_postcode' => $user->address_postcode,
+                'best_time2contact' => $user->best_time2contact,
             ]);
         }
     }
@@ -164,7 +167,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             ['duration', 'in', 'range'=> [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42]],
             ['passengers', 'in', 'range'=> [0,1,2,3,4,5,6,7,8]],
             [['room', 'quoteCompanyIDs', 'regionIDs', 'countryIDs', 'resortIDs', 'airportIDs', 'boardBasisIDs', 'hotelGradeIDs', 'created_at'], 'safe'],
-            [['user_id', 'category_id', 'page_number', 'user_title', 'flight_category', 'user_first_name', 'user_last_name', 'phone', 'email'], 'required'],
+            [['user_id', 'category_id', 'page_number', 'user_title', 'flight_category', 'user_first_name', 'user_last_name', 'phone', 'email', 'best_time2contact'], 'required'],
             [['airport','country','city', 'address_street', 'address_town', 'address_county'], 'string', 'max' => 100],
             ['user_title', 'in', 'range' => [self::USER_TITLE_MISS, self::USER_TITLE_MR, self::USER_TITLE_MRS, self::USER_TITLE_MS, self::USER_TITLE_DR]],
             ['flight_category', 'in', 'range' => [self::FLIGHT_ECONOMY, self::FLIGHT_PREMIUM, self::FLIGHT_BUSINESS]],
@@ -172,6 +175,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             [['address_postcode'], 'match', 'pattern' => Helper::REGEXP_POSTCODE],
             [['email'], 'string', 'max' => 255],
             ['phone', 'string', 'max' => 20],
+            ['best_time2contact', 'string', 'max' => 50],
             ['budget', 'string', 'max' => 120],
             ['email', 'email'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => EnquiryCategory::className(), 'targetAttribute' => ['category_id' => 'id']],
@@ -213,6 +217,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             'address_postcode' => 'Postcode',
             'budget' => 'Total Budget (approx.)',
             'created_at' => 'Created at',
+            'best_time2contact' => 'Best time to contact you',
         ];
     }
 
@@ -245,7 +250,8 @@ class TravelQuote extends \yii\db\ActiveRecord
         }
 
         $this->user->setProfileInfoForFirstValues($this->email, $this->phone, $this->user_title, $this->user_first_name,
-            $this->user_last_name, $this->address_street, $this->address_town, $this->address_county, $this->address_postcode
+            $this->user_last_name, $this->address_street, $this->address_town, $this->address_county, $this->address_postcode,
+            $this->best_time2contact
         );
 
         $this->fillRoomInfo();
@@ -645,6 +651,14 @@ class TravelQuote extends \yii\db\ActiveRecord
     /**
      * @return string
      */
+    protected function getQuoteUserBestTimeToContact()
+    {
+        return 'Best time to contact me: ' . $this->best_time2contact;
+    }
+
+    /**
+     * @return string
+     */
     protected function getQuoteUserAddress()
     {
         // address
@@ -858,6 +872,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             self::TOTAL_BUDGET_TEXT_FIELD,
             self::ROOMS_TEXT_FIELD,
             self::DETAIL_TEXT_FIELD,
+            self::USER_BEST_TIME2CONTACT,
         ]);
     }
 
@@ -900,11 +915,12 @@ class TravelQuote extends \yii\db\ActiveRecord
                 case self::USER_ADDRESS_FIELD :
                     $quoteInfo[] = $this->getQuoteUserAddress();
                     break;
+                case self::USER_BEST_TIME2CONTACT :
+                    $quoteInfo[] = $this->getQuoteUserBestTimeToContact();
+                    break;
             }
         }
 
         return $quoteInfo;
     }
-
-
 }

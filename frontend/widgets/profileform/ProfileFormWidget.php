@@ -31,6 +31,7 @@ class ProfileFormWidget extends Widget {
             $model->user_title = $user->user_title;
             $model->user_first_name = $user->user_first_name;
             $model->user_last_name = $user->user_last_name;
+            $model->best_time2contact = $user->best_time2contact;
             $model->address_street = $user->address_street;
             $model->address_town = $user->address_town;
             $model->address_county = $user->address_county;

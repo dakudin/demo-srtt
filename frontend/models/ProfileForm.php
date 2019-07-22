@@ -32,6 +32,7 @@ class ProfileForm extends Model
     public $user_title;
     public $user_first_name;
     public $user_last_name;
+    public $best_time2contact;
     public $address_street;
     public $address_town;
     public $address_county;
@@ -62,6 +63,7 @@ class ProfileForm extends Model
             [['user_first_name', 'user_last_name'], 'string', 'max' => 50],
             ['contact_email', 'string', 'max' => 255],
             ['contact_phone', 'string', 'max' => 20],
+            ['best_time2contact', 'string', 'max' => 50],
             ['contact_email', 'email'],
         ];
     }
@@ -81,6 +83,7 @@ class ProfileForm extends Model
             'address_town' => 'Town',
             'address_county' => 'County',
             'address_postcode' => 'Postcode',
+            'best_time2contact' => 'Best time to contact you',
         ];
     }
 
@@ -105,6 +108,7 @@ class ProfileForm extends Model
         $user->user_title = $this->user_title;
         $user->user_first_name = $this->user_first_name;
         $user->user_last_name = $this->user_last_name;
+        $user->best_time2contact = $this->best_time2contact;
         $user->address_street = $this->address_street;
         $user->address_town = $this->address_town;
         $user->address_county = $this->address_county;

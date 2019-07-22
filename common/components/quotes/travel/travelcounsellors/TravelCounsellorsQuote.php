@@ -69,6 +69,7 @@ class TravelCounsellorsQuote extends TravelQuoteBase
                 TravelQuote::TOTAL_BUDGET_TEXT_FIELD,
                 TravelQuote::ROOMS_TEXT_FIELD,
                 TravelQuote::DETAIL_TEXT_FIELD,
+                TravelQuote::USER_BEST_TIME2CONTACT,
             ])
         );
 

@@ -128,6 +128,7 @@ class EShoresQuote extends TravelQuoteBase
                 TravelQuote::DURATION_TEXT_FIELD ,
                 TravelQuote::TOTAL_BUDGET_TEXT_FIELD,
                 TravelQuote::DETAIL_TEXT_FIELD,
+                TravelQuote::USER_BEST_TIME2CONTACT,
             ])
         );
 

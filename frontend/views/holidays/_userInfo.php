@@ -40,10 +40,17 @@
     ]);
 
     echo $form->field($model, 'phone', [
-        'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12'],
+        'options' => ['class' => 'col-xs-12 col-sm-12 col-md-6'],
     ])->textInput([
         'pattern' => trim(\common\components\Helper::REGEXP_PHONE, '/'),
         'id' => 'user-phone',
+    ]);
+
+    echo $form->field($model, 'best_time2contact', [
+        'options' => ['class' => 'col-xs-12 col-sm-12 col-md-6'],
+    ])->textInput([
+        'id' => 'user-best_time2contact',
+        'placeholder' => 'Enter date and/or time',
     ]);
 ?>
         </div>

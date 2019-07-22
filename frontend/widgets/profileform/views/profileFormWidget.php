@@ -79,6 +79,10 @@ Modal::begin([
         ])->textInput([
             'pattern' => trim(\common\components\Helper::REGEXP_PHONE, '/'),
         ]);
+
+        echo $form->field($model, 'best_time2contact', [
+            'options' => ['class' => 'col-xs-12 col-sm-12 col-md-12'],
+        ])->textInput(['placeholder' => 'Enter date and/or time']);
     ?>
             </div>
         </div>

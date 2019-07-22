@@ -11,6 +11,7 @@ use yii\helpers\Json;
  * @property integer $id
  * @property string $name
  * @property string $flightcentre_value // value for Flight Centre
+ * @property string $bestattravel_value // value for Best At Travel
  *
  * @property CompanyAirport[] $companyAirports
  * @property QuoteCompany[] $quoteCompanies
@@ -34,6 +35,7 @@ class DictAirport extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['name','flightcentre_value'], 'string', 'max' => 50],
+            ['bestattravel_value', 'string', 'max' => 3],
             [['name'], 'unique'],
         ];
     }
@@ -103,6 +105,15 @@ class DictAirport extends \yii\db\ActiveRecord
 
         if($model)
             return $model->flightcentre_value;
+
+        return false;
+    }
+
+    public static function getBestAtTravelValueByName($name){
+        $model = DictAirport::find()->select('bestattravel_value')->where(['name' => $name])->one();
+
+        if($model)
+            return $model->bestattravel_value;
 
         return false;
     }

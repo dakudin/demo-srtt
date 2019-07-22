@@ -301,6 +301,7 @@ js: true*/
             $this->quote->getQuoteInfoByFields([
                 TravelQuote::TOTAL_BUDGET_TEXT_FIELD,
                 TravelQuote::DETAIL_TEXT_FIELD,
+                TravelQuote::USER_BEST_TIME2CONTACT,
             ])
         );
 

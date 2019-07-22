@@ -144,10 +144,10 @@ class PageGetter
             $this->header[] = 'Content-Length: ' . strlen($params);
         }
 
-//        Yii::error($this->header);
-//        Yii::error("Params - " . PHP_EOL . $params);
+        Yii::error($this->header);
+        Yii::error("Params - " . PHP_EOL . $params);
 //        $rawResponse = '<p> Thank you for your enquiry, please note:</p>';
-
+die;
         $curlSession = curl_init($url . ($method == 'GET' && $params ? '?' . $params : ''));
 
         curl_setopt($curlSession, CURLOPT_FOLLOWLOCATION, true);
