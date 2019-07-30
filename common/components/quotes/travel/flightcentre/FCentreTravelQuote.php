@@ -106,7 +106,7 @@ class FCentreTravelQuote extends TravelQuoteBase
             return false;
         }
 
-        if(!$this->isPageGood($result['Response'], '#Thank you for your travel quote request#', 'Error Page: Didn`t find correct response'))
+        if(!$this->isPageGood($result['Response'], '#A consultant will contact you#', 'Error Page: Didn`t find correct response'))
             return false;
 
         $this->resultPage = $result['Response'];
@@ -159,7 +159,7 @@ productEnquire: no
 js: true*/
 
 //SUCCESSFUL RESULT CONTAIN
-//<h3>Thank you for your travel quote request</h3>
+//A consultant will contact you
 
     /**
      */
