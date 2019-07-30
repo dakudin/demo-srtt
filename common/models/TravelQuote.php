@@ -813,7 +813,9 @@ class TravelQuote extends \yii\db\ActiveRecord
             $roomNumber++;
             $message .= 'Room ' . $roomNumber . ' (Adults: ' . $room['adult'];
             if ($room['child'] > 0) {
-                $message .= ', Children: ' . $room['child'] . ' ages(' . implode($room['childage'], ', ') . ')';
+                $message .= ', Children: ' . $room['child'];
+                if(isset($room['childage']))
+                    $message .= ' ages(' . implode($room['childage'], ', ') . ')';
             }
             $message .= '); ';
         }
@@ -839,8 +841,10 @@ class TravelQuote extends \yii\db\ActiveRecord
 
             if ($room['child'] > 0) {
                 $result['childrenCount'] += (int)$room['child'];
-                foreach($room['childage'] as $age)
-                    $result['childAges'][] = (int)$age;
+                if(isset($room['childage'])) {
+                    foreach ($room['childage'] as $age)
+                        $result['childAges'][] = (int)$age;
+                }
             }
         }
 

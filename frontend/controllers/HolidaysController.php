@@ -311,7 +311,6 @@ class HolidaysController extends Controller
 
                 $quote = new TravelQuoteCreator();
                 $instantQuote->refresh();
-
                 if($quote->createQuote($instantQuote, Yii::$app->params['sendRealQuote'])){
                     $companies = $quote->getCompaniesWhichSentRequest();
                     if(empty($companies)){
