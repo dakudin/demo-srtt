@@ -38,6 +38,7 @@ function storeTravelFields()
     localStorage.setItem("userLastName", $('#user-last-name').val());
     localStorage.setItem("userEmail", $('#user-email').val());
     localStorage.setItem("userPhone", $('#user-phone').val());
+    localStorage.setItem("userBestTime2Contact", $('#user-best_time2contact').val());
 
     localStorage.setItem("userAddressStreet", $('#user-address-street').val());
     localStorage.setItem("userAddressTown", $('#user-address-town').val());
@@ -81,6 +82,7 @@ function restoreTravelFields()
     $('#user-last-name').val(localStorage.getItem("userLastName"));
     $('#user-email').val(localStorage.getItem("userEmail"));
     $('#user-phone').val(localStorage.getItem("userPhone"));
+    $('#user-best_time2contact').val(localStorage.getItem("userBestTime2Contact"));
 
     $('#user-address-street').val(localStorage.getItem("userAddressStreet"));
     $('#user-address-town').val(localStorage.getItem("userAddressTown"));
@@ -121,7 +123,6 @@ function restoreTravelFields()
     }
 
     $("#acceptConfirm1").prop('checked',true);
-    $("#acceptConfirm2").prop('checked',true);
 
     //submit form after authorization
     if(!$("#login-modal").length) {
