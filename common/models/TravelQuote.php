@@ -200,7 +200,7 @@ class TravelQuote extends \yii\db\ActiveRecord
             'countryIDs' => 'Country',
             'country' => 'Country',
             'city' => 'Region / City',
-            'airport' => 'Airport',
+            'airport' => 'Departure Airport',
             'resortIDs' => 'Resort',
             'airportIDs' => 'Airport',
             'flight_category' => 'Flight category',
