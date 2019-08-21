@@ -58,10 +58,12 @@ use common\models\CompanyRating;
                     <?php
                         echo IosStyleSwitch::widget([
                             'type' => IosStyleSwitch::CHECKBOX,
+                            'id' => 'quoteCompanyIDs' . $retailer['id'],
                             'name' => 'TravelQuote[quoteCompanyIDs][' . $retailer['id'] .']',
                             'value' => 1,
                             'onTurnOn' => 'quoteChangeHandler();',
                             'onTurnOff' => 'quoteChangeHandler();',
+                            'options' => ['data-retailer' => $retailer['id']],
                         ]);
                     ?>
                  </div>

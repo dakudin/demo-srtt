@@ -72,18 +72,17 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'auth' => [
-                'class' => 'common\components\SocialAuthAction', //'yii\authclient\AuthAction',
+/*            'auth' => [
+                'class' => 'common\components\SocialAuthAction',
                 'successCallback' => [$this, 'onAuthSuccess'],
-//                'successUrl' => Yii::$app->request->referrer, //\yii\helpers\Url::to(['holidays/ski']),
-            ],
+            ],*/
         ];
     }
 
-    public function onAuthSuccess($client)
+/*    public function onAuthSuccess($client)
     {
         (new AuthHandler($client))->handle();
-    }
+    }*/
 
     /**
      * Displays homepage.
@@ -93,7 +92,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return self::actionCategories(EnquiryCategory::find()->roots()->all());
-//		return $this->render('index');
     }
 
 
@@ -342,31 +340,6 @@ class SiteController extends Controller
     {
         return $this->render('requestResult');
     }*/
-
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-/*
-    public function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
-
-                return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-*/
 
     public function actionValidatePasswordResetForm() {
         $request = \Yii::$app->getRequest();

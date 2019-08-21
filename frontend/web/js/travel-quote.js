@@ -45,6 +45,15 @@ function storeTravelFields()
     localStorage.setItem("userAddressCounty", $('#user-address-county').val());
     localStorage.setItem("userAddressPostcode", $('#user-address-postcode').val());
 
+    var retailers = {};
+    $('.m_switch_check').each(function(i,elem){
+        var retailerId = $(elem).attr('data-retailer');
+        if (!isNaN(retailerId) && $(elem).prop('checked')) {
+            retailers[retailerId] = true;
+        }
+    });
+    localStorage.setItem("retailers", JSON.stringify(retailers));
+
     localStorage.setItem("roomCount", roomCount);
     localStorage.setItem("childAgeCount", childAgeCount);
 
@@ -89,6 +98,18 @@ function restoreTravelFields()
     $('#user-address-county').val(localStorage.getItem("userAddressCounty"));
     $('#user-address-postcode').val(localStorage.getItem("userAddressPostcode"));
 
+    var retailers = JSON.parse(localStorage.getItem("retailers"));
+    $('.m_switch_check').each(function(i,elem){
+        var retailerId = $(elem).attr('data-retailer');
+        if(retailerId in retailers){
+            $.mSwitch.turnOn($(elem));
+            $(elem).val(1);
+        }else{
+            $.mSwitch.turnOff($(elem));
+            $(elem).val(0);
+        }
+    });
+
     var prevRoomCount = localStorage.getItem("roomCount");
     var prevChildAgeCount = localStorage.getItem("childAgeCount");
 
@@ -126,8 +147,7 @@ function restoreTravelFields()
 
     //submit form after authorization
     if(!$("#login-modal").length) {
-        $("#btn-show-retailers").click();
-//        $('.quote-form').submit();
+        $('.quote-form').submit();
     }
 
 }

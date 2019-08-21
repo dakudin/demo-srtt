@@ -31,8 +31,8 @@ use yii\helpers\Html;
 
     <ul class="nav navbar-nav navbar-left">
         <?php if (Yii::$app->user->isGuest){ ?>
-            <li><a href="#" data-toggle="modal" data-target="#signup-modal">Signup</a></li>
-            <li><a href="#" data-toggle="modal" data-target="#login-modal">Sign in</a></li>
+            <li><?php echo Html::a('Register', '#', ['onClick' => '$(".nav-tabs a[href=\'#tab_register\']").tab("show"); $("#login-modal").modal("show")']); ?></li>
+            <li><?php echo Html::a('Sign in', '#', ['onClick' => '$(".nav-tabs a[href=\'#tab_signin\']").tab("show"); $("#login-modal").modal("show")']); ?></li>
         <?php } else { ?>
                 <li><a href="<?= \yii\helpers\Url::to(['/site/history-quotes']) ?>">My quotes</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#profile-modal">Profile</a></li>
