@@ -147,6 +147,7 @@ function restoreTravelFields()
 
     //submit form after authorization
     if(!$("#login-modal").length) {
+        localStorage.clear();
         $('.quote-form').submit();
     }
 
