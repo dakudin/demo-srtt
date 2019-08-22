@@ -355,6 +355,8 @@ function formBeforeSubmitHandler()
     {
         if($("#login-modal").length){
             storeTravelFields();
+            $('#loginform-email').val(localStorage.getItem("userEmail"));
+            $('#signupform-email').val(localStorage.getItem("userEmail"));
             $("#login-modal").modal("show");
             return false;
         }else {
