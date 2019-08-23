@@ -148,6 +148,7 @@ function restoreTravelFields()
     //submit form after authorization
     if(!$("#login-modal").length) {
         localStorage.clear();
+        $("#btn-show-retailers").click();
         $('.quote-form').submit();
     }
 
