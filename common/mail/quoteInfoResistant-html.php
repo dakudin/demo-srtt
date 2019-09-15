@@ -9,7 +9,7 @@ use yii\helpers\Html;
     <p>Dear <?= Html::encode($quote->getUserFullName()) ?></p>
     <p></p>
 
-    <p>Thank you for using Sortit.com. We have sent you enquiry to the following suppliers:</p>
+    <p>Thank you for using Sortit.com. We have sent your enquiry to the following suppliers:</p>
     <p></p>
 
     <p>

@@ -7,7 +7,7 @@
 ?>
 Dear <?= $quote->getUserFullName() ?>
 
-Thank you for using Sortit.com. We have sent you enquiry to the following suppliers:
+Thank you for using Sortit.com. We have sent your enquiry to the following suppliers:
 
 <?php
     foreach($companies as $company){
