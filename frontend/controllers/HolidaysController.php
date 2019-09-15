@@ -304,9 +304,7 @@ class HolidaysController extends Controller
 //        $instantQuote->fillDictionaryIDs($companyCountries);
 
         if($instantQuote->load(Yii::$app->request->post()) && $instantQuote->validate()){
-
             if($instantQuote->save()){
-
                 FHelper::setRequestQuoteAgreementCookies();
 
                 $quote = new TravelQuoteCreator();

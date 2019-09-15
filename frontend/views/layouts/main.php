@@ -9,8 +9,9 @@
 //use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use frontend\widgets\LoginFormWidget;
-use frontend\widgets\SignupFormWidget;
+//use frontend\widgets\LoginFormWidget;
+//use frontend\widgets\SignupFormWidget;
+use frontend\widgets\SignInUpFormWidget;
 use frontend\widgets\restorepasswordform\RestorePasswordFormWidget;
 use frontend\widgets\profileform\ProfileFormWidget;
 use frontend\widgets\cookieconsent\CookieConsentWidget;
@@ -47,8 +48,9 @@ $this->beginPage(); ?>
 
     <?php
         if(Yii::$app->user->isGuest){
-            echo SignupFormWidget::widget([]);
-            echo LoginFormWidget::widget([]);
+            echo SignInUpFormWidget::widget([]);
+//            echo SignupFormWidget::widget([]);
+//            echo LoginFormWidget::widget([]);
             echo RestorePasswordFormWidget::widget([]);
         }else {
             echo ProfileFormWidget::widget([]);
