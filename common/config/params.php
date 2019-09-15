@@ -2,11 +2,11 @@
 return [
     'adminEmail' => 'dakudin@gmail.com',
     'supportEmail' => 'support@sortit.com',
-    'dummySupportEmail' => 'support@demosortit.com',
+    'dummySupportEmail' => 'support@sortit.com',
     'user.passwordResetTokenExpire' => 3600,
-    'sendRealQuote' => false, // set to true for sending quotes to real retailers
+    'sendRealQuote' => true, // set to true for sending quotes to real retailers
 
-    'enquiryEmailSendFrom' => 'enquiry@demosortit.com',
+    'enquiryEmailSendFrom' => 'enquiry@sortit.com',
     'enquiryEmailSendTo' => 'charlie.hollinrake@gmail.com',
     'enquiryEmailSendToBcc' => ['dakudin@gmail.com','belchev2007@gmail.com'],
 ];
