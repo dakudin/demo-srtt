@@ -5,6 +5,10 @@ $codesofpractice_url = '#';
 $acceptableusepolicy_url = '#';
 $urlTermsOfUseUpdates = '#';
 
+$this->title = 'Terms of use - Sortit';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Get information about Sortit.com terms of use here.'], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+
 ?>
 <div class="application__section application__section_width_small application__section_content_text">
 	<div class="application__section-wrapper">
@@ -64,7 +68,7 @@ $urlTermsOfUseUpdates = '#';
 			</li>
 			<li>
 				Our <a target="codesOfPractice">
-				Codes of Practice including Service Level Conditions &amp; and Best Practice</a>.
+				Codes of Practice including Service Level Conditions &amp; Best Practice</a>.
 			</li>
 		</ul>
 		<h2 class="title title_padding_t">Information about us</h2>

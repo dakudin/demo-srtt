@@ -1,12 +1,21 @@
 <?php
 /* @var $this yii\web\View */
+/* @var $isHomePage boolean */
 /* @var $category common\models\EnquiryCategory|null */
 /* @var $categories array of common\models\EnquiryCategory */
 /* @var $showBreadcrumbs boolean */
 
     use common\models\EnquiryCategory;
 
-    $this->title = 'The Quote Engine';
+    if($isHomePage){
+        $this->title = 'The Quote Engine - Sortit';
+        $this->registerMetaTag(['name' => 'description', 'content' => 'Quote Engine sends your requirements to trusted, reviewed, hand-picked providers who we believe will offer great deals and solutions for whatever you need - Sortit.com'], 'description');
+        $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit, quote engine, search engine'], 'keywords');
+    }elseif($category instanceof EnquiryCategory){
+        $this->title = $category->seo_title;
+        $this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
+        $this->registerMetaTag(['name' => 'keywords', 'content' => $category->seo_keyword], 'keywords');
+    }
 
     if($showBreadcrumbs && ($category instanceof EnquiryCategory)){
         $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category, false);

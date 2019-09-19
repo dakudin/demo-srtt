@@ -10,7 +10,10 @@ $this->registerJsFile(
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
-$this->title = $category->name . ' Quote';
+$this->title = $category->seo_title;
+$this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => $category->seo_keyword], 'keywords');
+
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
 ?>

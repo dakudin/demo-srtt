@@ -99,6 +99,7 @@ class SiteController extends Controller
     {
         return $this->render('categories',
             [
+                'isHomePage' => is_null($category),
                 'showBreadcrumbs' => !$is_top_level,
                 'category' => $category,
                 'categories' => $categories

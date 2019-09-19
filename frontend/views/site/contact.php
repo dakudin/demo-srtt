@@ -8,7 +8,11 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact us';
+$this->title = 'Contact us - Sortit';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Contact us for more information about business inquiries or other questions.'], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+
+
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">

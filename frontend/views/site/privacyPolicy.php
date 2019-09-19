@@ -1,6 +1,11 @@
 <?php
 $termsofuse_url = Yii::$app->urlManager->createAbsoluteUrl('terms-of-use');
 $cookiepolicy_url = Yii::$app->urlManager->createAbsoluteUrl('cookie-policy');
+
+$this->title = 'Privacy policy - Sortit';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Get information about Sortit.com privacy policy here.'], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+
 ?>
 <div class="application__section application__section_width_small application__section_content_text">
 	<div class="application__section-wrapper">

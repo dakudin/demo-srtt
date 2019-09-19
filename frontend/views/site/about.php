@@ -4,7 +4,9 @@
 
 use yii\helpers\Html;
 
-$this->title = 'About us';
+$this->title = 'About us - Sortit';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Find out more about Sortit.com and our company here.'], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'about Sortit'], 'keywords');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-about">
