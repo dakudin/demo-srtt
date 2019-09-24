@@ -29,14 +29,16 @@ $this->beginPage(); ?>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <?php echo $this->render('_gtm_head'); ?>
+    <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
     <script>
         <?php if (Yii::$app->user->isGuest): ?>window.isGuest = true;<?php endif; ?>
     </script>
 </head>
 <body>
+<?php echo $this->render('_gtm_body'); ?>
 <?php $this->beginBody() ?>
 
 <div class="global-container">
