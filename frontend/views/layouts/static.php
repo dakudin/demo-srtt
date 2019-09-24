@@ -9,6 +9,7 @@ use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use frontend\assets\AppAsset;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 
@@ -27,6 +28,7 @@ $this->beginPage(); ?>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <?php echo $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]); ?>
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -44,6 +46,7 @@ $this->beginPage(); ?>
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'activeItemTemplate' => "<!--noindex--><li class=\"active\">{link}</li><!--/noindex-->\n",
             ]) ?>
             <?= Alert::widget() ?>
             <?= $content ?>

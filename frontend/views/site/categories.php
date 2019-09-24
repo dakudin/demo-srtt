@@ -5,12 +5,14 @@
 /* @var $categories array of common\models\EnquiryCategory */
 /* @var $showBreadcrumbs boolean */
 
-    use common\models\EnquiryCategory;
+use common\models\EnquiryCategory;
+use yii\helpers\Url;
 
     if($isHomePage){
         $this->title = 'The Quote Engine - Sortit';
-        $this->registerMetaTag(['name' => 'description', 'content' => 'Quote Engine sends your requirements to trusted, reviewed, hand-picked providers who we believe will offer great deals and solutions for whatever you need - Sortit.com'], 'description');
+        $this->registerMetaTag(['name' => 'description', 'content' => 'Quote Engine sends requirements to trusted, reviewed, hand-picked providers who we believe will offer great deals and solutions for whatever you need - Sortit.com'], 'description');
         $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit, quote engine, search engine'], 'keywords');
+        $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
     }elseif($category instanceof EnquiryCategory){
         $this->title = $category->seo_title;
         $this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
@@ -19,6 +21,7 @@
 
     if($showBreadcrumbs && ($category instanceof EnquiryCategory)){
         $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category, false);
+        $this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo], 'canonical');
     }
 
 ?>

@@ -4,19 +4,19 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
 
-use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 $this->title = 'Contact us - Sortit';
 $this->registerMetaTag(['name' => 'description', 'content' => 'Contact us for more information about business inquiries or other questions.'], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
 
-
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = 'Contact us';
 ?>
 <div class="site-contact">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="title">Contact us</h1>
 
     <p>
         If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
@@ -42,6 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-xs-12 text-center">
                         <button type="submit" name="contact-button" class="btn-form btn btn-primary">
                             <span class="default">Submit</span>
+                            </button>
                     </div>
                 </div>
 

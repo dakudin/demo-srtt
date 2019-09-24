@@ -5,12 +5,8 @@
 /* @var $termsofuse_url string */
 /* @var $privacy_police_url string */
 
-//use yii\bootstrap\Nav;
-//use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\helpers\Url;
-//use frontend\widgets\LoginFormWidget;
-//use frontend\widgets\SignupFormWidget;
 use frontend\widgets\SignInUpFormWidget;
 use frontend\widgets\restorepasswordform\RestorePasswordFormWidget;
 use frontend\widgets\profileform\ProfileFormWidget;
@@ -49,8 +45,6 @@ $this->beginPage(); ?>
     <?php
         if(Yii::$app->user->isGuest){
             echo SignInUpFormWidget::widget([]);
-//            echo SignupFormWidget::widget([]);
-//            echo LoginFormWidget::widget([]);
             echo RestorePasswordFormWidget::widget([]);
         }else {
             echo ProfileFormWidget::widget([]);
@@ -74,49 +68,6 @@ $this->beginPage(); ?>
     ?>
 
     <div class="wrap">
-        <?php
-
-/*
-        NavBar::begin([
-//            'brandLabel' => 'SortIt', //
-            'brandLabel' => '<img src="/images/sortit.png" alt="SortIt" class="logo">', //
-            'brandUrl' => Yii::$app->homeUrl,
-            'brandOptions' => [
-//                'style' => 'padding: 0 0 0 50px'
-            ],
-
-            'options' => [
-                'class' => 'navbar navbar-fixed-top container-fluid', //navbar navbar-static-top
-    //			'style' => 'background-color: #337ab7'
-            ],
-        ]);
-
-        $menuItems = [
-            ['label' => 'Conveyancing', 'url' => ['/quotes/index']],
-        ];
-
-        if (Yii::$app->user->isGuest) {
-            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-        } else {
-            $menuItems[] = '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>';
-        }
-
-        echo Nav::widget([
-//            'options' => ['class' => 'navbar-nav navbar-right'],
-            'items' => $menuItems,
-        ]);
-
-        NavBar::end();
-*/
-        ?>
         <nav class="navbar navbar-default" role="navigation" id="navbar-header">
             <?php echo $this->render('_header') ?>
         </nav>
@@ -124,6 +75,7 @@ $this->beginPage(); ?>
         <div class="container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                'activeItemTemplate' => "<!--noindex--><li class=\"active\">{link}</li><!--/noindex-->\n",
             ]) ?>
             <?= Alert::widget() ?>
             <?= $content ?>

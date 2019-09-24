@@ -2,15 +2,17 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'About us - Sortit';
 $this->registerMetaTag(['name' => 'description', 'content' => 'Find out more about Sortit.com and our company here.'], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => 'about Sortit'], 'keywords');
-$this->params['breadcrumbs'][] = $this->title;
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
+
+$this->params['breadcrumbs'][] = 'About us';
 ?>
 <div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1 class="title">About us</h1>
 
     <p>
         Tired of searching for hours to find what you want? Sortit.com can do all the hard work for you. We are

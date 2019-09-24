@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Html;
+$isHomePage = ((Yii::$app->controller->id === Yii::$app->defaultRoute) && (Yii::$app->controller->action->id === Yii::$app->controller->defaultAction)) ? true : false;
 ?>
 <!-- Brand and toggle get grouped for better mobile display -->
 <div class="navbar-header">
@@ -18,7 +19,7 @@ use yii\helpers\Html;
     }
     ?>
 </div>
-<a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>">
+<a class="navbar-brand" href="<?= Yii::$app->homeUrl; ?>" <?= $isHomePage ? 'rel="nofollow"' : '' ?>>
     <img src="/images/sortit.png" alt="SortIt" class="logo">
 </a>
 <!-- Collect the nav links, forms, and other content for toggling -->

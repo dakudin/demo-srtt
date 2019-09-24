@@ -5,6 +5,8 @@
 /* @var $category common\models\EnquiryCategory */
 /* @var $form yii\bootstrap\ActiveForm */
 
+use yii\helpers\Url;
+
 $this->registerJsFile(
     '@web/js/travel-quote.js?v=0.14',
     ['depends' => [\yii\web\JqueryAsset::className()]]
@@ -13,6 +15,7 @@ $this->registerJsFile(
 $this->title = $category->seo_title;
 $this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => $category->seo_keyword], 'keywords');
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
 
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);

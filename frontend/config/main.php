@@ -48,17 +48,25 @@ return [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => true,
+            'suffix' => '',
+            'normalizer' => [
+                'class' => 'yii\web\UrlNormalizer',
+                'collapseSlashes' => true,
+                'normalizeTrailingSlash' => true,
+                // use temporary redirection instead of permanent for debugging
+                //'action' => yii\web\UrlNormalizer::ACTION_REDIRECT_TEMPORARY,
+            ],
             'rules' => [
 				'/' => 'site/index',
+                '<action:(about|contact|terms-of-use|privacy-policy)>' => 'site/<action>',
 //                'catchAll' => ['site/offline'], // for maintenance mode
                 'rate-retailers/<category_alias>/<quote_id:\d+>' => 'site/rate-retailers',
 //                'auth' => 'site/auth',
 //				'request-filledin' => 'site/quoteprefilled',
-//				'<action:\w+ >' => '<action>',
                 [
                     'class' => 'common\components\EnquiryCategoryUrlRule',
                 ],
-                '<action:[\w\-]+>' => 'site/<action>',
            ],
         ],
     ],
