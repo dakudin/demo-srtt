@@ -7,6 +7,7 @@
 
 use common\models\EnquiryCategory;
 use yii\helpers\Url;
+use yii\helpers\Html;
 
     if($isHomePage){
         $this->title = 'The Quote Engine - Sortit';
@@ -45,7 +46,7 @@ use yii\helpers\Url;
             ?>
                     <div class="category-thumb-center col-xs-4 col-md-4">
                         <div class="thumbnail" style="height: 100%; width: 100%; display: block;">
-                            <img src="/images/category/icon.png">
+                            <img src="/images/category/the-quote-engine.png">
                         </div>
                     </div>
             <?php
@@ -55,7 +56,7 @@ use yii\helpers\Url;
 
                 <div class="category-thumb col-xs-4 col-md-4">
                     <a href="<?= \yii\helpers\Url::to(['enquiry/index', 'category' => $category->alias]) ?>" class="thumbnail" style="height: 100%; width: 100%; display: block;">
-                        <img src="<?= $category->getImageUrl(); ?>">
+                        <img src="<?= $category->getImageUrl(); ?>" alt="<?= Html::encode($category->name); ?>">
                     </a>
                 </div>
 

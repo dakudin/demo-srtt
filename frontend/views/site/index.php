@@ -35,7 +35,7 @@ $this->title = 'The Quote Engine';
 			</div>
 			<div class="category-thumb-center col-xs-4 col-md-4">
 				<div class="thumbnail" style="height: 100%; width: 100%; display: block;">
-					<img src="/images/category/icon.png">
+					<img src="/images/category/the-quote-engine.png">
 				</div>
 			</div>
 			<div class="category-thumb col-xs-4 col-md-4">
