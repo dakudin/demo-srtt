@@ -59,7 +59,7 @@ return [
             ],
             'rules' => [
 				'/' => 'site/index',
-                '<action:(about|contact|terms-of-use|privacy-policy|cookie-policy|ajax-login|ajaxsignup|ajax-request-password-reset|validate-password-reset-form|reset-password|history-quotes)>' => 'site/<action>',
+                '<action:(about|contact|terms-of-use|privacy-policy|cookie-policy|ajax-login|ajaxsignup|ajax-request-password-reset|validate-password-reset-form|reset-password|history-quotes|logout)>' => 'site/<action>',
 //                'catchAll' => ['site/offline'], // for maintenance mode
                 'rate-retailers/<category_alias>/<quote_id:\d+>' => 'site/rate-retailers',
 //                'auth' => 'site/auth',
