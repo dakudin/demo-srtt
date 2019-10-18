@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="body-content">
 
-            <h3 class="pull-left title quote-form__title"><?= $this->title ?></h3>
+            <h1 class="pull-left title quote-form__title"><?= $this->title ?></h1>
 
             <?php
     echo GridView::widget([
