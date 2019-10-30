@@ -12,8 +12,10 @@
 use yii\grid\GridView;
 use yii\helpers\Html;
 use common\components\QuoteHelper;
+use yii\helpers\Url;
 
-$this->title = 'My quotes';
+$this->title = 'My quotes - Sortit';
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -21,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="body-content">
 
-            <h1 class="pull-left title quote-form__title"><?= $this->title ?></h1>
+            <h1 class="pull-left title quote-form__title">'My quotes</h1>
 
             <?php
     echo GridView::widget([
