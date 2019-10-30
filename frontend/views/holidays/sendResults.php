@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
     <div class="row">
-        <div class="alert alert-info">
+        <div id="new-enquiry-details" class="alert alert-info">
             <?php echo $quoteInfo; ?>
         </div>
     </div>
