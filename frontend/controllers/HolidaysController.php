@@ -315,6 +315,7 @@ class HolidaysController extends Controller
                         Yii::$app->session->setFlash('warning', "Unfortunately there is no match with any selected retailers. Please adjust your search and try again!");
                     }else{
                         return $this->render('sendResults', [
+                            'categoryName' => $category->name,
                             'quoteInfo' => $quote->getQuoteTextInfo(),
                             'quoteRetailers' => $companies,
                         ]);
