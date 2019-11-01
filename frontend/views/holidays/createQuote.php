@@ -25,7 +25,7 @@ $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBrea
     <div class="body-content">
 
         <?php echo $this->render('_quoteForm', [
-            'quoteName' => $category->name . ' Quotes',
+            'category' => $category,
 //            'companyIDs' => $companyIDs,
             'retailers' => $retailers,
             'model' => $model

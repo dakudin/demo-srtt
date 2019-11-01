@@ -11,8 +11,8 @@ use yii\helpers\Html;
 
     if($isHomePage){
         $this->title = 'The Quote Engine - Sortit';
-        $this->registerMetaTag(['name' => 'description', 'content' => 'Quote Engine sends requirements to trusted, reviewed, hand-picked providers who we believe will offer great deals and solutions for whatever you need - Sortit.com'], 'description');
-        $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit, quote engine, search engine'], 'keywords');
+        $this->registerMetaTag(['name' => 'description', 'content' => 'The Quote Engine sends your requirements to trusted and reviewed providers who will offer great deals and solutions for whatever you need.'], 'description');
+        $this->registerMetaTag(['name' => 'keywords', 'content' => 'quote engine, search engine'], 'keywords');
         $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
     }elseif($category instanceof EnquiryCategory){
         $this->title = $category->seo_title;

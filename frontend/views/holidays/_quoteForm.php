@@ -3,6 +3,7 @@ use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
 use kartik\widgets\Typeahead;
 use yii\helpers\Url;
+use yii\helpers\Html;
 /*
 <input type="hidden" name="company-ids" id="company-ids" value="<?= $companyIDs ?>" />
 */
@@ -16,7 +17,7 @@ use yii\helpers\Url;
     ?>
 
     <div class="col-xs-12">
-        <h1 class="pull-left title quote-form__title">Find Your Perfect <?= $quoteName ?></h1>
+        <h1 class="pull-left title quote-form__title"><?= Html::encode($category->seo_h1); ?></h1>
         <input type="hidden" name="show-any-value" id="show-any-value" value="0" />
     </div>
 
