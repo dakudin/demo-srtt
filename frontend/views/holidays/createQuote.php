@@ -15,7 +15,7 @@ $this->registerJsFile(
 $this->title = $category->seo_title;
 $this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => $category->seo_keyword], 'keywords');
-$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo], 'canonical');
 
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
