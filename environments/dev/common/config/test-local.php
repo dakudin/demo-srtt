@@ -6,7 +6,10 @@ return yii\helpers\ArrayHelper::merge(
     [
         'components' => [
             'db' => [
-                'dsn' => 'mysql:host=localhost;dbname=yii2advanced_test',
+                'dsn' => 'mysql:host=localhost;dbname=shoptility_quote_test',
+                'username' => 'quote_test',
+                'password' => 'KitDMb45',
+                'charset' => 'utf8',
             ]
         ],
     ]

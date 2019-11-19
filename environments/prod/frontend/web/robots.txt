@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Host: sortit.com
+Sitemap: sortit.com/sitemap.xml
