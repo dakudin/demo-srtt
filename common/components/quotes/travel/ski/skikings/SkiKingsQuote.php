@@ -8,68 +8,135 @@
 
 namespace common\components\quotes\travel\ski\skikings;
 
+use Yii;
 use common\components\quotes\travel\TravelQuoteBase;
 use common\models\TravelQuote;
-use common\models\Category;
-use common\models\CompanyCountry;
-use common\models\CompanyAirport;
-use common\models\CompanyResort;
-use common\models\CompanyBoardBasis;
-use common\models\CompanyHotelGrade;
-use yii\helpers\ArrayHelper;
 
 class SkiKingsQuote extends TravelQuoteBase
 {
+    protected static $formRequestUrl = 'https://www.skikings.co.uk/submit-form.php';
+
+    protected static $enquiryPageUrl = 'https://www.skikings.co.uk/contact-us/';
+
     /**
      * The associated array containing full form fields values
      */
     protected $formFields = [
-        'search_country' => 0, // service Country ID
-        'search_resort' => 0, // service Resort ID
-        'search_departure' => 0, // service departure airport ID
-        'search_date' => '', // departure date in format `2018-01-21`, if empty string then any date
-        'search_duration' => 0, // travel duration in days; 0 if any duration
-        'search_passengers' => 2, //number of passengers for traveling
+        'enquire_title' => '', //Mr
+        'enquire_firstname' => '', //Jack
+        'enquire_surname' => '', //Brown
+        'enquire_email' => '', //d1237875@urhen.com
+        'enquire_phone' => '', //78782934
+        'enquire_postcode' => '', //e1 1je
+        'formatted_address' => '',
+        'enquire_offer_details' => '',
+        'enquire_company' => '',
+        'enquire_address1' => '',
+        'enquire_address2' => '',
+        'enquire_address3' => '',
+        'enquire_address4' => '',
+        'enquire_address5' => '',
+        'enquire_town' => '',
+        'enquire_county' => '',
+        'enquire_country' => 'United Kingdom', //United+Kingdom
+        'enquire_sub_building' => '',
+        'enquire_building_name' => '',
+        'enquire_building_number' => '',
+        'enquire_street' => '',
+        'enquire_ad' => '', //	Number of adults (2)
+        'enquire_ch' => '', // Number of children (1)
+        'enquire_dep_date' => '', // Prefferred departure date
+        'enquire_message' => '', // Details
+        'enquire_newsletter' => 'No',
+        'enquire_post' => 'No',
+        'form-name' => 'contact-form',
+        'enquire_brochure' => '0',
+        'enquire_type' => 'general',
+        'current_url' => 'https://www.skikings.co.uk/contact-us/'
     ];
-
-    protected $boardBasis = ['AI', 'BB', 'SD', 'FB', 'HB', 'RO', 'SC'];
-    protected $hotelGrade = ['0', '2', '2.5', '3', '3.5', '4', '4.5', '5'];
-
-    protected $hotelFullStar = 'flaticon-star';
-    protected $hotelHalfStar = 'half-star';
 
     /**
      * @param TravelQuote $quote
+     * @param integer $companyId
+     * @param boolean $sendRealQuote
      */
-    public function __construct(TravelQuote $quote){
-        $this->companyId = 4;
-        $this->categoryId = Category::SKI;
-        $this->mainPageUrl = 'http://www.skikings.co.uk/';
+    public function __construct(TravelQuote $quote, $companyId, $sendRealQuote){
+        $this->companyId = $companyId;
+        $this->categoryId = $quote->category_id;
+        $this->mainPageUrl = 'https://www.skikings.co.uk/';
         $this->formSenderSDKPath = dirname(__FILE__);
         $this->debug=true;
+        $this->sendRealQuote = $sendRealQuote;
 
         parent::__construct($quote);
     }
 
+//URL: https://www.skikings.co.uk/submit-form.php
+//Request method: POST
+//
+//Host: www.skikings.co.uk
+//User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0
+//Accept: */*
+//Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+//Accept-Encoding: gzip, deflate, br
+//Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+//X-Requested-With: XMLHttpRequest
+//Content-Length: 673
+//Connection: keep-alive
+//Referer: https://www.skikings.co.uk/contact-us/
+//Cookie: __cfduid=dcff357bb20e95416e178a8b088c56dc71574185665; PHPSESSID=eoeslb469jvrnp948im4kvk1b4; __ski__=eoeslb469jvrnp948im4kvk1b4; _ga=GA1.3.1116941820.1574185668; _gid=GA1.3.605608192.1574185668; _fbp=fb.2.1574185668125.470207538; _hjid=cb34bf44-9786-403d-a91b-309aaf96a91f; _hjIncludedInSample=1; sr-data=%7B%22uid%22%3A%228641574185669779%22%2C%22platform%22%3A%22windows%22%2C%22os%22%3A%22windows%22%2C%22browser%22%3A%22Mozilla%20Firefox%22%2C%22device%22%3A%22Desktop%20%2F%20Laptop%22%2C%22ip%22%3A%2281.17.138.185%22%2C%22country_code%22%3A%22UA%22%7D; sr-cur=Tue%20Nov%2019%202019%2019%3A47%3A49%20GMT%2B0200%20(%D0%92%D0%BE%D1%81%D1%82%D0%BE%D1%87%D0%BD%D0%B0%D1%8F%20%D0%95%D0%B2%D1%80%D0%BE%D0%BF%D0%B0%2C%20%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D0%BE%D0%B5%20%D0%B2%D1%80%D0%B5%D0%BC%D1%8F)
+//
+//
+//POST parameters
+//enquire_title	Mr
+//enquire_firstname	Jack
+//enquire_surname	Brown
+//enquire_email	d1237875@urhen.com
+//enquire_phone	78782934
+//enquire_postcode	e11je
+//formatted_address
+//enquire_offer_details
+//enquire_company
+//enquire_address1
+//enquire_address2
+//enquire_address3
+//enquire_address4
+//enquire_address5
+//enquire_town
+//enquire_county
+//enquire_country	United+Kingdom
+//enquire_sub_building
+//enquire_building_name
+//enquire_building_number
+//enquire_street
+//enquire_ad	2
+//enquire_ch	1
+//enquire_dep_date	25
+//enquire_message	to+France
+//enquire_newsletter	No
+//enquire_post	No
+//form-name	contact-form
+//enquire_brochure	0
+//enquire_type	general
+//current_url	https://www.skikings.co.uk/contact-us/
     /**
-     * Send fields for creating new enquiry to page http://www.skikings.co.uk/submit-form.php
-     * @param $params array
+     * Send fields for creating new enquiry
      * @return bool
      */
-    public function sendEnquiry($params)
+    public function sendForm()
     {
-        if(!isset($params['current_url']) || empty($params['current_url'])) return false;
-
         //send form to site
-        $result = $this->pageGetter->sendRequest($this->getSendEnquiryPageUrl(), 'POST', $params, $params['current_url'], false);
+        $result = $this->pageGetter->sendRequest(static::$formRequestUrl, 'POST', $this->formFields, static::$enquiryPageUrl, false, false, true);
 
         if($result['Status'] == "FAIL"){
             self::log($result['StatusDetails'] . "\r\n" . $result['Response']);
             return false;
         }
 
-        if(!$this->isPageGood($result['Response'], '#Thank you for your enquiry#', 'Error Page: Didn`t find required phrase `search-results-list`'))
+        if(!$this->isPageGood($result['Response'], '#Thank you for your enquiry#', 'Error Page: Didn`t find correct response'))
             return false;
+
+        $this->resultPage = $result['Response'];
 
         return true;
     }
@@ -79,248 +146,68 @@ class SkiKingsQuote extends TravelQuoteBase
      */
     protected function fillData()
     {
-        //need to select country or resort for searching
-        if(empty($this->quote->resortIDs) && empty($this->quote->countryIDs) && !empty($this->quote->regionIDs)){
+        $this->formFields['enquire_postcode'] = $this->quote->address_postcode;
+
+        $this->formFields['enquire_title'] = $this->quote->user_title;
+        $this->formFields['enquire_firstname'] = $this->quote->user_first_name;
+        $this->formFields['enquire_surname'] = $this->quote->user_last_name;
+        $this->formFields['enquire_phone'] = $this->quote->phone;
+        $this->formFields['enquire_email'] = $this->quote->email;
+
+        $roomInfo = $this->quote->getAdultsChildAgesInfo();
+        $this->formFields['enquire_ad'] = $roomInfo['adultsCount'];
+        $this->formFields['enquire_ch'] = $roomInfo['childrenCount'];
+        $this->formFields['enquire_dep_date'] = empty($this->quote->date) ? 'Anytime' : $this->quote->date;
+
+        $this->formFields['enquire_message'] = implode(
+            "\r\n",
+            $this->quote->getQuoteInfoByFields([
+                TravelQuote::COUNTRY_TEXT_FIELD,
+                TravelQuote::CITY_TEXT_FIELD,
+                TravelQuote::AIRPORT_TEXT_FIELD,
+                TravelQuote::FLIGHT_CATEGORY_TEXT_FIELD,
+                TravelQuote::DURATION_TEXT_FIELD ,
+                TravelQuote::TOTAL_BUDGET_TEXT_FIELD,
+                TravelQuote::DETAIL_TEXT_FIELD,
+                TravelQuote::USER_BEST_TIME2CONTACT,
+            ])
+        );
+
+        return $this->isFormFilledGood();
+    }
+
+    protected function isFormFilledGood()
+    {
+        if(empty($this->formFields['enquire_title']) || empty($this->formFields['enquire_firstname']) || empty($this->formFields['enquire_surname'])){
+            Yii::warning("Couldn't use SkiKings due to user name is wrong");
             return false;
         }
 
-        if(!empty($this->quote->countryIDs)){
-            $company = CompanyCountry::findOne(['quote_company_id' => $this->companyId, 'country_id' => $this->quote->countryIDs]);
-
-            //do not use this service if country is not in dictionary
-            if(is_null($company)) return false;
-
-            $this->formFields['search_country'] = $company->service_country_id;
+        if(empty($this->formFields['enquire_phone'])){
+            Yii::warning("Couldn't use SkiKings due to phone is wrong ({$this->quote->phone})");
+            return false;
         }
 
-        if(!empty($this->quote->resortIDs)){
-            $resort = CompanyResort::findOne(['quote_company_id' => $this->companyId, 'resort_id' => $this->quote->resortIDs]);
-
-            //do not use this service if resort is not in dictionary
-            if(is_null($resort)) return false;
-
-            $this->formFields['search_resort'] = $resort->service_resort_id;
+        if(empty($this->formFields['enquire_email'])){
+            Yii::warning("Couldn't use SkiKings due to email is wrong ({$this->quote->email})");
+            return false;
         }
 
-        if(!empty($this->quote->airportIDs)){
-            $airport = CompanyAirport::findOne(['quote_company_id' => $this->companyId, 'airport_id' => $this->quote->airportIDs]);
-
-            //do not use this service if airport is not in dictionary
-            if(is_null($airport)) return false;
-
-            $this->formFields['search_departure'] = $airport->service_airport_id;
+        if(empty($this->formFields['enquire_postcode'])){
+            Yii::warning("Couldn't use SkiKings due to postcode address is wrong ({$this->quote->address_postcode})");
+            return false;
         }
 
-        if(!empty($this->quote->date)){
-            $this->formFields['search_date'] = $this->quote->date;
+        if(empty($this->formFields['enquire_ad']) || is_string($this->formFields['enquire_ch'])){
+            Yii::warning("Couldn't use SkiKings due to adults count or children count is wrong");
+            return false;
         }
 
-        if(!empty($this->quote->duration)){
-            $this->formFields['search_duration'] = $this->quote->duration;
-        }
-
-        if(!empty($this->quote->passengers)){
-            $this->formFields['search_passengers'] = $this->quote->passengers;
+        if(empty($this->formFields['enquire_dep_date'])){
+            Yii::warning("Couldn't use SkiKings due to departure date is wrong ({$this->quote->date})");
+            return false;
         }
 
         return true;
-    }
-
-    // Go to page http://www.skikings.co.uk/search/results.php
-    protected function sendForm()
-    {
-        //send form to site
-        $result = $this->pageGetter->sendRequest($this->getRequestPageUrl(), 'POST', $this->formFields, $this->mainPageUrl, false);
-
-        if($result['Status'] == "FAIL"){
-            self::log($result['StatusDetails'] . "\r\n" . $result['Response']);
-            return false;
-        }
-
-//      $result = [
-//         'Response' => file_get_contents($this->formSenderSDKPath . '\response1.txt')
-//      ];
-
-        if(!$this->isPageGood($result['Response'], '#search-results-list#', 'Error Page: Didn`t find required phrase `search-results-list`'))
-            return false;
-
-        //if set additional filters or page number not equal to 1 then request the additional page
-        if($this->isNeedAdditionalRequest()){
-            //http://www.skikings.co.uk/search/results/?sid=182&accommodation_type=&board_basis=&star_rating=&resort=&page=2
-            $requestUrl = $this->getRequestPageUrlWithParams($result['Response']);
-
-//            self::log($result['Response']);
-//            echo $requestUrl . "\r\n" . $result['Response']; die;
-            if(!$requestUrl) return false;
-
-            //send form to site
-            $result = $this->pageGetter->sendRequest($requestUrl, 'GET', [], $requestUrl, false);
-//            echo $requestUrl . "\r\n" . $result['Response']; die;
-
-            if($result['Status'] == "FAIL"){
-                self::log($result['StatusDetails'] . "\r\n" . $result['Response']);
-                return false;
-            }
-
-            if(!$this->isPageGood($result['Response'], '#search-results-list#', 'Error Page: Didn`t find required phrase `search-results-list`'))
-                return false;
-        }
-
-        $this->resultPage = $result['Response'];
-
-        return true;
-    }
-
-    /**
-     * Detect if need request additional page with additional filters and page number
-     * @return bool
-     */
-    protected function isNeedAdditionalRequest(){
-        return count($this->quote->travelQuoteBoardBasis) < count($this->boardBasis)
-            || count($this->quote->travelQuoteHotelGrade) < count($this->hotelGrade)
-            || $this->quote->page_number > 1;
-    }
-
-    protected function getSendEnquiryPageUrl(){
-        return $this->mainPageUrl . 'submit-form.php';
-    }
-
-    protected function getRequestPageUrl(){
-        return $this->mainPageUrl . 'search/results.php';
-    }
-
-
-    protected function getRequestPageUrlWithParams($previousPage){
-        $sessionId = $this->parseElement('#\?sid=(\d{1,})#s', $previousPage, 'Session ID');
-        if($sessionId){
-            $url = $this->mainPageUrl . 'search/results/?sid=' . (int)$sessionId
-                . '&page=' . $this->quote->page_number;
-            $url .= $this->getBoardBasisParams();
-            $url .= $this->getHotelGradeParams();
-            return $url;
-        }
-        return false;
-    }
-
-    /**
-     * Prepare board basis for request params
-     * @return string
-     */
-    protected function getBoardBasisParams()
-    {
-        $boardsBasis = $this->quote->travelQuoteBoardBasis;
-
-        if(!(count($boardsBasis)>0 && count($boardsBasis) < count($this->boardBasis)))
-            return '';
-
-        $boardBasisIDs = [];
-        foreach ($boardsBasis as $boardBasis) {
-            $boardBasisIDs[] = $boardBasis->dict_board_basis_id;
-        }
-
-        if (count($boardBasisIDs) == 0) return '';
-
-        $boardsBasis = CompanyBoardBasis::findAll(['quote_company_id' => $this->companyId, 'board_basis_id' => $boardBasisIDs]);
-
-        if (is_null($boardsBasis)) return '';
-
-        return '&board_basis=' . urlencode(implode(',', ArrayHelper::map($boardsBasis, 'board_basis_id', 'service_board_basis_id')));
-    }
-
-    /**
-     * Prepare hotel grade`s for request params
-     * @return string
-     */
-    protected function getHotelGradeParams()
-    {
-        $hotelGrades = $this->quote->travelQuoteHotelGrade;
-
-        if(!(count($hotelGrades)>0 && count($hotelGrades) < count($this->hotelGrade)))
-            return '';
-
-        $hotelGradeIDs = [];
-
-        foreach($hotelGrades as $hotelGrade){
-            $hotelGradeIDs[] = $hotelGrade->dict_hotel_grade_id;
-        }
-
-        if(count($hotelGradeIDs)==0) return '';
-
-        $hotelGrades = CompanyHotelGrade::findAll(['quote_company_id' => $this->companyId, 'hotel_grade_id' => $hotelGradeIDs]);
-
-        if(is_null($hotelGrades)) return '';
-
-        return '&star_rating=' . urlencode(implode(',', ArrayHelper::map($hotelGrades, 'hotel_grade_id', 'service_hotel_grade_id')));
-    }
-
-
-    protected function parseForm()
-    {
-        $patternHtml = '#"search-results-list"(.*?)<footer#s';
-        $html = $this->parseElement($patternHtml, $this->resultPage, 'Resorts container');
-
-        return $this->parseResortBlock($html);
-    }
-
-    protected function parseResortBlock($content){
-        $patternResorts = '#search-result a-link"(.*?)class="\s?grid-12#s';
-        $patternHotel = '#<h2><strong>(.*?)<\/strong#s';
-        $patternResort = '#<br>(.*?)<\/h2#s';
-        $patternImage = '#<div[^>]*?class="search-result-img".*?background:url\((.*?)\)#s';
-        $patternDetailUrl = '#<p[^>]*?class="more-button"[^>]*?><a href="(.*?)"#s';
-        $patternPrice = '#<strong>&pound;(.*?)<\/strong>#s';
-        $patternDescription = '#<p class="description">(.*?)<\/p>#s';
-        $patternInfoBlock = '#<p class="durdate">\s?<span>(.*?)<\/span>\s?<span>(.*?)<\/span>\s?<span>(.*?)<\/span>\s?<span>(.*?)<\/span><\/p>#s';
-
-        if(preg_match_all($patternResorts, $content, $matches)){
-            if(isset($matches[1]) && is_array($matches[1])){
-                for($i=0; $i<count($matches[1]); $i++){
-                    $info = [];
-                    $resort = $matches[1][$i];
-
-                    $hotelName = $this->parseElement($patternHotel, $resort, 'Hotel name');
-                    $resortName = $this->parseElement($patternResort, $resort, 'Resort name');
-                    $imageUrl = $this->getRealImageUrl($this->parseElement($patternImage, $resort, 'Image url'));
-                    $detailUrl = $this->parseElement($patternDetailUrl, $resort, 'Detail url');
-                    $price = $this->parseElement($patternPrice, $resort, 'Price');
-                    $description = $this->parseElement($patternDescription, $resort, 'Description');
-                    $infoBlock = $this->parseRows($patternInfoBlock, $resort);
-
-                    $hotelStar = 0;
-                    foreach($infoBlock as $key=>$value){
-                        if(strpos($value[0], $this->hotelFullStar) === false){
-                            $info[] = strip_tags($value[0]);
-                        }else{
-                            $hotelStar = $this->getHotelStar($value[0]);
-                        }
-                    }
-
-                    $this->parsedData->addResort($hotelName, $resortName, $imageUrl, $detailUrl, $price, $hotelStar,
-                        $description, $info);
-
-                }
-            }
-        };
-
-        return count($this->parsedData->resorts)>0;
-    }
-
-    protected function getHotelStar($block){
-        $stars = substr_count($block, $this->hotelFullStar);
-
-        if(substr_count($block, $this->hotelHalfStar)==1){
-            $stars = $stars-0.5;
-        }
-
-        return $stars;
-    }
-
-    protected function getRealImageUrl($url){
-        $pattern = '#https:\/\/stewarttravel\.imgix\.net\/(.*?)\?#';
-
-        $realUrl =  $this->parseElement($pattern, $url, 'Image real url');
-        if(!$realUrl) return $url;
-
-        return urldecode($realUrl);
     }
 }

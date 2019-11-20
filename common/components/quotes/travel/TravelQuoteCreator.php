@@ -13,7 +13,7 @@ use common\components\quotes\travel\travelcounsellors\TravelCounsellorsQuote;
 use common\models\TravelQuoteCountry;
 use Yii;
 //use common\components\quotes\travel\quoni\QuoniQuote;
-//use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
+use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
 use common\components\quotes\travel\eshores\EShoresQuote;
 use common\components\quotes\travel\flightcentre\FCentreTravelQuote;
 use common\models\TravelQuote;
@@ -256,13 +256,13 @@ class TravelQuoteCreator extends \yii\base\Component
     /*
      * Create remote quote on SkiKings site
      */
-/*    protected function createQuoteSkiKings(){
-        $quote = new SkiKingsQuote($this->quote);
+    protected function createQuoteSkiKings($companyId, $sendRealQuote){
+        $quote = new SkiKingsQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
         }
-    }*/
+    }
 
     /*
      * Create remote quote on Quoni site
