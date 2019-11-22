@@ -7,8 +7,8 @@
                     <div class="pull-left"><a href="<?= $this->params['footer_links']['privacy_police_url'] ?>" target="privacyAndCookies">Privacy Policy</a></div>
 
                     <div class="social-icons pull-right">
-                        <a href="https://www.facebook.com/wesortitforyou/" target="_blank"><img src="images/facebook.png" alt="We are on Facebook"></a>
-                        <a href="https://www.linkedin.com/company/sortit.com/about/" target="_blank"><img src="images/linkedin.png" alt="We are on LinkedIn"></a>
+                        <a href="https://www.facebook.com/wesortitforyou/" target="_blank"><img src="/images/facebook.png" alt="We are on Facebook"></a>
+                        <a href="https://www.linkedin.com/company/sortit.com/about/" target="_blank"><img src="/images/linkedin.png" alt="We are on LinkedIn"></a>
                     </div>
                 </div>
             </div>
