@@ -62,6 +62,11 @@ class QuoteCompany extends \yii\db\ActiveRecord
         return Yii::$app->params['domainName'] . '/images/companies/' . $this->image;
     }
 
+    public function getImage()
+    {
+        return '/images/companies/' . $this->image;
+    }
+
 
     /**
      * @param $categoryId

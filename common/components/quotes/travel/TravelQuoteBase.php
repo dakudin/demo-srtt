@@ -41,7 +41,7 @@ class TravelQuoteBase extends QuoteBase
         $this->parsedData = new TravelParsedResult(
             $quoteCompany->id,
             $quoteCompany->company_name,
-            $quoteCompany->getFullImage()
+            $quoteCompany->getImage()
         );
 
         if(is_a($quote, 'common\models\TravelQuote')){

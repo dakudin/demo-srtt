@@ -17,13 +17,13 @@ use yii\helpers\Url;
 $this->title = 'My quotes - Sortit';
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
 
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = 'My quotes';
 ?>
     <div class="site-index">
 
         <div class="body-content">
 
-            <h1 class="pull-left title quote-form__title">'My quotes</h1>
+            <h1 class="pull-left title quote-form__title">My quotes</h1>
 
             <?php
     echo GridView::widget([
