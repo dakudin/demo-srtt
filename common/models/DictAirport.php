@@ -12,6 +12,7 @@ use yii\helpers\Json;
  * @property string $name
  * @property string $flightcentre_value // value for Flight Centre
  * @property string $bestattravel_value // value for Best At Travel
+ * @property string $inghams_value // value for Inghams
  *
  * @property CompanyAirport[] $companyAirports
  * @property QuoteCompany[] $quoteCompanies
@@ -36,6 +37,7 @@ class DictAirport extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['name','flightcentre_value'], 'string', 'max' => 50],
             ['bestattravel_value', 'string', 'max' => 3],
+            ['inghams_value', 'string', 'max' => 30],
             [['name'], 'unique'],
         ];
     }
@@ -100,22 +102,25 @@ class DictAirport extends \yii\db\ActiveRecord
         return $out;
     }
 
-    public static function getFlightCentreValueByName($name){
-        $model = DictAirport::find()->select('flightcentre_value')->where(['name' => $name])->one();
+    protected static function getValueByCompany($fieldName, $value){
+        $model = DictAirport::find()->select($fieldName)->where(['name' => $value])->one();
 
         if($model)
-            return $model->flightcentre_value;
+            return $model->$fieldName;
 
         return false;
     }
 
+    public static function getFlightCentreValueByName($name){
+        return static::getValueByCompany('flightcentre_value', $name);
+    }
+
+    public static function getInghamsValueByName($name){
+        return static::getValueByCompany('inghams_value', $name);
+    }
+
     public static function getBestAtTravelValueByName($name){
-        $model = DictAirport::find()->select('bestattravel_value')->where(['name' => $name])->one();
-
-        if($model)
-            return $model->bestattravel_value;
-
-        return false;
+        return static::getValueByCompany('bestattravel_value', $name);
     }
 }
 

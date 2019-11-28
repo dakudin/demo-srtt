@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en" data-scroll="0">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+
+    
+            <meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:site" content="@formstack" />
+<meta name="twitter:title" content="Inghams Customer Contact Form" />
+<meta name="twitter:description" content="Formstack Form - Inghams Customer Contact Form" />
+<meta name="twitter:app:name:iphone" content="Formstack Forms" />
+<meta name="twitter:app:name:ipad" content="Formstack Forms" />
+<meta name="twitter:app:name:googleplay" content="Formstack Online Forms" />
+<meta name="twitter:app:id:iphone" content="id526805387" />
+<meta name="twitter:app:id:ipad" content="id526805387" />
+<meta name="twitter:app:id:googleplay" content="com.formstack.android" />
+        <title>Inghams Customer Contact Form - Formstack</title>
+
+    
+            <link rel="icon" type="image/x-icon" href="//www.formstack.com/favicon.ico" />
+            
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/3/reset_53bc1bb20a.css" />
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/3/jquery-ui_61ec43d7ce.css" />
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/3/default-v4_f1d5918f48.css" />
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/3/light_256a248f06.css" />
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/../common/css/uil-static.css" />
+        <link rel="stylesheet" type="text/css" href="//static.formstack.com/forms/css/common/dialogs_00a7ec5f05.css" />
+    
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" type="text/css" media="all" href="//hotelplan.formstack.com/forms/css/3/ie.css?20140508" />
+    <![endif]-->
+        <!--[if IE 7]><link rel="stylesheet" type="text/css" media="all" href="//hotelplan.formstack.com/forms/css/3/ie7.css" /><![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" type="text/css" media="all" href="//hotelplan.formstack.com/forms/css/3/ie6fixes.css" /><![endif]-->
+
+
+    <style type="text/css">
+            </style>
+
+    </head>
+
+<body id="fsLocal" class="fsBody">
+    
+    
+        
+
+
+<noscript><h4 class="warningNoJS"><strong>ERROR:</strong>JavaScript is not enabled. You must enable JavaScript in your browser to use this form</h4></noscript>
+
+
+<form method="post" novalidate action="https://hotelplan.formstack.com/forms/index.php" class="fsForm fsSingleColumn fsMaxCol1" id="fsForm3239436">
+
+    <input type="hidden" name="form" value="3239436" />
+    <input type="hidden" name="viewkey" value="uaG6i1kLRp" />
+    <input type="hidden" name="password" value="" />
+    <input type="hidden" name="hidden_fields" id="hidden_fields3239436" value="" />
+    <input type="hidden" name="incomplete" id="incomplete3239436" value="" />
+    <input type="hidden" name="incomplete_email" id="incomplete_email3239436" value="" />
+    <input type="hidden" name="incomplete_password" id="incomplete_password3239436" />
+    <input type="hidden" name="referrer" id="referrer3239436" value="https://www.inghams.co.uk/stay-in-touch/contact-us" />
+    <input type="hidden" name="referrer_type" id="referrer_type3239436" value="link" />
+    <input type="hidden" name="_submit" value="1" />
+    <input type="hidden" name="style_version" value="3" />
+
+    <input type="hidden" id="fsLatitude" name="latitude" value="" />
+    <input type="hidden" id="fsLongitude" name="longitude" value="" />
+    <input type="hidden" id="viewparam" name="viewparam" value="464374" />
+
+    
+    
+    
+    
+    
+<div id="requiredFieldsError" style="display:none;">Please fill in a valid value for all required fields</div>
+<div id="invalidFormatError" style="display:none;">Please ensure all values are in a proper format.</div>
+<div id="resumeConfirm" style="display:none;">Are you sure you want to leave this form and resume later?</div>
+<div id="resumeConfirmPassword" style="display: none;">Are you sure you want to leave this form and resume later? If so, please enter a password below to securely save your form.</div>
+<div id="saveAndResume" style="display: none;">Save and Resume Later</div>
+<div id="saveResumeProcess" style="display: none;">Save and get link</div>
+<div id="fileTypeAlert" style="display:none;">You must upload one of the following file types for the selected field:</div>
+<div id="embedError" style="display:none;">There was an error displaying the form. Please copy and paste the embed code again.</div>
+<div id="applyDiscountButton" style="display:none;">Apply Discount</div>
+<div id="dcmYouSaved" style="display:none;">You saved</div>
+<div id="dcmWithCode" style="display:none;">with code</div>
+<div id="submitButtonText" style="display:none;">Submit Form</div>
+<div id="submittingText" style="display:none;">Submitting</div>
+<div id="validatingText" style="display:none;">Validating</div>
+<div id="autocaptureDisabledText" style="display:none;"></div>
+<div id="paymentInitError" style="display:none;">There was an error initializing the payment processor on this form. Please contact the form owner to correct this issue.</div>
+<div id="checkFieldPrompt" style="display:none;">Please check the field: </div>
+
+<div class="fsPage" id="fsPage3239436-1">
+
+<div id="ReactContainer3239436" style="display:none" class="FsReactContainerInitApp" data-fs-react-app-id="3239436"></div>
+
+    
+                
+                    
+                                        
+                                        
+            
+            <div class="fsSection fs1Col" id="fsSection70409854">
+
+                                                    
+                                        
+            <div class="fsSectionHeader">
+            <h2 class="fsSectionHeading">Customer Contact Form</h2>
+        
+            <div class="fsSectionText"><p>Please fill out your contact information below.</p></div>
+    </div>
+
+
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-2" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70405566" lang="en" fs-field-type="radio" fs-field-validation-name="How can we help you?">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend70405566" id="label70405566">
+
+                            <legend id="fsLegend70405566" class="fsLabel fsRequiredLabel fsLabelVertical"><span>How can we help you?<span class="fsRequiredMarker">*</span></span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                    
+            
+            <label class="fsOptionLabel horizontal" for="field70405566_1"><input type="radio" id="field70405566_1" name="field70405566" value="New bookings &amp; enquiries" class="fsField fsRequired horizontal" aria-required="true" />New bookings &amp; enquiries</label>
+            
+                    
+            
+            <label class="fsOptionLabel horizontal" for="field70405566_2"><input type="radio" id="field70405566_2" name="field70405566" value="Before you go" class="fsField fsRequired horizontal" aria-required="true" />Before you go</label>
+            
+                    
+            
+            <label class="fsOptionLabel horizontal" for="field70405566_3"><input type="radio" id="field70405566_3" name="field70405566" value="When you return" class="fsField fsRequired horizontal" aria-required="true" />When you return</label>
+            
+            
+    
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-3" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70405567" lang="en" fs-field-type="name" fs-field-validation-name="Name">
+                                                                                <span id="label70405567" class="fsLabel fsRequiredLabel">Name<span class="fsRequiredMarker">*</span></span>
+                    
+                                        
+                    <div class="fsSubFieldGroup">
+                    
+                    
+                    
+                    
+            <div class="fsSubField fsNamePrefix">
+            <input type="text" id="field70405567-prefix" name="field70405567-prefix" size="3" aria-label="Prefix" value="" required class="fsField fsFieldName fsRequired" aria-required="true" />
+            <label class="fsSupporting fsRequiredLabel" for="field70405567-prefix">Prefix<span class="hidden">*</span></label>
+        </div>
+    
+    <div class="fsSubField fsNameFirst">
+        <input type="text" id="field70405567-first" name="field70405567-first" size="20" aria-label="First Name" value="" required class="fsField fsFieldName fsRequired" aria-required="true" />
+        <label class="fsSupporting fsRequiredLabel" for="field70405567-first">First Name<span class="hidden">*</span></label>
+    </div>
+
+    
+    
+    <div class="fsSubField fsNameLast">
+        <input type="text" id="field70405567-last" name="field70405567-last" size="20" aria-label="Last Name" value="" required class="fsField fsFieldName fsRequired" aria-required="true" />
+        <label class="fsSupporting fsRequiredLabel" for="field70405567-last">Last Name<span class="hidden">*</span></label>
+    </div>
+
+    
+</div>
+<div class="clear"></div>
+
+                    
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-4" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70405570" lang="en" fs-field-type="phone" fs-field-validation-name="Telephone Number">
+                                                                                                        <label id="label70405570" class="fsLabel" for="field70405570">Telephone Number                                                    </label>
+                                            
+                                        
+                    <input type="tel" id="field70405570" name="field70405570" size="2" placeholder="Please provide a number to reach you on" title="Please provide a number to reach you on" value="" class="fsField fsFormatPhoneUK " data-country="UK" data-format="national" />
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-5" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70405577" lang="en" fs-field-type="email" fs-field-validation-name="Email">
+                                                                                                        <label id="label70405577" class="fsLabel fsRequiredLabel" for="field70405577">Email<span class="fsRequiredMarker">*</span>                                                    </label>
+                                            
+                                        
+                    <input type="email" id="field70405577" name="field70405577" size="50" required="required" placeholder="Please provide your email address" title="Please provide your email address" value="" class="fsField fsFormatEmail fsRequired" aria-required="true" />
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-6" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70405677" lang="en" fs-field-type="radio" fs-field-validation-name="Preferred method of contact">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend70405677" id="label70405677">
+
+                            <legend id="fsLegend70405677" class="fsLabel fsLabelVertical"><span>Preferred method of contact</span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                    
+            
+            <label class="fsOptionLabel horizontal" for="field70405677_1"><input type="radio" id="field70405677_1" name="field70405677" value="By Email" class="fsField horizontal" />By Email</label>
+            
+                    
+            
+            <label class="fsOptionLabel horizontal" for="field70405677_2"><input type="radio" id="field70405677_2" name="field70405677" value="By Phone" class="fsField horizontal" />By Phone</label>
+            
+            
+    
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-7" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70406046" lang="en" fs-field-type="checkbox" fs-field-validation-name="Preferred time(s) to get in touch">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend70406046" id="label70406046">
+
+                            <legend id="fsLegend70406046" class="fsLabel fsLabelVertical"><span>Preferred time(s) to get in touch</span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                                            <label class="fsOptionLabel horizontal" for="field70406046_1"><input type="checkbox" id="field70406046_1" name="field70406046[]" value="Morning" class="fsField horizontal" />Morning</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field70406046_2"><input type="checkbox" id="field70406046_2" name="field70406046[]" value="Afternoon" class="fsField horizontal" />Afternoon</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field70406046_3"><input type="checkbox" id="field70406046_3" name="field70406046[]" value="Evening" class="fsField horizontal" />Evening</label>
+
+                        
+    
+    
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-8" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70406052" lang="en" fs-field-type="text" fs-field-validation-name="Booking Reference">
+                                                                                                        <label id="label70406052" class="fsLabel" for="field70406052">Booking Reference                                                    </label>
+                                            
+                                        
+                    <input
+  type="text" id="field70406052"
+  name="field70406052"
+  size="50"
+            placeholder="The booking reference stated on your invoice or travel documents (if applicable)"
+    title="The booking reference stated on your invoice or travel documents (if applicable)"
+   value=""
+  
+  class="fsField fsFormatText    "
+
+      />
+
+
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-9" class="fsRow fsFieldRow fsLastRow fsHidden">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsHidden fsSpan100" id="fsCell71459126" lang="en" fs-field-type="select" fs-field-validation-name="Number of Adults ">
+                                                                                                        <label id="label71459126" class="fsLabel fsRequiredLabel" for="field71459126">Number of Adults <span class="fsRequiredMarker">*</span>                                                    </label>
+                                            
+                                        
+                    <select id="field71459126" name="field71459126" size="1"required class="fsField fsRequired" aria-required="true" disabled="disabled">
+
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>
+
+</select>
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-10" class="fsRow fsFieldRow fsLastRow fsHidden">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsHidden fsSpan100" id="fsCell71459140" lang="en" fs-field-type="select" fs-field-validation-name="Number of Children (under 13)">
+                                                                                                        <label id="label71459140" class="fsLabel fsRequiredLabel" for="field71459140">Number of Children (under 13)<span class="fsRequiredMarker">*</span>                                                    </label>
+                                            
+                                        
+                    <select id="field71459140" name="field71459140" size="1"required class="fsField fsRequired" aria-required="true" disabled="disabled">
+
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+
+</select>
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-11" class="fsRow fsFieldRow fsLastRow fsHidden">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsHidden fsSpan100" id="fsCell71459147" lang="en" fs-field-type="select" fs-field-validation-name="Departure Airport">
+                                                                                                        <label id="label71459147" class="fsLabel" for="field71459147">Departure Airport                                                    </label>
+                                            
+                                        
+                    <select id="field71459147" name="field71459147" class="fsField" disabled="disabled">
+
+        <option value="Choose here">Choose here</option>
+        <option value="Belfast">Belfast</option>
+        <option value="Birmingham">Birmingham</option>
+        <option value="Bristol">Bristol</option>
+        <option value="East Midlands">East Midlands</option>
+        <option value="Edinburgh">Edinburgh</option>
+        <option value="Glasgow">Glasgow</option>
+        <option value="Leeds Bradford">Leeds Bradford</option>
+        <option value="Liverpool">Liverpool</option>
+        <option value="London Gatwick">London Gatwick</option>
+        <option value="London Heathrow">London Heathrow</option>
+        <option value="London Luton">London Luton</option>
+        <option value="London Stansted">London Stansted</option>
+        <option value="Manchester">Manchester</option>
+        <option value="Newcastle">Newcastle</option>
+        <option value="Southampton">Southampton</option>
+
+</select>
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-12" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70406056" lang="en" fs-field-type="text" fs-field-validation-name="Resort Name">
+                                                                                                        <label id="label70406056" class="fsLabel" for="field70406056">Resort Name                                                    </label>
+                                            
+                                        
+                    <input
+  type="text" id="field70406056"
+  name="field70406056"
+  size="50"
+            placeholder="The name of the resort (if known)"
+    title="The name of the resort (if known)"
+   value=""
+  
+  class="fsField fsFormatText    "
+
+      />
+
+
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-13" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70406049" lang="en" fs-field-type="text" fs-field-validation-name="Property Name">
+                                                                                                        <label id="label70406049" class="fsLabel" for="field70406049">Property Name                                                    </label>
+                                            
+                                        
+                    <input
+  type="text" id="field70406049"
+  name="field70406049"
+  size="50"
+            placeholder="The name of the Hotel, Chalet Hotel, Chalet or Apartment (if known)"
+    title="The name of the Hotel, Chalet Hotel, Chalet or Apartment (if known)"
+   value=""
+  
+  class="fsField fsFormatText    "
+
+      />
+
+
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-14" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70406059" lang="en" fs-field-type="datetime" fs-field-validation-name="Departure Date">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend70406059" id="label70406059">
+
+                            <legend id="fsLegend70406059" class="fsLabel fsLabelVertical"><span>Departure Date</span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                <!-- Used to pull in url for jquery -->
+        <span aria-hidden="true" style="display:none;" id="fsCalendar70406059ImageUrl">https://hotelplan.formstack.com/forms/images/2/calendar.png</span>
+
+    
+    
+    
+    <input data-skip-validation data-date-format="d F Y" type="hidden" id="field70406059Format" name="field70406059Format" value="DMY" />
+
+    
+                    <div class="hidden"><label for="field70406059D">Day</label></div>
+        <select id="field70406059D" name="field70406059D" class=" fsField">
+                    <option value=""> </option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                </select>
+             <div class="hidden"><label for="field70406059M">Month</label></div>
+        <select id="field70406059M" name="field70406059M" class=" fsField">
+                    <option value=""> </option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+             <div class="hidden"><label for="field70406059Y">Year</label></div>
+        <select id="field70406059Y" name="field70406059Y" class=" fsField">
+                    <option value=""> </option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                </select>
+    
+    
+    
+    <input data-skip-validation type="text" id="fsCalendar70406059Link" class="fsCalendarPickerLink" style="display:none;" aria-hidden="true" />
+
+        <div id="fsCalendar70406059" class="fsCalendar" style=" position:absolute"></div>
+        
+
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-15" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell70408318" lang="en" fs-field-type="textarea" fs-field-validation-name="Message">
+                                                                                                        <label id="label70408318" class="fsLabel fsRequiredLabel" for="field70408318">Message<span class="fsRequiredMarker">*</span>                                                    </label>
+                                            
+                                        
+                    
+<textarea id="field70408318"
+          class="fsField fsRequired "
+          name="field70408318"
+          rows="10"
+          cols="50"
+          required aria-required="true"                    placeholder="Please let us know how we can help you" title="Please let us know how we can help you"                                        ></textarea>
+
+                                                                
+                    
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-16" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell82067487" lang="en" fs-field-type="checkbox" fs-field-validation-name="I would like to receive news and offers by email.">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend82067487" id="label82067487">
+
+                            <legend id="fsLegend82067487" class="fsLabel fsLabelVertical"><span>I would like to receive news and offers by email.</span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                                            <label class="fsOptionLabel vertical" for="field82067487_1"><input type="checkbox" id="field82067487_1" name="field82067487[]" value="Yes" class="fsField vertical" />Yes</label>
+
+                        
+    
+    
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                        
+                
+                    
+                        
+            
+            
+                                        
+                                        
+                                        
+            
+                                                
+                <div id="fsRow3239436-17" class="fsRow fsFieldRow fsLastRow">
+
+            
+                                        
+            
+            
+            
+                                        
+                        
+                        
+            <div class="fsRowBody fsCell fsFieldCell fsFirst fsLast fsLabelVertical fsSpan100" id="fsCell82438919" lang="en" fs-field-type="checkbox" fs-field-validation-name="Which of our holidays are you interested in?*">
+                                                                                <fieldset role="group" aria-labelledby="fsLegend82438919" id="label82438919">
+
+                            <legend id="fsLegend82438919" class="fsLabel fsLabelVertical"><span>Which of our holidays are you interested in?*</span></legend>
+                            <div class="fieldset-content">
+                    
+                                        
+                                                            <label class="fsOptionLabel horizontal" for="field82438919_1"><input type="checkbox" id="field82438919_1" name="field82438919[]" value="Ski and Snowboard" class="fsField horizontal" />Ski and Snowboard</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field82438919_2"><input type="checkbox" id="field82438919_2" name="field82438919[]" value="Lakes and Mountains" class="fsField horizontal" />Lakes and Mountains</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field82438919_3"><input type="checkbox" id="field82438919_3" name="field82438919[]" value="Italy Tailor Made" class="fsField horizontal" />Italy Tailor Made</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field82438919_4"><input type="checkbox" id="field82438919_4" name="field82438919[]" value="Tours" class="fsField horizontal" />Tours</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field82438919_5"><input type="checkbox" id="field82438919_5" name="field82438919[]" value="Lapland" class="fsField horizontal" />Lapland</label>
+
+                                                        <label class="fsOptionLabel horizontal" for="field82438919_6"><input type="checkbox" id="field82438919_6" name="field82438919[]" value="Santa Breaks" class="fsField horizontal" />Santa Breaks</label>
+
+                        
+    
+    
+                                                                
+                    
+                                                </div></fieldset>
+                    
+                    
+                                                </div>
+
+                                    </div>
+
+                        
+                    
+
+        
+    </div>
+
+        
+</div>
+
+
+  
+<div id="fsSubmit3239436" class="fsSubmit fsPagination">
+
+    <button type="button" id="fsPreviousButton3239436" class="fsPreviousButton" value="Previous Page" style="display:none;" aria-label="Previous"><span class="fsFull">Previous</span><span class="fsSlim">&larr;</span></button>
+    <button type="button" id="fsNextButton3239436" class="fsNextButton" value="Next Page" style="display:none;" aria-label="Next"><span class="fsFull">Next</span><span class="fsSlim">&rarr;</span></button>
+
+    <input id="fsSubmitButton3239436"
+           class="fsSubmitButton"
+           style="display: block;"
+           type="submit"
+           value="Submit Form" />
+
+    
+    
+    
+  <div class="clear"></div>
+  <div class="">
+      </div>
+</div>
+
+    <script type="text/javascript">
+        window.FS_FIELD_DATA_3239436 = [];
+    </script>
+
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/jquery.min_1d14cd3798.js" ></script>
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/jquery-ui.min_42a497cb9f.js" ></script>
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/scripts_bd71a643f4.js" ></script>
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/analytics_0e96c0d8a9.js" ></script>
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/google-phone-lib_0ee0a62fb5.js" ></script>
+            <script type="text/javascript" src="//static.formstack.com/forms/js/3/modernizr_60a2d5aeb5.js" ></script>
+    
+    <script type="text/javascript">
+                (function() {
+          if (typeof sessionStorage !== 'undefined' && sessionStorage.fsFonts) {
+            document.documentElement.className = document.documentElement.className += ' wf-active';
+          }
+
+          var pre = document.createElement('link');
+
+          pre.rel  = 'preconnect';
+          pre.href = 'https://fonts.googleapis.com/';
+          pre.setAttribute('crossorigin', '');
+
+          var s = document.getElementsByTagName('head')[0];
+          s.appendChild(pre);
+
+          var fontConfig = {
+            google: {
+              families: [
+                'Lato:400,700'
+              ]
+            },
+            timeout: 2000,
+            active: function() {
+              if (typeof sessionStorage === 'undefined') {
+                return;
+              }
+
+              sessionStorage.fsFonts = true;
+            }
+          };
+
+          if (typeof WebFont === 'undefined') {
+              window.WebFontConfig = fontConfig;
+
+              var wf = document.createElement('script');
+
+              wf.type  = 'text/javascript';
+              wf.async = 'true';
+              wf.src   = ('https:' == document.location.protocol ? 'https' : 'http') +
+                         '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+
+              s.appendChild(wf);
+          } else {
+            WebFont.load(fontConfig);
+          }
+        })();
+
+        
+        if(window.addEventListener) {
+            window.addEventListener('load', loadFormstack, false);
+        } else if(window.attachEvent) {
+            window.attachEvent('onload', loadFormstack);
+        } else {
+            loadFormstack();
+        }
+        
+
+        function loadFormstack() {
+            var form3239436 = new Formstack.Form(3239436, 'https://hotelplan.formstack.com/forms/');
+
+            
+            
+                        form3239436.checks.push({target: '70406052', action: 'Hide', bool: 'AND', fields: ['70405566'],checks: [{field: '70405566', condition: '==', option: 'New bookings & enquiries'}]});
+                        form3239436.checks.push({target: '71459126', action: 'Show', bool: 'AND', fields: ['70405566'],checks: [{field: '70405566', condition: '==', option: 'New bookings & enquiries'}]});
+                        form3239436.checks.push({target: '71459140', action: 'Show', bool: 'AND', fields: ['70405566'],checks: [{field: '70405566', condition: '==', option: 'New bookings & enquiries'}]});
+                        form3239436.checks.push({target: '71459147', action: 'Show', bool: 'AND', fields: ['70405566'],checks: [{field: '70405566', condition: '==', option: 'New bookings & enquiries'}]});
+            
+
+            form3239436.logicFields = ['70405566'];
+
+            
+            form3239436.calcFields = [];
+
+            
+            form3239436.dateCalcFields = [];
+
+            form3239436.init();
+
+                        if (Formstack.Analytics) {
+                form3239436.plugins.analytics = new Formstack.Analytics('https://hotelplan.formstack.com', 3239436, form3239436);
+                form3239436.plugins.analytics.trackTouch();
+                form3239436.plugins.analytics.trackBottleneck();
+            }
+            
+            
+            
+            
+            
+            window.form3239436 = form3239436;
+        };
+    </script>
+
+
+    
+    
+
+    <div style="clear:both"></div>
+
+        
+</form>
+
+<div class="fs-ngdialog fs-modal-small fs-form-dialog fs-form-dialog--hidden">
+  <div class="fs-ngdialog-overlay"></div>
+  <div class="fs-ngdialog-content">
+    <div class="fs-modal__top fs-form-dialog__title"></div>
+
+    <div class="fs-modal__middle">
+      <div class="fs-form-dialog__message"></div>
+
+      <label class="hidden"
+             for="fsSaveResumePassword">Enter your save and resume password</label>
+
+      <input type="password"
+             id="fsSaveResumePassword"
+             class="fs-form-input fs-form-dialog__password fs-form-dialog--hidden fs--mt20" placeholder="Enter your save and resume password">
+       <textarea class="fs-form-dialog__textarea fs-form-dialog--hidden" rows="3" style="width: 100%; margin-top: 10px" aria-label="Add an optional comment"></textarea>
+    </div>
+
+    <div class="fs-modal__bottom">
+      <a class="fs-form-dialog__cancel fs-btn2 fs-btn2--size_medium fs-btn2--style_edit-dark" title="Cancel">
+        <div class="fs-btn2__content">
+          <div class="fs-btn2__text">
+            <span class="fs-form-dialog__button-text">Cancel</span>
+          </div>
+        </div>
+      </a>
+
+      <a class="fs-form-dialog__confirm fs-btn2 fs-btn2--size_medium fs-btn2--style_create fs--float-right" title="Confirm">
+        <div class="fs-btn2__content">
+          <div class="fs-btn2__text">
+            <span class="fs-form-dialog__button-text">Confirm</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+    
+    
+    </body>
+</html>

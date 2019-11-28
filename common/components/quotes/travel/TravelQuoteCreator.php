@@ -14,6 +14,7 @@ use common\models\TravelQuoteCountry;
 use Yii;
 //use common\components\quotes\travel\quoni\QuoniQuote;
 use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
+use common\components\quotes\travel\ski\inghams\InghamsQuote;
 use common\components\quotes\travel\eshores\EShoresQuote;
 use common\components\quotes\travel\flightcentre\FCentreTravelQuote;
 use common\models\TravelQuote;
@@ -258,6 +259,17 @@ class TravelQuoteCreator extends \yii\base\Component
      */
     protected function createQuoteSkiKings($companyId, $sendRealQuote){
         $quote = new SkiKingsQuote($this->quote, $companyId, $sendRealQuote);
+
+        if($quote->MakeQuote()){
+            $this->quoteResults[] = $quote->parsedData;
+        }
+    }
+
+    /*
+     * Create remote quote on Inghams site
+     */
+    protected function createQuoteInghams($companyId, $sendRealQuote){
+        $quote = new InghamsQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;

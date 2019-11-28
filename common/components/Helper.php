@@ -11,6 +11,8 @@ use common\models\InstantQuote;
 use common\models\QuoteCompany;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\base\InvalidParamException;
+
 
 class Helper {
 	const REGEXP_POSTCODE = "/[A-Za-z]{1,2}[0-9][0-9A-Za-z]?\s?([0-9][A-Za-z]{2})?/"; //"/^([A-PR-UWYZ]([0-9]{1,2}|([A-HK-Y][0-9]([0-9ABEHMNPRV-Y])?)|[0-9][A-HJKPS-UW]) ?[0-9][ABD-HJLNP-UW-Z]{2})$/i";
@@ -91,4 +93,32 @@ class Helper {
 
 		return $img;
 	}
+
+	/**
+	 * Generates a random string of specified length.
+	 * The string generated matches [A-Za-z0-9]+
+	 *
+	 * @param int $length the length of the key in characters
+	 * @return string
+	 * @throws Exception on failure.
+	 */
+	static function generateRandomString($length = 32)
+	{
+		if (!is_int($length)) {
+			throw new InvalidParamException('First parameter ($length) must be an integer');
+		}
+
+		if ($length < 1) {
+			throw new InvalidParamException('First parameter ($length) must be greater than 0');
+		}
+
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
+
 }

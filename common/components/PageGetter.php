@@ -15,8 +15,9 @@ class PageGetter
 
     static protected $userAgents = [
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8',
-        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
+        'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
     ];
 
     /**
@@ -146,7 +147,7 @@ class PageGetter
 
 //        Yii::error($this->header);
 //        Yii::error("Params - " . PHP_EOL . $params);
-//        $rawResponse = '698550'; //'<p> Thank you for your enquiry, please note:</p>';
+//        $rawResponse = '<p>The form was submitted successfully.</p>';
 //        $output['Status'] = 'OK';
 //        $output['Response'] = $rawResponse;
 //        return $output;

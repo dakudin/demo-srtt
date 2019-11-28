@@ -707,8 +707,8 @@ class TravelQuote extends \yii\db\ActiveRecord
      */
     protected function getQuoteCountryText()
     {
-        //countries list
-        $message = 'Countries: ';
+        //country
+        $message = 'Country: ';
         if(!empty($this->country)) {
             $message .= $this->country;
         }else{

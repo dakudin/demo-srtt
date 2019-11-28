@@ -7,6 +7,7 @@
 
 namespace common\components;
 
+use Yii;
 use yii\base\ErrorException;
 
 class Logger
@@ -62,6 +63,8 @@ class Logger
      */
     public function log($message)
     {
+        Yii::warning($message);
+
         return $this->logToFile($message);
     }
 }
