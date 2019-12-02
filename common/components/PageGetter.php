@@ -196,10 +196,10 @@ class PageGetter
             $output['StatusDetails'] = "Server Response: " . $httpCode;
             $output['Response'] = $rawResponse;
 
-            Yii::error("Requested url:" . PHP_EOL . $url);
-            Yii::error("Requested params:" . PHP_EOL . $params);
-            Yii::error("Info:" . PHP_EOL . var_dump(curl_getinfo($curlSession)));
-            Yii::error("Response:" . PHP_EOL . $rawResponse);
+//            Yii::error("Requested url:" . PHP_EOL . $url);
+//            Yii::error("Requested params:" . PHP_EOL . $params);
+//            Yii::error("Info:" . PHP_EOL . var_dump(curl_getinfo($curlSession)));
+//            Yii::error("Response:" . PHP_EOL . $rawResponse);
 
             return $output;
         }
@@ -210,10 +210,10 @@ class PageGetter
             $output['StatusDetails'] = curl_error($curlSession);
             $output['Response'] = $rawResponse;
 
-            Yii::error("Requested url:" . PHP_EOL . $url);
-            Yii::error("Requested params:" . PHP_EOL . $params);
-            Yii::error("Info:" . PHP_EOL . var_dump(curl_getinfo($curlSession)));
-            Yii::error("Response:" . PHP_EOL . $rawResponse);
+//            Yii::error("Requested url:" . PHP_EOL . $url);
+//            Yii::error("Requested params:" . PHP_EOL . $params);
+//            Yii::error("Info:" . PHP_EOL . var_dump(curl_getinfo($curlSession)));
+//            Yii::error("Response:" . PHP_EOL . $rawResponse);
             return $output;
         }
 
