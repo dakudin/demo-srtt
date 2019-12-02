@@ -219,7 +219,7 @@ class PageGetter
 
         curl_close($curlSession);
 
-        Yii::error("Server response is - " . PHP_EOL . $rawResponse);
+//        Yii::error("Server response is - " . PHP_EOL . $rawResponse);
 
         $output['Status'] = 'OK';
         $output['Response'] = $rawResponse;
