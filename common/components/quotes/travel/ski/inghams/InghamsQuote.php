@@ -16,17 +16,17 @@ use common\components\Helper;
 class InghamsQuote extends TravelQuoteBase
 {
     /**
-     * @var string url which request from into iframe
+     * @var string Url which request form into iframe (main page)
      */
     protected static $enquiryPageUrl = 'https://www.inghams.co.uk/stay-in-touch/contact-us';
 
     /**
-     * @var string url which contains form
+     * @var string Url which contains form
      */
     protected static $enquiryFormPageUrl = 'https://hotelplan.formstack.com/forms/inghams_customer_contact_form';
 
     /**
-     * @var string url for creating enquiry
+     * @var string Url for creating enquiry
      */
     protected static $formRequestUrl = 'https://hotelplan.formstack.com/forms/index.php';
 
@@ -150,19 +150,17 @@ class InghamsQuote extends TravelQuoteBase
      */
     public function sendForm()
     {
-
-        $result = [
+/*        $result = [
             'Response' => file_get_contents($this->formSenderSDKPath . '\form-page-html.txt')
-        ];
+        ];*/
 
         //get form page
-/*        $result = $this->pageGetter->sendRequest(static::$enquiryFormPageUrl, 'GET', '', static::$enquiryPageUrl);
+        $result = $this->pageGetter->sendRequest(static::$enquiryFormPageUrl, 'GET', '', static::$enquiryPageUrl);
 
         if($result['Status'] == "FAIL"){
             self::log($result['StatusDetails'] . "\r\n" . $result['Response']);
             return false;
-        }*/
-
+        }
 
         if(!$this->prepareHiddenFields($result['Response']))
             return false;
