@@ -117,36 +117,36 @@ class SkiSolutionQuote extends TravelQuoteBase
      */
     public function sendForm()
     {
-        $result = [
+/*        $result = [
             'Response' => file_get_contents($this->formSenderSDKPath . '\1.txt')
-        ];
+        ];*/
 
         //get form page
-/*        $result = $this->pageGetter->sendRequest(static::$enquiryPageUrl, 'GET');
+        $result = $this->pageGetter->sendRequest(static::$enquiryPageUrl, 'GET');
 
         if($result['Status'] == "FAIL"){
             self::log($result['StatusDetails'] . "\r\n" . $result['Response']);
             return false;
-        }*/
+        }
 
         if(!$this->prepareHiddenFields($result['Response']))
             return false;
 
-        $result = [
+/*        $result = [
             'Response' => file_get_contents($this->formSenderSDKPath . '\form-page-html.txt')
-        ];
+        ];*/
 //var_dump($this->firstFormActionUrl);
 //var_dump($this->formFields); die;
 
         //send form to external site
-//        $result = $this->pageGetter->sendRequest($this->firstFormActionUrl, 'POST', $this->formFields, static::$enquiryPageUrl);
+        $result = $this->pageGetter->sendRequest($this->firstFormActionUrl, 'POST', $this->formFields, static::$enquiryPageUrl);
 
         if(!$this->prepareNewFormFields($result['Response']))
             return false;
-var_dump($this->secondFormActionUrl);
-var_dump($this->parsedFormFields); die;
+//var_dump($this->secondFormActionUrl);
+//var_dump($this->parsedFormFields); die;
         //send parsed form to internal site https://www.skisolutions.com/enquiries with redirecting to https://www.skisolutions.com/thankyou by 302 code
-//        $result = $this->pageGetter->sendRequest($this->secondFormActionUrl, 'POST', $this->parsedFormFields, $this->firstFormActionUrl);
+        $result = $this->pageGetter->sendRequest($this->secondFormActionUrl, 'POST', $this->parsedFormFields, $this->firstFormActionUrl);
 
         if(!$this->isPageGood($result['Response'], '#Thank you for enquiring with Ski Solutions#', 'Error Page: Didn`t find correct response'))
             return false;
