@@ -15,6 +15,7 @@ use Yii;
 //use common\components\quotes\travel\quoni\QuoniQuote;
 use common\components\quotes\travel\ski\skikings\SkiKingsQuote;
 use common\components\quotes\travel\ski\inghams\InghamsQuote;
+use common\components\quotes\travel\ski\igluski\IgluskiQuote;
 use common\components\quotes\travel\ski\skisolutions\SkiSolutionQuote;
 use common\components\quotes\travel\eshores\EShoresQuote;
 use common\components\quotes\travel\flightcentre\FCentreTravelQuote;
@@ -282,6 +283,17 @@ class TravelQuoteCreator extends \yii\base\Component
      */
     protected function createQuoteSkiSolutions($companyId, $sendRealQuote){
         $quote = new SkiSolutionQuote($this->quote, $companyId, $sendRealQuote);
+
+        if($quote->MakeQuote()){
+            $this->quoteResults[] = $quote->parsedData;
+        }
+    }
+
+    /*
+     * Create remote quote on Iglu Ski site
+     */
+    protected function createQuoteIgluSki($companyId, $sendRealQuote){
+        $quote = new IgluskiQuote($this->quote, $companyId, $sendRealQuote);
 
         if($quote->MakeQuote()){
             $this->quoteResults[] = $quote->parsedData;
