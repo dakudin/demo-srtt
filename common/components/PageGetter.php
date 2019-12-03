@@ -9,6 +9,7 @@ namespace common\components;
 
 use Yii;
 use yii\base\Exception;
+use yii\helpers\FileHelper;
 
 class PageGetter
 {
@@ -19,6 +20,8 @@ class PageGetter
         'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
         'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0',
     ];
+
+    protected $cookieFile;
 
     /**
      * @var string user agent for browser emulation
@@ -42,6 +45,11 @@ class PageGetter
     {
         $this->userAgent = $this->getUserAgent();
         $this->logger = $logger;
+        $cookieDir = Yii::getAlias('@app') . DIRECTORY_SEPARATOR .'runtime' . DIRECTORY_SEPARATOR . 'cookie' . DIRECTORY_SEPARATOR;
+        if (!is_dir($cookieDir)) {
+            FileHelper::createDirectory($cookieDir);
+        }
+        $this->cookieFile = $cookieDir . 'cookie' . (microtime(true) * 10000) . '_' . rand(100,999) . '.txt';
     }
 
     /**
@@ -165,8 +173,11 @@ class PageGetter
         curl_setopt($curlSession, CURLOPT_HTTPHEADER, $this->header);
         curl_setopt($curlSession, CURLOPT_TIMEOUT, 30);
         //		curl_setopt($curlSession, CURLOPT_CONNECTTIMEOUT, 60);
-        curl_setopt($curlSession, CURLOPT_COOKIEFILE, ''); //FORMSENDER_SDK_PATH."/cookies1.txt");
+        //curl_setopt($curlSession, CURLOPT_COOKIEFILE, ''); //FORMSENDER_SDK_PATH."/cookies1.txt");
         //		curl_setopt($curlSession, CURLOPT_COOKIEJAR, FORMSENDER_SDK_PATH."/cookies1.txt");
+        curl_setopt($curlSession, CURLOPT_COOKIEFILE, $this->cookieFile);
+        curl_setopt($curlSession, CURLOPT_COOKIEJAR, $this->cookieFile);
+
         curl_setopt($curlSession, CURLOPT_ENCODING, "gzip");
 
         if ($method == 'POST') {
