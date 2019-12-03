@@ -164,7 +164,7 @@ IsAgreeToTandC	false*/
 
     protected function fillPhone($phone)
     {
-        $phone = str_replace(' ()', '', $phone);
+        $phone = str_replace('+ ()', '', $phone);
 
         if (preg_match(static::$patternPhone, $phone, $matches) === 1){
             $this->formFields['PhoneNumber'] = $phone;
