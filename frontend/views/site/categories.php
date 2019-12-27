@@ -10,8 +10,8 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 
     if($isHomePage){
-        $this->title = 'The Quote Engine - Sortit';
-        $this->registerMetaTag(['name' => 'description', 'content' => 'The Quote Engine sends your requirements to trusted and reviewed providers who will offer great deals and solutions for whatever you need.'], 'description');
+        $this->title = 'Ski holidays | Beach holidays | Sortit';
+        $this->registerMetaTag(['name' => 'description', 'content' => 'Tired of searching ski or beach holidays? Select several trusted providers and we send your requirements to them. Just try'], 'description');
         $this->registerMetaTag(['name' => 'keywords', 'content' => 'quote engine, search engine'], 'keywords');
         $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
     }elseif($category instanceof EnquiryCategory){

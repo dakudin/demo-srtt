@@ -7,7 +7,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Reset password - Sortit';
+$this->title = 'Reset Password | Sortit';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-reset-password">

@@ -17,7 +17,7 @@ if (Yii::$app->user->isGuest){
     $this->registerJS('$("#login-modal").modal("show");', $this::POS_READY);
 }
 
-$this->title = 'Retailers rating selection - Sortit';
+$this->title = 'Retailers Rating Selection | Sortit';
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -36,19 +36,4 @@ class m191101_134102_change_enquiry_category_seo_info extends Migration
 
         return false;
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m191101_134102_change_enquiry_category_seo_info cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

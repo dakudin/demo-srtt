@@ -8,7 +8,7 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact us - Sortit';
+$this->title = 'Contact Us | Sortit';
 $this->registerMetaTag(['name' => 'description', 'content' => 'Contact us for more information about business inquiries or other questions.'], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');

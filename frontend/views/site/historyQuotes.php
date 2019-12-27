@@ -14,7 +14,7 @@ use yii\helpers\Html;
 use common\components\QuoteHelper;
 use yii\helpers\Url;
 
-$this->title = 'My quotes - Sortit';
+$this->title = 'My Quotes | Sortit';
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
 
 $this->params['breadcrumbs'][] = 'My quotes';

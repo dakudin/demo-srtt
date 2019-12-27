@@ -4,7 +4,7 @@
 
 use yii\helpers\Url;
 
-$this->title = 'About us - Sortit';
+$this->title = 'About Us | Sortit';
 $this->registerMetaTag(['name' => 'description', 'content' => 'Find out more about Sortit.com and our company here.'], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => 'about Sortit'], 'keywords');
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');

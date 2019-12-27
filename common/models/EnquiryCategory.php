@@ -24,6 +24,7 @@ use creocoder\nestedsets\NestedSetsBehavior;
  * @property string $seo_description
  * @property string $seo_keyword
  * @property string $seo_h1
+ * @property string $seo_detail
  */
 class EnquiryCategory extends \yii\db\ActiveRecord
 {
@@ -50,6 +51,7 @@ class EnquiryCategory extends \yii\db\ActiveRecord
             [['seo_title'], 'string', 'max' => 100],
             [['seo_description', 'seo_keyword'], 'string', 'max' => 160],
             [['seo_h1'], 'string', 'max' => 250],
+            [['seo_detail'], 'string', 'max' => 1000],
         ];
     }
 
@@ -91,6 +93,18 @@ class EnquiryCategory extends \yii\db\ActiveRecord
     public static function find()
     {
         return new EnquiryCategoryQuery(get_called_class());
+    }
+
+    public static function findMostPopular($limit = 5)
+    {
+        return EnquiryCategory::find()
+            ->where([
+                'is_active' => 1,
+                'is_visible' => 1,
+            ])
+            ->andWhere(['not' , ['enquiry_class_name' => null]])
+            ->orderBy(['name' => SORT_DESC])
+            ->limit($limit)->all();
     }
 
     public function getImageUrl()

@@ -2,7 +2,7 @@
 	$privacy_police_url = Yii::$app->urlManager->createAbsoluteUrl('privacy-policy');
 	$termsofuse_url = Yii::$app->urlManager->createAbsoluteUrl('terms-of-use');
 
-	$this->title = 'Cookie policy - Sortit';
+	$this->title = 'Cookie Policy | Sortit';
 	$this->registerMetaTag(['name' => 'description', 'content' => 'Information about our use of cookies.'], 'description');
 	$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
 ?>

@@ -21,6 +21,10 @@ use yii\helpers\Html;
         <input type="hidden" name="show-any-value" id="show-any-value" value="0" />
     </div>
 
+    <div class="col-xs-12">
+        <p class="quote_detail lead"><?= Html::encode($category->seo_detail); ?></p>
+    </div>
+
     <div id="quote-info-block">
 
         <?php

@@ -1,7 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Monk
+ * Created by Kudin Dmitry
  * Date: 02.08.2018
  * Time: 13:49
  */
@@ -10,6 +9,7 @@ namespace frontend\helpers;
 
 use Yii;
 use common\models\EnquiryCategory;
+use yii\helpers\Url;
 
 class FHelper
 {
@@ -51,6 +51,22 @@ class FHelper
             $result[] = $category->name . ' Quote';
         }else{
             $result[] = $category->name;
+        }
+
+        return $result;
+    }
+
+    public static function getMostPopularCategoryLinks($limit = 5)
+    {
+        $result = [];
+
+        $categories = EnquiryCategory::findMostPopular($limit);
+        foreach($categories as $item){
+            $result[] =
+                [
+                    'label' => $item->name,
+                    'url' => Url::to(['enquiry/index', 'category' => $item->alias])
+                ];
         }
 
         return $result;

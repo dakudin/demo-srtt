@@ -5,7 +5,7 @@ $codesofpractice_url = '#';
 $acceptableusepolicy_url = '#';
 $urlTermsOfUseUpdates = '#';
 
-$this->title = 'Terms of use - Sortit';
+$this->title = 'Terms of use | Sortit';
 $this->registerMetaTag(['name' => 'description', 'content' => 'Get information about Sortit.com terms of use here.'], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
 
