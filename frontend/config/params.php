@@ -7,7 +7,7 @@ return [
     'supportEmail' => 'support@sortit.com',
     'user.rememberMeDuration' => 30 * 24 * 60, // one month
     'og_title' => ['property' => 'og:title', 'content' => 'The Quote Engine'],
-    'og_description' => ['property' => 'og:description', 'content' => 'Whatever you want, we`ll sort it. Your free online personal assistant working with top retailers.'],
+    'og_description' => ['property' => 'og:description', 'content' => 'Whatever you want, we`ll sort it. Your free online personal assistant.'],
     'og_url' => ['property' => 'og:url', 'content' => $domainName],
     'og_image' => ['property' => 'og:image', 'content' => $domainName .'/images/campaign/sortit_fb.png'],
     'og_type' => ['property' => 'og:type', 'content' => 'website'],
