@@ -22,6 +22,7 @@ Yii::$app->params['og_url']['content'] = $canonical_url;
 Yii::$app->params['og_title']['content'] = $category->og_title;
 Yii::$app->params['og_description']['content'] = $category->og_description;
 Yii::$app->params['og_image']['content'] = Yii::$app->request->hostInfo . $category->og_image;
+$this->registerMetaTag(Yii::$app->params['og_url'], 'og_url');
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
 ?>

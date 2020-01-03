@@ -22,8 +22,6 @@ $this->params['footer_links'] = [
     'privacy_police_url' => Yii::$app->urlManager->createAbsoluteUrl('privacy-policy'),
 ];
 
-Yii::$app->params['og_url']['content'] = Url::canonical();
-
 $this->beginPage(); ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
