@@ -60,7 +60,7 @@ return [
             'rules' => [
 //                'catchAll' => ['site/offline'], // for maintenance mode
 				'/' => 'site/index',
-                '<action:(about|contact|terms-of-use|privacy-policy|cookie-policy|ajax-login|ajaxsignup|ajax-request-password-reset|validate-password-reset-form|reset-password|history-quotes|logout|save-profile|validate-profile)>' => 'site/<action>',
+                '<action:(about|contact|terms-of-use|privacy-policy|cookie-policy|ajax-login|ajaxsignup|ajax-request-password-reset|validate-password-reset-form|reset-password|history-quotes|logout|save-profile|validate-profile|captcha)>' => 'site/<action>',
                 '<controller:(data)>/<action>' => '<controller>/<action>',
                 'rate-retailers/<category_alias>/<quote_id:\d+>' => 'site/rate-retailers',
 //                'auth' => 'site/auth',
