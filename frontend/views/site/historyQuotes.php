@@ -16,6 +16,7 @@ use yii\helpers\Url;
 
 $this->title = 'My Quotes | Sortit';
 $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
+Yii::$app->params['og_url']['content'] = Url::canonical();
 
 $this->params['breadcrumbs'][] = 'My quotes';
 ?>

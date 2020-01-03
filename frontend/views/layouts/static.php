@@ -18,6 +18,9 @@ $this->params['footer_links'] = [
     'privacy_police_url' => Yii::$app->urlManager->createAbsoluteUrl('privacy-policy'),
 ];
 
+$this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()], 'canonical');
+Yii::$app->params['og_url']['content'] = Url::canonical();
+
 $this->beginPage(); ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
@@ -28,8 +31,16 @@ $this->beginPage(); ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php echo $this->render('_gtm_head'); ?>
     <?= Html::csrfMetaTags() ?>
+    <?php
+        $this->registerMetaTag(Yii::$app->params['og_title'], 'og_title');
+        $this->registerMetaTag(Yii::$app->params['og_description'], 'og_description');
+        $this->registerMetaTag(Yii::$app->params['og_url'], 'og_url');
+        $this->registerMetaTag(Yii::$app->params['og_image'], 'og_image');
+        $this->registerMetaTag(Yii::$app->params['og_type'], 'og_type');
+        $this->registerMetaTag(Yii::$app->params['og_locale'], 'og_locale');
+        $this->registerMetaTag(Yii::$app->params['fb_app_id'], 'fb_app_id');
+    ?>
     <?php $this->head() ?>
-    <?php echo $this->registerLinkTag(['rel' => 'canonical', 'href' => Url::canonical()]); ?>
 </head>
 <body>
 <?php echo $this->render('_gtm_body'); ?>

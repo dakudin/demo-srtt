@@ -12,11 +12,16 @@ $this->registerJsFile(
     ['depends' => [\yii\web\JqueryAsset::className()]]
 );
 
+$canonical_url = Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo;
 $this->title = $category->seo_title;
 $this->registerMetaTag(['name' => 'description', 'content' => $category->seo_description], 'description');
 $this->registerMetaTag(['name' => 'keywords', 'content' => $category->seo_keyword], 'keywords');
-$this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo], 'canonical');
+$this->registerLinkTag(['rel' => 'canonical', 'href' => $canonical_url], 'canonical');
 
+Yii::$app->params['og_url']['content'] = $canonical_url;
+Yii::$app->params['og_title']['content'] = $category->og_title;
+Yii::$app->params['og_description']['content'] = $category->og_description;
+Yii::$app->params['og_image']['content'] = Yii::$app->request->hostInfo . $category->og_image;
 
 $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category);
 ?>

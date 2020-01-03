@@ -1,10 +1,13 @@
 <?php
-	$privacy_police_url = Yii::$app->urlManager->createAbsoluteUrl('privacy-policy');
-	$termsofuse_url = Yii::$app->urlManager->createAbsoluteUrl('terms-of-use');
+use yii\helpers\Url;
 
-	$this->title = 'Cookie Policy | Sortit';
-	$this->registerMetaTag(['name' => 'description', 'content' => 'Information about our use of cookies.'], 'description');
-	$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+$privacy_police_url = Yii::$app->urlManager->createAbsoluteUrl('privacy-policy');
+$termsofuse_url = Yii::$app->urlManager->createAbsoluteUrl('terms-of-use');
+
+$this->title = 'Cookie Policy | Sortit';
+$this->registerMetaTag(['name' => 'description', 'content' => 'Information about our use of cookies.'], 'description');
+$this->registerMetaTag(['name' => 'keywords', 'content' => 'Sortit help'], 'keywords');
+Yii::$app->params['og_url']['content'] = Url::canonical();
 ?>
 <div class="application__section application__section_width_small application__section_content_text">
 	<div class="application__section-wrapper">

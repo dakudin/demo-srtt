@@ -21,8 +21,15 @@ use yii\helpers\Html;
     }
 
     if($showBreadcrumbs && ($category instanceof EnquiryCategory)){
+        $canonical_url = Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo;
         $this->params['breadcrumbs'] = \frontend\helpers\FHelper::getEnquiryCategoryBreadcrumbs($category, false);
-        $this->registerLinkTag(['rel' => 'canonical', 'href' => Yii::$app->request->hostInfo . '/' . Yii::$app->request->pathInfo], 'canonical');
+        $this->registerLinkTag(['rel' => 'canonical', 'href' => $canonical_url], 'canonical');
+
+        Yii::$app->params['og_url']['content'] = $canonical_url;
+        Yii::$app->params['og_title']['content'] = $category->og_title;
+        Yii::$app->params['og_description']['content'] = $category->og_description;
+        Yii::$app->params['og_image']['content'] = Yii::$app->request->hostInfo . $category->og_image;
+//        $this->registerMetaTag(Yii::$app->params['og_url'], 'og_url');
     }
 
 ?>

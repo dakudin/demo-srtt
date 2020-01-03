@@ -18,7 +18,6 @@ if (Yii::$app->user->isGuest){
 }
 
 $this->title = 'Retailers Rating Selection | Sortit';
-
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 

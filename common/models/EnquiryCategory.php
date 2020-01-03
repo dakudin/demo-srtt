@@ -25,6 +25,9 @@ use creocoder\nestedsets\NestedSetsBehavior;
  * @property string $seo_keyword
  * @property string $seo_h1
  * @property string $seo_detail
+ * @property string $og_title
+ * @property string $og_description
+ * @property string $og_image
  */
 class EnquiryCategory extends \yii\db\ActiveRecord
 {
@@ -50,7 +53,7 @@ class EnquiryCategory extends \yii\db\ActiveRecord
             [['enquiry_class_name'], 'string', 'max' => 20],
             [['seo_title'], 'string', 'max' => 100],
             [['seo_description', 'seo_keyword'], 'string', 'max' => 160],
-            [['seo_h1'], 'string', 'max' => 250],
+            [['seo_h1', 'og_title', 'og_description', 'og_image'], 'string', 'max' => 250],
             [['seo_detail'], 'string', 'max' => 1000],
         ];
     }
