@@ -8,12 +8,12 @@
 namespace common\components;
 
 use yii\web\UrlRuleInterface;
-use yii\base\Object;
+use yii\base\BaseObject;
 use common\models\EnquiryCategory;
 
 
 
-class EnquiryCategoryUrlRule extends Object implements UrlRuleInterface
+class EnquiryCategoryUrlRule extends BaseObject implements UrlRuleInterface
 {
     /**
      * @param \yii\web\UrlManager $manager
